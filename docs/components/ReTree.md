@@ -73,6 +73,10 @@ banderas) son componentes firma construidos con estas piezas.
 - La cabecera es el botón de plegar (`role="button"`, `aria-expanded`, Enter/Espacio). Los items
   cerrados llevan `hidden`.
 - Sangría: 16 → 28 → 32 → 48px (lo dan las clases; no se ajusta a mano).
+- **Un solo hover** para todas las líneas, cabeceras y filas de cualquier nivel: `slate-100`. El
+  nivel se lee en la sangría, no en el color. La única excepción es `re-tree__row--danger` (rose,
+  rastreadores), porque es una señal de rol. La cabecera de nivel 2 sí tiene fondo propio en reposo
+  (`slate-50`, superficie hundida).
 - Expandir/contraer todo es una acción del árbol: va en su `re-batchbar`, no en el header de la ventana.
 - Iconos de grupo: marca para lo normal, `--muted` en el nivel 2, `--danger` para lo peligroso y
   `--success` para lo protegido.

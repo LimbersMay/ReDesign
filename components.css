@@ -1281,8 +1281,11 @@
     transition: background-color var(--re-duration);
   }
 
-  .re-tree__head:hover {
-    background: var(--re-slate-50);
+  /* One hover for every line of the tree (heads and rows, any level): the level shows in the
+     indent, not in the colour. Only --danger (trackers) tints it. */
+  .re-tree__head:hover,
+  .re-tree__row:hover {
+    background: color-mix(in srgb, var(--re-slate-100) 70%, transparent);
   }
 
   .re-tree__head:focus-visible {
@@ -1294,10 +1297,6 @@
     height: 1.75rem;
     padding-left: 1.75rem;
     background: var(--re-slate-50);
-  }
-
-  .re-tree__head--l2:hover {
-    background: color-mix(in srgb, var(--re-slate-100) 80%, transparent);
   }
 
   .re-tree__head-main {
@@ -1375,10 +1374,6 @@
     height: 2.25rem;
     padding: 0 1rem 0 2rem;
     transition: background-color var(--re-duration);
-  }
-
-  .re-tree__row:hover {
-    background: color-mix(in srgb, var(--re-brand-50) 40%, transparent);
   }
 
   .re-tree__row--2line {

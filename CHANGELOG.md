@@ -6,6 +6,12 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 1.0.1 — 2026-10-17
+
+- `re-tree`: un solo hover (`slate-100`) para cabeceras y filas de cualquier nivel. Antes el nivel 1
+  oscurecía a `slate-50`, el nivel 2 a `slate-100` y las filas se teñían con la marca, y cada nivel
+  reaccionaba distinto. `re-tree__row--danger` conserva su hover rose.
+
 ## 1.0.0 — 2026-10-17
 
 Primera versión, extraída de ReRoute v1.0 y de la propuesta de ReSession.
