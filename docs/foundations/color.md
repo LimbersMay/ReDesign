@@ -38,9 +38,12 @@ compite con la acción que el usuario viene a hacer.
 
 ### Roles: solo donde el significado es el mensaje
 
-- **rose**: lo destructivo (hover de eliminar, `re-btn--danger*`), los errores y la **acción** sobre los
-  rastreadores (su cifra y su «Limpiar»); el **icono** de su grupo es `amber`, porque avisa, no destruye. Es el único caso en que un color está en reposo dentro de una
-  lista, porque avisar de ellos es el producto.
+- **rose**: lo destructivo (hover de eliminar, `re-btn--danger*`, el «Limpiar» de los rastreadores) y los
+  errores.
+- **amber**: aviso. Los **rastreadores** avisan, no destruyen: el icono y el conteo de su grupo van en
+  `amber` (`re-tree__icon--warning`, `re-badge--warning`). Es el único caso en que un color está en
+  reposo dentro de una lista, porque avisar de ellos es el producto. Sus filas no se tiñen: tienen el
+  mismo hover que las demás.
 - **emerald**: en vivo (`re-dot--live`, `re-switch--live`) y «protegido por lista blanca» (`re-pill--success`).
 - En un segmented cuyas opciones **son** roles (Lista blanca · Lista negra; en ReRoute, Request ·
   Response del mock), la opción activa pinta del rol **el texto y el icono, nunca el borde**:
@@ -58,7 +61,7 @@ controles encendidos y las señales de rol. Cualquier otro elemento con el color
 | Superficies | `bg-background`, `bg-card`, `bg-overlay`, `bg-inverse` | Fondo de la ventana · tarjetas, header, footer, menús · velo de diálogo · toasts |
 | Neutros | `slate-50…950` | Todo lo que no es señal (ver §3) |
 | Marca | `brand-50…800`, `bg-primary`, `text-primary-foreground` | Lo que dice §2, nada más |
-| Peligro | `rose-*`, `bg-destructive` | Eliminar, purgar, errores, rastreadores |
+| Peligro | `rose-*`, `bg-destructive` | Eliminar, purgar, errores |
 | Éxito / en vivo | `emerald-*` | Estado activo (punto en vivo), protegido, lista blanca |
 | Aviso | `amber-*` | Advertencias que no bloquean |
 | Categorías | `orange`, `teal`, `sky`, `violet`, `purple` | Tipos dentro de un producto (ReRoute: headers, params…) |

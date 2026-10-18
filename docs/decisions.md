@@ -105,3 +105,14 @@ Pero el grupo no es un error ni una acción destructiva: es una advertencia.
 («Limpiar») y en el conteo.
 **Consecuencias.** MINOR (1.3.0). Ojo con D9: la marca provisional de ReSession también es ámbar (75),
 así que este aviso se parece a la marca hasta que D9 se resuelva.
+
+## D13 · Un solo hover, sin excepciones (2.0.0)
+
+**Contexto.** 1.0.1 unificó el hover del árbol en `slate-100`, pero dejó `re-tree__row--danger` (rose) para
+las filas de rastreadores como «señal de rol». Con D12 los rastreadores pasaron a ser un aviso (amber), y
+una fila tintada de rojo contradecía ese cambio y el hover único.
+**Decisión.** Se elimina `re-tree__row--danger`: el hover de cualquier fila o cabecera es `slate-100`. La
+señal de los rastreadores vive en su icono, su conteo y su «Limpiar», no en cada fila. Se eliminan también
+los alias `re-tree__head--l2` y `re-tree__row--l3`, obsoletos desde 1.1.0, para dejar una sola forma de
+declarar el nivel (`--re-tree-depth`).
+**Consecuencias.** MAJOR (2.0.0): se eliminan clases `re-*`. Migración en el CHANGELOG.

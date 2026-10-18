@@ -13,7 +13,7 @@ banderas) son componentes firma construidos con estas piezas.
 | Grupo | `re-tree__group` | — |
 | Cabecera | `re-tree__head` | 32px; 28px y fondo hundido si está anidada |
 | Filas del grupo | `re-tree__items` | — |
-| Hoja | `re-tree__row` (`--2line`, `--danger`) | 36 / 44px; 32px dentro de un grupo anidado |
+| Hoja | `re-tree__row` (`--2line`) | 36 / 44px; 32px dentro de un grupo anidado |
 | Clave (`--strong` si es la protagonista de la fila) | `re-tree__key` | — |
 | Valor (`--strong` si es el contenido de la fila) | `re-tree__value` | — |
 | Mensaje dentro de un grupo vacío | `re-tree__note` | — |
@@ -43,7 +43,7 @@ No hay clases por nivel. Cada grupo declara su profundidad con la variable `--re
 - Una cabecera dentro de los items de otro grupo sale compacta y con fondo hundido, a cualquier
   profundidad; sus filas, compactas. Lo da la estructura, no una clase.
 - El paso de sangría es `--re-tree-indent` (16px), en `.re-tree`.
-- `re-tree__head--l2` y `re-tree__row--l3` quedan como alias de profundidad 1 (obsoletos desde 1.1.0).
+- `re-tree__head--l2` y `re-tree__row--l3` se eliminaron en 2.0.0: declara `--re-tree-depth: 1` en el grupo.
 
 ## HTML
 
@@ -102,8 +102,8 @@ No hay clases por nivel. Cada grupo declara su profundidad con la variable `--re
   cerrados llevan `hidden`.
 - Sangría: la da `--re-tree-depth`; no se ajusta a mano con padding.
 - **Un solo hover** para todas las líneas, cabeceras y filas de cualquier nivel: `slate-100`. El
-  nivel se lee en la sangría, no en el color. La única excepción es `re-tree__row--danger` (rose,
-  rastreadores), porque es una señal de rol. Las cabeceras anidadas sí tienen fondo propio en reposo
+  nivel se lee en la sangría, no en el color, y tampoco hay variante para las filas de rastreadores
+  (`re-tree__row--danger` se eliminó en 2.0.0). Las cabeceras anidadas sí tienen fondo propio en reposo
   (`slate-50`, superficie hundida).
 - **Valor**: por defecto es una pista (`slate-400`, junto a una clave que manda). `re-tree__value--strong`
   (`slate-600`) es para filas donde el valor es lo que se viene a leer, como el storage. Solo cambia el

@@ -1301,16 +1301,9 @@
   }
 
   /* A head inside another group's items is nested, at any depth: compact and sunken. */
-  .re-tree__items .re-tree__head,
-  .re-tree__head--l2 {
+  .re-tree__items .re-tree__head {
     height: 1.75rem;
     background: var(--re-slate-50);
-  }
-
-  /* Deprecated (1.1.0): use --re-tree-depth on the group. Kept as aliases of depth 1. */
-  .re-tree__head--l2,
-  .re-tree__row--l3 {
-    --re-tree-depth: 1;
   }
 
   .re-tree__head-main {
@@ -1398,13 +1391,8 @@
     height: 2.75rem;
   }
 
-  .re-tree__items .re-tree__items .re-tree__row,
-  .re-tree__row--l3 {
+  .re-tree__items .re-tree__items .re-tree__row {
     height: 2rem;
-  }
-
-  .re-tree__row--danger:hover {
-    background: color-mix(in srgb, var(--re-rose-50) 40%, transparent);
   }
 
   .re-tree__row-main {

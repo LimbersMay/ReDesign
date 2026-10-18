@@ -6,6 +6,16 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.0.0 — 2026-10-18
+
+Cambio incompatible (se eliminan clases `re-*`). Migración: en `re-tree`, sustituye `re-tree__head--l2` y
+`re-tree__row--l3` por `--re-tree-depth: 1` en el grupo, y quita `re-tree__row--danger` de las filas.
+
+- Eliminados: `re-tree__head--l2` y `re-tree__row--l3` (obsoletos desde 1.1.0) y `re-tree__row--danger`.
+- Las filas de rastreadores ya no tienen hover propio: todas las filas y cabeceras, de cualquier nivel
+  y tipo, usan el mismo `slate-100` (D13).
+- Docs: los rastreadores avisan (`amber`: icono y conteo); `rose` queda en lo destructivo y en los errores.
+
 ## 1.3.0 — 2026-10-18
 
 - `re-tree__icon--warning` (`amber-500`): el icono del grupo de rastreadores avisa, no es un error ni
