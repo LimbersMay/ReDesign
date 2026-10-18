@@ -34,12 +34,21 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   `{JWT}`, `{JSON}`) + valor (`re-tree__value--strong`). El tamaño y la caducidad son `re-hint`; la
   caducidad es `clock` + el tiempo que falta («2 h») y pasa a `re-hint--warning` solo cuando importa. Sin
   candado: «Vaciar» un área siempre se confirma.
-- **Grupo de rastreadores**: icono (`shield-alert`), conteo y filas neutros, con el hover de siempre. Lo que lo distingue es su
-  «Limpiar»: es el único grupo con la acción siempre visible (`re-btn--2xs re-btn--danger-soft`, con
-  `flame` en lugar de `eraser`, «Limpiar (n)»); en el resto, «Limpiar» se
-  revela al pasar el ratón.
-- **Barra de lote**: «Proteger» y «Limpiar», con la cifra si hay selección, y contraer/expandir todo.
-  En Global, «Proteger» exige selección y «Limpiar todo» se confirma con las cifras reales.
+- **Grupo de rastreadores**: un grupo más, porque siempre son cookies. Icono (`shield-alert`), conteo y
+  filas neutros, con el hover de siempre, y su «Limpiar» se revela como el de cualquier grupo (D16).
+- **Acciones de limpiar**: un solo «Limpiar» fijo por pantalla (D16). El peso lo da el alcance:
+
+  | Alcance | Dónde | Cuándo se ve | Clase |
+  |---|---|---|---|
+  | Vista o selección | Barra de lote | Siempre | `re-btn--xs re-btn--danger-soft` |
+  | Grupo (rastreadores incluidos) | Cabecera | Al pasar el ratón o con foco | `re-btn--xs re-btn--danger-outline` |
+  | Una cookie | Fila | Al pasar el ratón o con foco | `re-icon-btn--danger` (`trash-2`) |
+
+  Ningún «Limpiar» lleva icono. Todos dicen la cifra de lo que se borrará, sin contar lo protegido
+  («Limpiar (7)»); en la barra cambia con la selección. «Vaciar» un área de storage sigue la misma tabla.
+- **Barra de lote**: «Proteger» neutro (`re-btn--secondary` con `lock`: el emerald es un estado, «Lista
+  blanca», no una acción), «Limpiar (n)» y contraer/expandir todo. En Global, «Proteger» exige selección
+  y «Limpiar todo (n)» se confirma con las cifras reales.
 - **Tarjeta de limpieza automática** (`re-card` con switch, intervalo y tareas).
 - **Editor de cookie** ([patterns/editor-dialog.md](../patterns/editor-dialog.md)). Específico de
   ReSession: detección de formato del valor (JWT, JSON, URL), contador `n / 4096 B`, atajos de caducidad

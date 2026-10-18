@@ -6,6 +6,18 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.1.0 — 2026-10-18
+
+- Nuevo: `re-btn--danger-outline`, la acción destructiva revelada de una cabecera de grupo: neutra hasta el
+  hover (D16).
+- `re-btn--danger-soft` lleva sombra y queda como el único destructivo siempre visible de una pantalla.
+- Oscuro: `re-btn--danger-soft`, el hover de `--danger-outline` y los tonos `--danger`/`--success` de
+  `re-badge` y `re-pill` usan relleno opaco de tarjeta con el color en el texto, en lugar de un tinte
+  translúcido.
+- `re-pill` pasa de 18 a 22 px de alto, con más margen lateral.
+- Docs: «Limpiar» sin icono (`eraser` y `flame` fuera de la tabla de iconos); `re-btn--2xs` ya no es para
+  cabeceras de grupo.
+
 ## 2.0.3 — 2026-10-18
 
 Solo documentación.

@@ -144,3 +144,20 @@ la frase completa queda en el tooltip, porque con claves largas la frase empujab
 (2.0.3).
 **Consecuencias.** PATCH (2.0.2): documentación y un ajuste de altura; ninguna clase nueva ni eliminada.
 `re-badge--micro` sigue existiendo. Cuesta densidad: caben menos cookies por pantalla.
+
+## D16 · Un solo «Limpiar» fijo por pantalla (2.1.0)
+
+**Contexto.** Al dar forma de botón a los «Limpiar» de cada grupo, la vista llegó a cuatro botones casi
+iguales: el de la barra (`eraser`), el de rastreadores (`flame`, siempre visible), el de cada grupo (sin
+icono) y la papelera. La acción de la vista dejó de distinguirse. Además, en oscuro los tintes translúcidos
+de 50/200 (D4) brillaban sobre el slate opaco, y un botón de 20 px en una cabecera se leía como un badge.
+**Decisión.** El peso lo da el alcance. Vista o selección: la barra de lote, siempre visible, con
+`re-btn--danger-soft`, el único rose fijo de la pantalla. Grupo, rastreadores incluidos: la cabecera, revelado,
+con la variante nueva `re-btn--danger-outline` (neutra hasta el hover) a 24 px. Una cookie: la papelera
+revelada. Ningún «Limpiar» lleva icono y todos dicen la cifra de lo que se borrará. «Proteger» es neutro: el
+emerald es un estado («Lista blanca»), no una acción. En oscuro, los botones destructivos suaves y los tonos
+`--danger`/`--success` de `re-badge` y `re-pill` usan relleno de tarjeta opaco con el color en el texto y el
+icono (y en el borde, los botones). `re-pill` pasa a 22 px de alto.
+**Consecuencias.** MINOR (2.1.0): una variante nueva, ninguna eliminada. Sustituye a D14 en lo de `flame`:
+los rastreadores ya no tienen un «Limpiar» propio. `re-btn--danger-ghost` queda para el pie del editor.
+Cuesta descubrimiento: limpiar un grupo pide pasar el ratón o el foco, como las acciones de fila.

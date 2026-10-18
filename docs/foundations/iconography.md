@@ -29,7 +29,7 @@ Para que la misma acción tenga el mismo icono en toda la suite:
 | Añadir | `plus` |
 | Editar | `square-pen` (tarjetas) · `pencil` (filas densas) |
 | Eliminar | `trash-2` |
-| Limpiar en lote | `eraser` |
+| Limpiar · vaciar | Sin icono: el verbo, la posición y la cifra dicen el alcance (D16) |
 | Copiar | `copy` |
 | Exportar / importar | `download` / `upload` |
 | Ayuda | `circle-help` · Atajos: `keyboard` |
@@ -37,7 +37,7 @@ Para que la misma acción tenga el mismo icono en toda la suite:
 | Idioma | `languages` |
 | Con candado · sin candado | `lock` (`slate-700`) · `lock-open` (`slate-300`): el estado lo da la forma, no el color |
 | Lista blanca · lista negra | `shield-check` (`emerald`) · `shield-x` (`rose`) |
-| Rastreadores · limpiar rastreadores | `shield-alert` (neutro) · `flame` (el «Limpiar» propio de su grupo) |
+| Rastreadores | `shield-alert` (neutro) |
 | Cookie de sesión · fecha fija | `log-out` · `calendar` |
 | Información · aviso | `info` · `triangle-alert` |
 | Peligro / alerta | `triangle-alert` |
