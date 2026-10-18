@@ -19,10 +19,13 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
 
 ## Componentes firma
 
-- **Fila de cookie** (sobre `re-tree__row`), idéntica en «Esta pestaña» y en «Global»: checkbox ·
-  candado (`lock` marca = con candado, `lock-open` `slate-400` = sin candado) · clave
-  (`re-tree__key--strong` si tiene candado) · valor · banderas `re-badge--micro` (H, S; solo en la
-  vista de pestaña) · acciones reveladas (editar, eliminar).
+- **Fila de cookie** (`re-tree__row--2line`), idéntica en «Esta pestaña» y en «Global»: checkbox ·
+  candado (`lock` marca = con candado, `lock-open` `slate-400` = sin candado) · en la primera línea,
+  clave (`re-tree__key--strong` si tiene candado), banderas `re-badge` con la palabra completa
+  («HttpOnly», «Secure») y caducidad en `re-hint` («Caduca dentro de 2 h»; «Sesión» si no caduca) ·
+  en la segunda, el valor (`re-tree__value`) · acciones reveladas (editar, eliminar). La caducidad
+  pasa a `re-hint--warning` si ya pasó o falta menos de 1 h (D15). En una cookie de rastreador, la
+  `re-pill` con su nombre ocupa el final de la fila y la segunda línea muestra el dominio.
 - **Lista blanca en el árbol**: se marca en la **cabecera del grupo** con `re-pill--success`
   «Lista blanca» (`shield-check`), que sustituye a su «Limpiar». Las filas no cambian: el candado sigue
   siendo de la cookie y se puede poner o quitar; al quitarlo, el toast recuerda que sigue protegida.

@@ -1376,7 +1376,7 @@
     border-top: 1px solid color-mix(in srgb, var(--re-slate-200) 50%, transparent);
   }
 
-  /* Leaf row: 1 line (36px) · --2line (44px, key + value) · inside a nested group, 32px. */
+  /* Leaf row: 1 line (36px) · --2line (44px, key + value) · inside a nested group, 32px (a --2line row keeps 44px). */
   .re-tree__row {
     display: flex;
     align-items: center;
@@ -1391,7 +1391,7 @@
     height: 2.75rem;
   }
 
-  .re-tree__items .re-tree__items .re-tree__row {
+  .re-tree__items .re-tree__items .re-tree__row:not(.re-tree__row--2line) {
     height: 2rem;
   }
 

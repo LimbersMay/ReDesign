@@ -6,6 +6,14 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.0.2 — 2026-10-18
+
+Sin clases nuevas ni eliminadas.
+
+- La fila de cookie pasa a dos líneas (`re-tree__row--2line`): banderas con la palabra completa y caducidad
+  visible, como en storage (D15).
+- Corrección: una fila `--2line` dentro de un grupo anidado ya no se aplasta a 32 px.
+
 ## 2.0.1 — 2026-10-18
 
 Solo documentación y comentario de la marca; ningún nombre cambia.

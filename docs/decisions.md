@@ -129,3 +129,15 @@ reserva a lo puntual (caducidad cercana, `re-hint--warning`), donde pide atenci�
 de la lista.
 **Consecuencias.** PATCH (2.0.1): documentación. `re-tree__icon--warning` y `re-badge--warning` siguen
 existiendo, aunque ReSession ya no los use para rastreadores. D12 queda sin efecto en ReSession.
+
+## D15 · La fila de cookie dice su caducidad y sus banderas con palabras (2.0.2)
+
+**Contexto.** La fila de cookie mostraba `H` y `S` (`re-badge--micro`): solo las entiende quien ya sabe qué
+son, y la caducidad solo se veía abriendo el editor, mientras que storage ya la mostraba de un vistazo.
+Un icono no sirve: el candado ya significa «protegida» en ReSession y `HttpOnly` no tiene icono estándar.
+**Decisión.** La cookie usa la fila de dos líneas de storage: clave + `re-badge` «HttpOnly» / «Secure» +
+caducidad (`re-hint`) arriba, valor debajo. «Sesión» (`re-hint`) si no caduca; `re-hint--warning` si ya pasó
+o falta menos de 1 h, el mismo umbral que storage. Se corrige además `re-tree__items .re-tree__items
+.re-tree__row`, que forzaba 32 px también a las filas `--2line` anidadas.
+**Consecuencias.** PATCH (2.0.2): documentación y un ajuste de altura; ninguna clase nueva ni eliminada.
+`re-badge--micro` sigue existiendo. Cuesta densidad: caben menos cookies por pantalla.
