@@ -139,5 +139,8 @@ Un icono no sirve: el candado ya significa «protegida» en ReSession y `HttpOnl
 caducidad (`re-hint`) arriba, valor debajo. «Sesión» (`re-hint`) si no caduca; `re-hint--warning` si ya pasó
 o falta menos de 1 h, el mismo umbral que storage. Se corrige además `re-tree__items .re-tree__items
 .re-tree__row`, que forzaba 32 px también a las filas `--2line` anidadas.
+La caducidad se muestra corta, con `clock` y solo el tiempo que falta («2 h»; «Caducada» si ya pasó);
+la frase completa queda en el tooltip, porque con claves largas la frase empujaba el resto a otra línea
+(2.0.3).
 **Consecuencias.** PATCH (2.0.2): documentación y un ajuste de altura; ninguna clase nueva ni eliminada.
 `re-badge--micro` sigue existiendo. Cuesta densidad: caben menos cookies por pantalla.

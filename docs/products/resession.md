@@ -22,7 +22,8 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
 - **Fila de cookie** (`re-tree__row--2line`), idéntica en «Esta pestaña» y en «Global»: checkbox ·
   candado (`lock` marca = con candado, `lock-open` `slate-400` = sin candado) · en la primera línea,
   clave (`re-tree__key--strong` si tiene candado), banderas `re-badge` con la palabra completa
-  («HttpOnly», «Secure») y caducidad en `re-hint` («Caduca dentro de 2 h»; «Sesión» si no caduca) ·
+  («HttpOnly», «Secure») y caducidad en `re-hint` (icono `clock` + el tiempo que falta, «2 h»; «Sesión» si
+  no caduca; la frase completa, «Caduca dentro de 2 h», va en el tooltip) ·
   en la segunda, el valor (`re-tree__value`) · acciones reveladas (editar, eliminar). La caducidad
   pasa a `re-hint--warning` si ya pasó o falta menos de 1 h (D15). En una cookie de rastreador, la
   `re-pill` con su nombre ocupa el final de la fila y la segunda línea muestra el dominio.
@@ -31,7 +32,7 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   siendo de la cookie y se puede poner o quitar; al quitarlo, el toast recuerda que sigue protegida.
 - **Fila de storage** (`re-tree__row--2line`): clave (`re-tree__key--strong`) + formato (`re-badge` neutro,
   `{JWT}`, `{JSON}`) + valor (`re-tree__value--strong`). El tamaño y la caducidad son `re-hint`; la
-  caducidad pasa a `re-hint--warning` solo cuando importa. Sin
+  caducidad es `clock` + el tiempo que falta («2 h») y pasa a `re-hint--warning` solo cuando importa. Sin
   candado: «Vaciar» un área siempre se confirma.
 - **Grupo de rastreadores**: icono (`shield-alert`), conteo y filas neutros, con el hover de siempre. Lo que lo distingue es su
   «Limpiar»: es el único grupo con la acción siempre visible (`re-btn--2xs re-btn--danger-soft`, con

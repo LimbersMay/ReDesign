@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.0.3 — 2026-10-18
+
+Solo documentación.
+
+- La caducidad de cookie y de storage se muestra corta: `clock` + tiempo restante («2 h»), con la frase
+  completa en el tooltip (D15).
+
 ## 2.0.2 — 2026-10-18
 
 Sin clases nuevas ni eliminadas.
