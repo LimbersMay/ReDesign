@@ -1,6 +1,6 @@
 # ReTree
 
-Árbol colapsable para **datos densos y homogéneos**: cientos de filas agrupadas por uno o dos niveles.
+Árbol colapsable para **datos densos y homogéneos**: cientos de filas agrupadas en tantos niveles como haga falta.
 Es genérico; las filas especializadas de cada producto (la fila de cookie de ReSession, con candado y
 banderas) son componentes firma construidos con estas piezas.
 
@@ -11,11 +11,37 @@ banderas) son componentes firma construidos con estas piezas.
 | Barra de lote (seleccionar todo + acciones) | `re-batchbar` | 32px |
 | Contenedor (scroll, mono 11px) | `re-tree` | flex-1 |
 | Grupo | `re-tree__group` | — |
-| Cabecera de nivel 1 | `re-tree__head` | 32px |
-| Cabecera de nivel 2 | `re-tree__head re-tree__head--l2` | 28px |
+| Cabecera | `re-tree__head` | 32px; 28px y fondo hundido si está anidada |
 | Filas del grupo | `re-tree__items` | — |
-| Hoja | `re-tree__row` (`--2line`, `--l3`, `--danger`) | 36 / 44 / 32px |
+| Hoja | `re-tree__row` (`--2line`, `--danger`) | 36 / 44px; 32px dentro de un grupo anidado |
 | Mensaje dentro de un grupo vacío | `re-tree__note` | — |
+
+## Niveles
+
+No hay clases por nivel. Cada grupo declara su profundidad con la variable `--re-tree-depth`
+(0 = primer nivel, 1, 2… sin límite) en el elemento que envuelve su cabecera y sus items:
+
+```html
+<section class="re-tree__group" style="--re-tree-depth: 0">
+  <div class="re-tree__head">…</div>
+  <div class="re-tree__items">
+    <div class="re-tree__row">…</div>
+    <div style="--re-tree-depth: 1">           <!-- grupo anidado -->
+      <div class="re-tree__head">…</div>
+      <div class="re-tree__items">
+        <div class="re-tree__row">…</div>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+- La cabecera se sangra `16px + profundidad × 16px`, y sus filas un paso más (la variable se
+  hereda; las filas no la declaran).
+- Una cabecera dentro de los items de otro grupo sale compacta y con fondo hundido, a cualquier
+  profundidad; sus filas, compactas. Lo da la estructura, no una clase.
+- El paso de sangría es `--re-tree-indent` (16px), en `.re-tree`.
+- `re-tree__head--l2` y `re-tree__row--l3` quedan como alias de profundidad 1 (obsoletos desde 1.1.0).
 
 ## HTML
 
@@ -72,11 +98,11 @@ banderas) son componentes firma construidos con estas piezas.
   se revelan en hover o foco; no se muestran fijas en cada grupo.
 - La cabecera es el botón de plegar (`role="button"`, `aria-expanded`, Enter/Espacio). Los items
   cerrados llevan `hidden`.
-- Sangría: 16 → 28 → 32 → 48px (lo dan las clases; no se ajusta a mano).
+- Sangría: la da `--re-tree-depth`; no se ajusta a mano con padding.
 - **Un solo hover** para todas las líneas, cabeceras y filas de cualquier nivel: `slate-100`. El
   nivel se lee en la sangría, no en el color. La única excepción es `re-tree__row--danger` (rose,
-  rastreadores), porque es una señal de rol. La cabecera de nivel 2 sí tiene fondo propio en reposo
+  rastreadores), porque es una señal de rol. Las cabeceras anidadas sí tienen fondo propio en reposo
   (`slate-50`, superficie hundida).
 - Expandir/contraer todo es una acción del árbol: va en su `re-batchbar`, no en el header de la ventana.
-- Iconos de grupo: marca para lo normal, `--muted` en el nivel 2, `--danger` para lo peligroso y
+- Iconos de grupo: marca para lo normal, `--muted` en los anidados, `--danger` para lo peligroso y
   `--success` para lo protegido.

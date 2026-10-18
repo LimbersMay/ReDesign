@@ -6,6 +6,14 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 1.1.0 — 2026-10-17
+
+- `re-tree`: niveles ilimitados. La profundidad se declara con `--re-tree-depth` en el grupo; cabeceras
+  y filas calculan su sangría con ella (paso `--re-tree-indent`, 16px). Una cabecera anidada sale
+  compacta y hundida por estructura, a cualquier profundidad.
+- Obsoletos: `re-tree__head--l2` y `re-tree__row--l3`, que siguen funcionando como profundidad 1.
+  La cabecera de nivel 2 pasa de 28 a 32px de sangría, para alinearse con las filas de su nivel.
+
 ## 1.0.1 — 2026-10-17
 
 - `re-tree`: un solo hover (`slate-100`) para cabeceras y filas de cualquier nivel. Antes el nivel 1
