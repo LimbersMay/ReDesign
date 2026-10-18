@@ -6,6 +6,12 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 1.2.0 — 2026-10-18
+
+- `re-tree__value--strong`: variante del valor de una fila (`slate-600` en lugar de `slate-400`), para
+  filas donde el valor es el contenido (fila de storage de ReSession) y no una pista junto a la clave.
+  Misma caja y truncado que `re-tree__value`; es un neutro, no una señal de rol (D11).
+
 ## 1.1.0 — 2026-10-17
 
 - `re-tree`: niveles ilimitados. La profundidad se declara con `--re-tree-depth` en el grupo; cabeceras

@@ -14,6 +14,8 @@ banderas) son componentes firma construidos con estas piezas.
 | Cabecera | `re-tree__head` | 32px; 28px y fondo hundido si está anidada |
 | Filas del grupo | `re-tree__items` | — |
 | Hoja | `re-tree__row` (`--2line`, `--danger`) | 36 / 44px; 32px dentro de un grupo anidado |
+| Clave (`--strong` si es la protagonista de la fila) | `re-tree__key` | — |
+| Valor (`--strong` si es el contenido de la fila) | `re-tree__value` | — |
 | Mensaje dentro de un grupo vacío | `re-tree__note` | — |
 
 ## Niveles
@@ -103,6 +105,10 @@ No hay clases por nivel. Cada grupo declara su profundidad con la variable `--re
   nivel se lee en la sangría, no en el color. La única excepción es `re-tree__row--danger` (rose,
   rastreadores), porque es una señal de rol. Las cabeceras anidadas sí tienen fondo propio en reposo
   (`slate-50`, superficie hundida).
+- **Valor**: por defecto es una pista (`slate-400`, junto a una clave que manda). `re-tree__value--strong`
+  (`slate-600`) es para filas donde el valor es lo que se viene a leer, como el storage. Solo cambia el
+  tono: mantiene el truncado y el `max-width`, y nunca supera a la clave (`slate-800`). Es un neutro: no
+  señala un rol, así que no sustituye a `--danger` ni `--success`.
 - Expandir/contraer todo es una acción del árbol: va en su `re-batchbar`, no en el header de la ventana.
 - Iconos de grupo: marca para lo normal, `--muted` en los anidados, `--danger` para lo peligroso y
   `--success` para lo protegido.

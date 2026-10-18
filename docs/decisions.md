@@ -86,3 +86,13 @@ del botón sea blanco en claro (ReSession con L 0.59 daba 4.2:1).
 aún no publicado, no es un cambio incompatible). El lint no puede medir esto: se revisa con la prueba
 de los tres segundos.
 
+
+## D11 · El valor de una fila puede subir de tono (`re-tree__value--strong`)
+
+**Contexto.** En la fila de storage de ReSession todo era gris: el valor (`slate-400`) quedaba casi
+ilegible y la vista no tenía por dónde leerse. Colorear los badges de formato se descartó: R13 reserva la
+marca y `color.md` §2 deja los badges de formato neutros; no existe un rol de color para «credencial».
+**Decisión.** Variante neutra del valor, `slate-600` (`color.md` §4: cuerpo), por debajo de la clave
+(`slate-800`). La jerarquía sale del tono y el peso, no de un color; el color queda para roles reales
+(caducidad = aviso, rastreador = rose, protegido = success).
+**Consecuencias.** MINOR (1.2.0). Misma caja que `re-tree__value`, sin cambio incompatible.

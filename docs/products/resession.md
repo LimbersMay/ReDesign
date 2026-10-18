@@ -26,7 +26,9 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
 - **Lista blanca en el árbol**: se marca en la **cabecera del grupo** con `re-pill--success`
   «Lista blanca» (`shield-check`), que sustituye a su «Limpiar». Las filas no cambian: el candado sigue
   siendo de la cookie y se puede poner o quitar; al quitarlo, el toast recuerda que sigue protegida.
-- **Fila de storage** (`re-tree__row--2line`): clave + formato (`{JWT}`, `{JSON}`) + valor. Sin
+- **Fila de storage** (`re-tree__row--2line`): clave (`re-tree__key--strong`) + formato (`re-badge` neutro,
+  `{JWT}`, `{JSON}`) + valor (`re-tree__value--strong`). El tamaño y la caducidad son `re-hint`; la
+  caducidad pasa a `re-hint--warning` solo cuando importa. Sin
   candado: «Vaciar» un área siempre se confirma.
 - **Grupo de rastreadores**: `re-tree__icon--danger`, conteo `re-badge--danger`. Es el único grupo con
   la acción siempre visible (`re-btn--2xs re-btn--danger-soft` «Limpiar (n)»); en el resto, «Limpiar» se

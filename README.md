@@ -42,4 +42,4 @@ En el repo del producto copia [templates/AGENTS.product.md](templates/AGENTS.pro
 1. Cambia aquí, nunca en la copia del producto.
 2. Mira el cambio en la galería, en claro y oscuro y con las cinco marcas.
 3. Anota el cambio en `CHANGELOG.md` y, si es una decisión, en `docs/decisions.md`.
-4. Publica un tag (`v1.1.0`) y actualiza la versión en cada producto.
+4. Publica un tag (`v1.2.0`) y actualiza la versión en cada producto.

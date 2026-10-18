@@ -1439,6 +1439,11 @@
     white-space: nowrap;
   }
 
+  /* Value that is the content of its row (storage), not a hint next to the key. Same box as the base. */
+  .re-tree__value--strong {
+    color: var(--re-slate-600);
+  }
+
   .re-tree__note {
     padding: 0.5rem 2rem;
     font-family: var(--re-font-sans);
