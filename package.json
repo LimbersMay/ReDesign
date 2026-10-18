@@ -1,6 +1,6 @@
 {
   "name": "re-design",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Sistema de diseño de la Suite Re: tokens, componentes CSS, puente a Tailwind y lint.",
   "license": "MIT",
   "type": "module",

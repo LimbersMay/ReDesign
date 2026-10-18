@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.0.1 — 2026-10-18
+
+Solo documentación y comentario de la marca; ningún nombre cambia.
+
+- Los rastreadores dejan de teñirse: icono, conteo y filas neutros. Su «Limpiar» usa `flame` (D14).
+- La marca de ReSession (ámbar 75) pasa de provisional a definitiva.
+
 ## 2.0.0 — 2026-10-18
 
 Cambio incompatible (se eliminan clases `re-*`). Migración: en `re-tree`, sustituye `re-tree__head--l2` y

@@ -110,5 +110,5 @@ No hay clases por nivel. Cada grupo declara su profundidad con la variable `--re
   tono: mantiene el truncado y el `max-width`, y nunca supera a la clave (`slate-800`). Es un neutro: no
   señala un rol, así que no sustituye a `--danger` ni `--success`.
 - Expandir/contraer todo es una acción del árbol: va en su `re-batchbar`, no en el header de la ventana.
-- Iconos de grupo: marca para lo normal, `--muted` en los anidados, `--warning` para lo que avisa (rastreadores), `--danger` para lo destructivo y
+- Iconos de grupo: marca para lo normal, `--muted` en los anidados, `--warning` para lo que avisa, `--danger` para lo destructivo y
   `--success` para lo protegido.

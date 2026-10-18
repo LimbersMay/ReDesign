@@ -69,7 +69,7 @@ se generaliza y sube a `components/`.
 
 ## D9 · Tonos de marca pendientes (abierta)
 
-- **ReSession = amber (75)** coincide con el rol de aviso. Opciones: orange (50) o un dorado de 85–90.
+- **ReSession = amber (75)** coincide con el rol de aviso. Resuelto en D14: se queda.
 - **ReLink (280) y ReBooks (300)** están a 20°; en claro se confunden. Opción: ReLink a 260 (índigo)
   o ReBooks a 330 (magenta).
 Se decide antes del rediseño; hasta entonces `brands/resession.css` es provisional.
@@ -94,7 +94,7 @@ ilegible y la vista no tenía por dónde leerse. Colorear los badges de formato 
 marca y `color.md` §2 deja los badges de formato neutros; no existe un rol de color para «credencial».
 **Decisión.** Variante neutra del valor, `slate-600` (`color.md` §4: cuerpo), por debajo de la clave
 (`slate-800`). La jerarquía sale del tono y el peso, no de un color; el color queda para roles reales
-(caducidad = aviso, rastreador = rose, protegido = success).
+(caducidad = aviso, protegido = success).
 **Consecuencias.** MINOR (1.2.0). Misma caja que `re-tree__value`, sin cambio incompatible.
 
 ## D12 · El icono de rastreadores avisa (`re-tree__icon--warning`)
@@ -116,3 +116,16 @@ señal de los rastreadores vive en su icono, su conteo y su «Limpiar», no en c
 los alias `re-tree__head--l2` y `re-tree__row--l3`, obsoletos desde 1.1.0, para dejar una sola forma de
 declarar el nivel (`--re-tree-depth`).
 **Consecuencias.** MAJOR (2.0.0): se eliminan clases `re-*`. Migración en el CHANGELOG.
+
+## D14 · Los rastreadores no se tiñen; ReSession se queda en ámbar (2.0.1)
+
+**Contexto.** D12 pasó el icono y el conteo de rastreadores a amber, pero la marca de ReSession es amber
+(75) y un aviso se confundía con la marca (D9). Mover la marca (255, 335/340, 115) no convenció: la
+regla de ≥ 30° no tiene base medida, y entre marcas solo protege la identidad, no el significado.
+**Decisión.** El icono (`shield-alert`), el conteo y las filas de los rastreadores son neutros. Lo que los
+distingue es su «Limpiar», con `flame` en lugar de `eraser`: es destructivo, pero no se parece a «Auto»
+(`zap`) ni a las listas (`shield-*`). La marca de ReSession queda en amber 75. El ámbar de aviso se
+reserva a lo puntual (caducidad cercana, `re-hint--warning`), donde pide atención sin ser un estado fijo
+de la lista.
+**Consecuencias.** PATCH (2.0.1): documentación. `re-tree__icon--warning` y `re-badge--warning` siguen
+existiendo, aunque ReSession ya no los use para rastreadores. D12 queda sin efecto en ReSession.

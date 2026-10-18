@@ -24,5 +24,5 @@ Tonos (en `re-badge` y `re-pill`): neutro (por defecto), `--brand`, `--danger`, 
 
 - Sin rellenos sólidos: fondo `-50`, borde `-200`, texto `-700` (o `-600` en rose).
 - Los badges técnicos son siempre mono; las palabras de estado, `re-pill` en sans.
-- Un conteo se tiñe solo si lo contado es una señal de rol: `--warning` en los rastreadores, `--danger` solo
-  para errores; nunca para llamar la atención.
+- Un conteo se tiñe solo si lo contado es una señal de rol (`--danger` para errores); nunca para llamar la
+  atención. El de los rastreadores es neutro.

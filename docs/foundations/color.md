@@ -40,10 +40,9 @@ compite con la acción que el usuario viene a hacer.
 
 - **rose**: lo destructivo (hover de eliminar, `re-btn--danger*`, el «Limpiar» de los rastreadores) y los
   errores.
-- **amber**: aviso. Los **rastreadores** avisan, no destruyen: el icono y el conteo de su grupo van en
-  `amber` (`re-tree__icon--warning`, `re-badge--warning`). Es el único caso en que un color está en
-  reposo dentro de una lista, porque avisar de ellos es el producto. Sus filas no se tiñen: tienen el
-  mismo hover que las demás.
+- **amber**: aviso que pide atención puntual (la caducidad cercana de un valor, `re-hint--warning`). Los
+  **rastreadores** no se tiñen: su grupo (icono, conteo y filas) es neutro, y lo que lo distingue es su
+  «Limpiar», que es la única acción con color en reposo dentro de una lista.
 - **emerald**: en vivo (`re-dot--live`, `re-switch--live`) y «protegido por lista blanca» (`re-pill--success`).
 - En un segmented cuyas opciones **son** roles (Lista blanca · Lista negra; en ReRoute, Request ·
   Response del mock), la opción activa pinta del rol **el texto y el icono, nunca el borde**:
@@ -102,7 +101,7 @@ Una marca son cuatro variables en `tokens/brands/<producto>.css`:
 | ReTabs | 190 · teal | `#81c8be` | Definitivo |
 | ReLink | 280 · lavanda | `#babbf1` | Pendiente (D9) |
 | ReBooks | 300 · malva | `#ca9ee6` | Pendiente (D9) |
-| ReSession | 75 · ámbar | `#e5c890` | **Provisional** (D9): choca con el rol de aviso |
+| ReSession | 75 · ámbar | `#e5c890` | Definitivo (D14): el aviso se distingue por icono y texto, no por tono |
 
 **Reglas para una marca nueva**
 

@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Qué es | Inspector y limpiador de cookies y storage con protección por cookie, listas blanca/negra y limpieza automática |
-| Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · **provisional (D9)** |
+| Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · definitiva (D14) |
 | Ventana | 540×600 + panel lateral |
 | Stack | Angular 20 (subir a 21 como ReRoute) · Tailwind v4 · `@ng-icons/lucide` · Transloco (propuesto: ver `ReSession/docs/architecture.md`) |
 | Estado frente a ReDesign | Wireframe (`index.html`); el código aún es el placeholder de Angular |
@@ -30,8 +30,9 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   `{JWT}`, `{JSON}`) + valor (`re-tree__value--strong`). El tamaño y la caducidad son `re-hint`; la
   caducidad pasa a `re-hint--warning` solo cuando importa. Sin
   candado: «Vaciar» un área siempre se confirma.
-- **Grupo de rastreadores**: `re-tree__icon--warning` (avisa; lo destructivo es su «Limpiar»), conteo `re-badge--warning`, filas con el hover de siempre. Es el único grupo con
-  la acción siempre visible (`re-btn--2xs re-btn--danger-soft` «Limpiar (n)»); en el resto, «Limpiar» se
+- **Grupo de rastreadores**: icono (`shield-alert`), conteo y filas neutros, con el hover de siempre. Lo que lo distingue es su
+  «Limpiar»: es el único grupo con la acción siempre visible (`re-btn--2xs re-btn--danger-soft`, con
+  `flame` en lugar de `eraser`, «Limpiar (n)»); en el resto, «Limpiar» se
   revela al pasar el ratón.
 - **Barra de lote**: «Proteger» y «Limpiar», con la cifra si hay selección, y contraer/expandir todo.
   En Global, «Proteger» exige selección y «Limpiar todo» se confirma con las cifras reales.

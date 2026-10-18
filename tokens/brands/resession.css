@@ -1,9 +1,9 @@
 /*
- * ReSession · Amber / Warm Peach — PROVISIONAL (D9).
- * Amber (75) es el rol reservado de "warning": en ReSession una advertencia no se distinguiría de la
- * marca. Opciones abiertas: mover la marca a orange (50, dark #ef9f76) o a un dorado más amarillo
- * (85–90). Mientras se decide, la luminosidad de las escalas sube para que el ámbar claro no se vea
- * café. El primario no sube: con L 0.53 el texto blanco da 5.4:1 (con 0.59 daba 4.2:1 y no pasaba AA).
+ * ReSession · Amber / Warm Peach (D14).
+ * Amber (75) también es el rol de "warning". Se queda: el aviso se distingue por icono y texto, y se
+ * reserva a lo puntual (caducidad cercana); los rastreadores no se tiñen. La luminosidad de las escalas
+ * sube para que el ámbar claro no se vea café. El primario no sube: con L 0.53 el texto blanco da 5.4:1
+ * (con 0.59 daba 4.2:1 y no pasaba AA).
  */
 html:root {
   --re-brand-hue: 75;

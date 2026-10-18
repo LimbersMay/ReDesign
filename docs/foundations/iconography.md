@@ -37,7 +37,7 @@ Para que la misma acción tenga el mismo icono en toda la suite:
 | Idioma | `languages` |
 | Con candado · sin candado | `lock` (`slate-700`) · `lock-open` (`slate-300`): el estado lo da la forma, no el color |
 | Lista blanca · lista negra | `shield-check` (`emerald`) · `shield-x` (`rose`) |
-| Rastreadores | `shield-alert` (`amber`, `re-tree__icon--warning`) |
+| Rastreadores · limpiar rastreadores | `shield-alert` (neutro) · `flame` (el «Limpiar» propio de su grupo) |
 | Cookie de sesión · fecha fija | `log-out` · `calendar` |
 | Información · aviso | `info` · `triangle-alert` |
 | Peligro / alerta | `triangle-alert` |
