@@ -1,0 +1,10 @@
+/*
+ * ReBooks · Purple / Mauve.
+ * PENDIENTE (D9): ver relink.css.
+ */
+html:root {
+  --re-brand-hue: 300;
+  --re-brand-l-shift: 0;
+  --re-brand-c-scale: 1;
+  --re-brand-dark: #ca9ee6;
+}

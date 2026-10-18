@@ -1,0 +1,7 @@
+/* ReTabs · Teal / Soft Mint. */
+html:root {
+  --re-brand-hue: 190;
+  --re-brand-l-shift: 0;
+  --re-brand-c-scale: 0.9;
+  --re-brand-dark: #81c8be;
+}

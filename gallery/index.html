@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ReDesign · Galería</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="../tokens/tokens.css" />
+    <link rel="stylesheet" id="brandSheet" href="../tokens/brands/reroute.css" />
+    <link rel="stylesheet" href="../components.css" />
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <style>
+      /* Gallery layout only. Components come from components.css, untouched. */
+      body {
+        margin: 0;
+        background: var(--re-background);
+        color: var(--re-foreground);
+        font-family: var(--re-font-sans);
+        font-size: var(--re-text-xs);
+      }
+      .g-top {
+        position: sticky;
+        top: 0;
+        z-index: 90;
+      }
+      .g-wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 4rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1rem;
+      }
+      .g-panel {
+        background: var(--re-card);
+        border: 1px solid var(--re-border);
+        border-radius: var(--re-radius-xl);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 0;
+      }
+      .g-panel--wide {
+        grid-column: 1 / -1;
+      }
+      .g-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .g-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .g-grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.625rem;
+      }
+      .g-frame {
+        position: relative;
+        border: 1px solid var(--re-border);
+        border-radius: var(--re-radius-xl);
+        overflow: hidden;
+        background: var(--re-background);
+      }
+      .g-swatches {
+        display: grid;
+        grid-template-columns: 72px repeat(9, 1fr);
+        gap: 4px;
+        align-items: center;
+      }
+      .g-sw {
+        height: 26px;
+        border-radius: var(--re-radius-sm);
+        border: 1px solid color-mix(in srgb, var(--re-foreground) 8%, transparent);
+      }
+      .g-h {
+        font-size: var(--re-text-sm);
+        font-weight: 700;
+        color: var(--re-slate-800);
+        margin: 0;
+      }
+      .g-p {
+        margin: 0;
+        color: var(--re-slate-500);
+      }
+      .g-flex1 {
+        flex: 1;
+        min-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="re-header g-top">
+      <div class="re-header__brand">
+        <div class="re-header__logo"><i data-lucide="palette" width="13" height="13"></i></div>
+        <div>
+          <div class="re-header__title">ReDesign</div>
+          <div class="re-header__subtitle">Galería · v1.0.0</div>
+        </div>
+      </div>
+      <div class="re-segmented" role="tablist" id="brandPicker"></div>
+      <div class="re-header__actions">
+        <div class="re-segmented" id="themePicker">
+          <button type="button" class="re-segmented__item" data-theme="light" aria-pressed="true" title="Claro" aria-label="Claro">
+            <i data-lucide="sun" width="10" height="10"></i>
+          </button>
+          <button type="button" class="re-segmented__item" data-theme="dark" aria-pressed="false" title="Oscuro" aria-label="Oscuro">
+            <i data-lucide="moon" width="10" height="10"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="g-wrap">
+      <!-- Color -->
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">Color</h2>
+        <p class="g-p">Marca + roles (rose, emerald, amber) + categorías + neutros. Cambia de marca y de tema arriba.</p>
+        <div class="g-swatches" id="swatches"></div>
+      </section>
+
+      <!-- Window -->
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">Ventana · header, árbol, status bar</h2>
+        <div class="g-frame" style="height: 340px; display: flex; flex-direction: column">
+          <header class="re-header">
+            <div class="re-header__brand">
+              <div class="re-header__logo"><i data-lucide="cookie" width="13" height="13"></i></div>
+              <span class="re-header__title" data-brand-name>ReRoute</span>
+            </div>
+            <div class="re-segmented" role="tablist">
+              <button type="button" role="tab" class="re-segmented__item" aria-selected="true"><i data-lucide="target" width="10" height="10"></i>Esta pestaña</button>
+              <button type="button" role="tab" class="re-segmented__item" aria-selected="false"><i data-lucide="globe" width="10" height="10"></i>Global</button>
+              <button type="button" role="tab" class="re-segmented__item" aria-selected="false"><i data-lucide="zap" width="10" height="10"></i>Auto</button>
+            </div>
+            <div class="re-header__actions">
+              <button type="button" class="re-btn re-btn--sm re-btn--primary"><i data-lucide="plus" width="11" height="11"></i>Añadir</button>
+              <button type="button" class="re-icon-btn" title="Ajustes" aria-label="Ajustes" aria-expanded="false" id="gearBtn">
+                <i data-lucide="settings" width="13" height="13"></i>
+              </button>
+              <div class="re-menu" role="menu" id="gearMenu" hidden>
+                <div class="re-menu__section">
+                  <span class="re-section-title">Idioma</span>
+                  <div class="re-segmented re-segmented--block">
+                    <button type="button" class="re-segmented__item" aria-pressed="true">ES</button>
+                    <button type="button" class="re-segmented__item" aria-pressed="false">EN</button>
+                  </div>
+                </div>
+                <div class="re-menu__section">
+                  <span class="re-section-title">Tema</span>
+                  <div class="re-segmented re-segmented--block">
+                    <button type="button" class="re-segmented__item" aria-pressed="false" title="Claro" aria-label="Claro"><i data-lucide="sun" width="12" height="12"></i></button>
+                    <button type="button" class="re-segmented__item" aria-pressed="false" title="Oscuro" aria-label="Oscuro"><i data-lucide="moon" width="12" height="12"></i></button>
+                    <button type="button" class="re-segmented__item" aria-pressed="true" title="Sistema" aria-label="Sistema"><i data-lucide="monitor" width="12" height="12"></i></button>
+                  </div>
+                </div>
+                <div class="re-menu__group">
+                  <button type="button" role="menuitem" class="re-menu__item"><i data-lucide="download" width="13" height="13"></i>Exportar</button>
+                  <button type="button" role="menuitem" class="re-menu__item"><i data-lucide="upload" width="13" height="13"></i>Importar</button>
+                </div>
+                <div class="re-menu__group">
+                  <button type="button" role="menuitem" class="re-menu__item">
+                    <i data-lucide="circle-help" width="13" height="13"></i>Ayuda y atajos
+                  </button>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div class="re-batchbar">
+            <label class="re-batchbar__select"><input type="checkbox" class="re-checkbox" id="indet" /><span>2 seleccionadas</span></label>
+            <div class="re-batchbar__actions">
+              <button type="button" class="re-btn re-btn--xs re-btn--secondary"><i data-lucide="lock" width="11" height="11"></i>Proteger (2)</button>
+              <button type="button" class="re-btn re-btn--xs re-btn--secondary"><i data-lucide="eraser" width="11" height="11"></i>Limpiar</button>
+              <button type="button" class="re-icon-btn re-icon-btn--sm" title="Contraer todo" aria-label="Contraer todo"><i data-lucide="chevrons-down-up" width="11" height="11"></i></button>
+            </div>
+          </div>
+          <div class="re-tree">
+            <section class="re-tree__group">
+              <div class="re-tree__head re-reveal-host" role="button" tabindex="0" aria-expanded="true">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <i class="re-tree__icon" data-lucide="folder" width="12" height="12"></i>
+                  <span class="re-tree__label">Subdominio actual</span>
+                  <span class="re-tree__meta">gist.github.com</span>
+                  <span class="re-badge re-badge--micro">3</span>
+                </div>
+                <div class="re-tree__actions re-reveal">
+                  <button type="button" class="re-btn re-btn--2xs re-btn--ghost">Limpiar</button>
+                </div>
+              </div>
+              <div class="re-tree__items">
+                <div class="re-tree__row re-reveal-host">
+                  <div class="re-tree__row-main">
+                    <input type="checkbox" class="re-checkbox" checked />
+                    <i data-lucide="lock" width="12" height="12" style="color: var(--re-slate-700)"></i>
+                    <span class="re-tree__key re-tree__key--strong">gist_session</span>
+                    <span class="re-tree__value">ghs_89A7sdFk982jK…</span>
+                  </div>
+                  <div class="re-tree__row-end">
+                    <span class="re-badge re-badge--micro">H</span><span class="re-badge re-badge--micro">S</span>
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger re-reveal" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="11" height="11"></i></button>
+                  </div>
+                </div>
+                <div class="re-tree__row re-tree__row--2line re-reveal-host">
+                  <div class="re-tree__row-main">
+                    <input type="checkbox" class="re-checkbox" checked />
+                    <div class="g-flex1">
+                      <div class="g-row" style="gap: 0.5rem">
+                        <span class="re-tree__key re-tree__key--strong">auth_token</span><span class="re-badge">{JWT}</span>
+                      </div>
+                      <div class="re-tree__value" style="max-width: 100%">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOi…</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="re-tree__group">
+              <div class="re-tree__head" role="button" tabindex="0" aria-expanded="false">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <i class="re-tree__icon re-tree__icon--danger" data-lucide="shield-alert" width="12" height="12"></i>
+                  <span class="re-tree__label">Rastreadores</span>
+                  <span class="re-badge re-badge--danger">5</span>
+                </div>
+              </div>
+            </section>
+          </div>
+          <footer class="re-statusbar">
+            <div class="re-statusbar__guarantee">
+              <i data-lucide="shield-check" width="10" height="10"></i>
+              <span><strong>Lo protegido nunca se limpia</strong>: cookies con candado y sitios en lista blanca.</span>
+            </div>
+            <button type="button" class="re-link">Ayuda</button>
+          </footer>
+          <div class="re-toast-region re-toast-region--contained">
+            <div class="re-toast" role="status" style="--re-toast-duration: 6s">
+              <i class="re-toast__icon" data-lucide="check" width="13" height="13"></i>
+              <span class="re-toast__message">7 cookies eliminadas · 3 protegidas se conservan</span>
+              <button type="button" class="re-toast__action">Deshacer</button>
+              <span class="re-toast__timer"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="g-panel">
+        <h2 class="g-h">ReButton</h2>
+        <div class="g-row">
+          <button type="button" class="re-btn re-btn--primary"><i data-lucide="check" width="12" height="12"></i>Guardar</button>
+          <button type="button" class="re-btn re-btn--secondary">Exportar</button>
+          <button type="button" class="re-btn re-btn--ghost">Cancelar</button>
+        </div>
+        <div class="g-row">
+          <button type="button" class="re-btn re-btn--danger">Eliminar</button>
+          <button type="button" class="re-btn re-btn--danger-soft"><i data-lucide="eraser" width="12" height="12"></i>Limpiar (5)</button>
+          <button type="button" class="re-btn re-btn--danger-ghost"><i data-lucide="trash-2" width="12" height="12"></i>Eliminar</button>
+        </div>
+        <div class="g-row">
+          <button type="button" class="re-btn re-btn--sm re-btn--primary">sm 28</button>
+          <button type="button" class="re-btn re-btn--xs re-btn--secondary">xs 24</button>
+          <button type="button" class="re-btn re-btn--2xs re-btn--ghost">2xs 20</button>
+          <button type="button" class="re-btn re-btn--primary" disabled>Desactivado</button>
+        </div>
+        <div class="g-row">
+          <button type="button" class="re-icon-btn re-icon-btn--brand" title="Editar" aria-label="Editar"><i data-lucide="square-pen" width="13" height="13"></i></button>
+          <button type="button" class="re-icon-btn re-icon-btn--danger" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="13" height="13"></i></button>
+          <button type="button" class="re-icon-btn" title="Ajustes" aria-label="Ajustes"><i data-lucide="settings" width="13" height="13"></i></button>
+          <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand" title="Copiar" aria-label="Copiar"><i data-lucide="copy" width="11" height="11"></i></button>
+        </div>
+      </section>
+
+      <!-- Fields -->
+      <section class="g-panel">
+        <h2 class="g-h">ReInput</h2>
+        <div class="re-field">
+          <label class="re-label" for="gName">Nombre <span class="re-label__optional">(opcional)</span></label>
+          <div class="re-input-group"><input id="gName" class="re-mono" value="user_session" /></div>
+          <span class="re-hint">Las cookies que empiezan por <strong>__Host-</strong> exigen Secure y ruta /.</span>
+        </div>
+        <div class="re-input-group"><i data-lucide="search" width="13" height="13"></i><input placeholder="Buscar por clave, valor o !exclusión…" /></div>
+        <div class="re-input-group">
+          <select class="re-select-inline" style="color: var(--re-brand-600)"><option>Set</option><option>Remove</option></select>
+          <input class="re-mono" placeholder="Authorization" />
+        </div>
+        <div class="re-field">
+          <div class="re-input-group"><input class="re-mono" aria-invalid="true" value="github..com" /></div>
+          <span class="re-error">El dominio no es válido.</span>
+        </div>
+        <textarea class="re-textarea" rows="2">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.s7zH2L8X3x</textarea>
+      </section>
+
+      <!-- Booleans -->
+      <section class="g-panel">
+        <h2 class="g-h">ReSwitch · ReCheckbox · ReOption</h2>
+        <div class="g-row">
+          <label class="re-switch" title="Activar" aria-label="Activar"><input type="checkbox" role="switch" checked /><span class="re-switch__track"></span></label>
+          <label class="re-switch" title="Activar" aria-label="Activar"><input type="checkbox" role="switch" /><span class="re-switch__track"></span></label>
+          <label class="re-switch re-switch--live" title="Extensión activa" aria-label="Extensión activa"><input type="checkbox" role="switch" checked /><span class="re-switch__track"></span></label>
+          <input type="checkbox" class="re-checkbox" checked aria-label="Seleccionada" />
+          <input type="checkbox" class="re-checkbox" aria-label="Sin seleccionar" />
+          <input type="checkbox" class="re-checkbox" id="indet2" aria-label="Parcial" />
+        </div>
+        <label class="re-option">
+          <input type="checkbox" class="re-checkbox" checked />
+          <span class="re-option__text"><span class="re-option__title">HttpOnly</span><span class="re-option__desc">Invisible para los scripts de la página.</span></span>
+        </label>
+        <label class="re-option">
+          <span class="re-option__text"><span class="re-option__title">Proteger esta cookie</span><span class="re-option__desc">Ninguna limpieza la borrará.</span></span>
+          <span class="re-switch"><input type="checkbox" role="switch" checked /><span class="re-switch__track"></span></span>
+        </label>
+      </section>
+
+      <!-- Badges -->
+      <section class="g-panel">
+        <h2 class="g-h">ReBadge · ReKbd · ReDot</h2>
+        <div class="g-row">
+          <span class="re-badge">GET</span><span class="re-badge re-badge--brand">{JWT}</span><span class="re-badge re-badge--danger">320</span>
+          <span class="re-badge re-badge--success">200</span><span class="re-badge re-badge--warning">expira</span><span class="re-badge re-badge--micro">H</span>
+        </div>
+        <div class="g-row">
+          <span class="re-pill re-pill--success"><i data-lucide="shield-check" width="10" height="10"></i>Lista blanca</span>
+          <span class="re-pill re-pill--danger"><i data-lucide="shield-x" width="10" height="10"></i>Lista negra</span>
+          <span class="re-pill re-pill--brand">Nueva</span><span class="re-pill">Pausada</span>
+        </div>
+        <div class="g-row">
+          <span class="re-kbd-combo"><kbd class="re-kbd">Alt</kbd>+<kbd class="re-kbd">Shift</kbd>+<kbd class="re-kbd">S</kbd></span>
+          <span class="re-dot re-dot--live re-dot--pulse"></span><span class="g-p">en vivo</span>
+          <span class="re-dot"></span><span class="g-p">pausado</span>
+        </div>
+      </section>
+
+      <!-- Segmented -->
+      <section class="g-panel">
+        <h2 class="g-h">ReSegmented · ReTabs</h2>
+        <div class="re-segmented">
+          <button type="button" class="re-segmented__item" aria-pressed="true">Cookies (12)</button>
+          <button type="button" class="re-segmented__item" aria-pressed="false">Storage (3)</button>
+        </div>
+        <div class="re-segmented re-segmented--sm">
+          <button type="button" class="re-segmented__item re-segmented__item--success" aria-pressed="true"><i data-lucide="shield-check" width="10" height="10"></i>Lista blanca</button>
+          <button type="button" class="re-segmented__item re-segmented__item--danger" aria-pressed="false"><i data-lucide="shield-x" width="10" height="10"></i>Lista negra</button>
+        </div>
+        <div class="re-segmented re-segmented--block">
+          <button type="button" class="re-segmented__item" aria-pressed="false"><i data-lucide="log-out" width="10" height="10"></i>Hasta cerrar el navegador</button>
+          <button type="button" class="re-segmented__item" aria-pressed="true"><i data-lucide="calendar" width="10" height="10"></i>Fecha fija</button>
+        </div>
+        <div class="re-tabs" role="tablist">
+          <button type="button" role="tab" class="re-tabs__item" aria-selected="true"><i data-lucide="sliders-horizontal" width="11" height="11"></i>Headers</button>
+          <button type="button" role="tab" class="re-tabs__item" aria-selected="false"><i data-lucide="code" width="11" height="11"></i>Mock</button>
+        </div>
+      </section>
+
+      <!-- Dropdown -->
+      <section class="g-panel" style="min-height: 250px">
+        <h2 class="g-h">ReDropdown</h2>
+        <div class="re-dropdown">
+          <button type="button" class="re-dropdown__trigger" aria-haspopup="listbox" aria-expanded="true">
+            <span class="re-dropdown__label">Desarrollo</span>
+            <i class="re-dropdown__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+          </button>
+          <div class="re-dropdown__panel">
+            <div class="re-dropdown__list" role="listbox">
+              <div class="re-dropdown__option re-reveal-host" role="option" aria-selected="true">
+                <span class="re-dropdown__option-main"><i class="re-dropdown__check" data-lucide="check" width="11" height="11"></i><span class="re-dropdown__label">Desarrollo</span></span>
+                <span class="g-row" style="gap: 2px">
+                  <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand re-reveal" title="Editar" aria-label="Editar"><i data-lucide="pencil" width="10" height="10"></i></button>
+                  <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger re-reveal" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="10" height="10"></i></button>
+                </span>
+              </div>
+              <div class="re-dropdown__option is-focused" role="option" aria-selected="false">
+                <span class="re-dropdown__option-main"><i class="re-dropdown__check" data-lucide="check" width="11" height="11"></i><span class="re-dropdown__label">Staging</span></span>
+              </div>
+              <div class="re-dropdown__option" role="option" aria-selected="false">
+                <span class="re-dropdown__option-main"><i class="re-dropdown__check" data-lucide="check" width="11" height="11"></i><span class="re-dropdown__label">Producción</span></span>
+              </div>
+            </div>
+            <div class="re-dropdown__footer">
+              <button type="button" class="re-dropdown__add"><i data-lucide="plus" width="11" height="11"></i>Nuevo perfil</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card + list -->
+      <section class="g-panel">
+        <h2 class="g-h">ReCard · ReList</h2>
+        <article class="re-card re-reveal-host" style="--re-card-accent: var(--re-purple-500)">
+          <div class="re-card__bar"></div>
+          <div class="re-card__header">
+            <div class="re-card__heading">
+              <span class="re-dot re-dot--live"></span><span class="re-badge">ALL</span><h4 class="re-card__title">Inyectar token</h4>
+            </div>
+            <div class="re-card__actions re-reveal">
+              <button type="button" class="re-icon-btn re-icon-btn--brand" title="Editar" aria-label="Editar"><i data-lucide="square-pen" width="13" height="13"></i></button>
+              <label class="re-switch" style="margin: 0 0.25rem"><input type="checkbox" role="switch" checked aria-label="Activar" /><span class="re-switch__track"></span></label>
+            </div>
+          </div>
+          <div class="re-code-box"><span style="color: var(--re-slate-400)">Match:</span> https://api.acme.dev/v1/*</div>
+        </article>
+        <article class="re-card is-paused">
+          <div class="re-card__bar"></div>
+          <div class="re-card__header" style="margin-bottom: 0">
+            <div class="re-card__heading"><span class="re-dot"></span><h4 class="re-card__title">Regla pausada</h4></div>
+          </div>
+        </article>
+        <div class="re-list">
+          <div class="re-list__row re-reveal-host">
+            <div class="g-row g-flex1" style="flex-wrap: nowrap">
+              <i data-lucide="shield-check" width="12" height="12" style="color: var(--re-emerald-500)"></i>
+              <span class="re-mono" style="font-weight: 600; color: var(--re-slate-800)">*.github.com</span>
+              <span class="re-badge">comodín</span>
+            </div>
+            <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger re-reveal" title="Quitar" aria-label="Quitar"><i data-lucide="trash-2" width="11" height="11"></i></button>
+          </div>
+          <div class="re-list__row">
+            <div class="g-row g-flex1">
+              <i data-lucide="shield-check" width="12" height="12" style="color: var(--re-emerald-500)"></i>
+              <span class="re-mono" style="font-weight: 600; color: var(--re-slate-800)">proton.me</span><span class="re-badge">exacto</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback -->
+      <section class="g-panel">
+        <h2 class="g-h">ReNotice · ReEmptyState</h2>
+        <div class="re-notice"><i data-lucide="info" width="12" height="12"></i><span>Cookie de sesión: el navegador la borra al cerrar todas las ventanas.</span></div>
+        <div class="re-notice re-notice--success"><i data-lucide="shield-check" width="12" height="12"></i><span><strong>.github.com</strong> está en tu lista blanca: sus cookies nunca se limpian.</span></div>
+        <div class="re-notice re-notice--warning"><i data-lucide="triangle-alert" width="12" height="12"></i><span>Cambiar el dominio crea una cookie nueva y elimina la anterior.</span></div>
+        <div class="re-notice re-notice--danger"><i data-lucide="octagon-alert" width="12" height="12"></i><span>No se pudo leer el storage de esta pestaña.</span></div>
+        <div class="g-frame">
+          <div class="re-empty">
+            <div class="re-empty__icon"><i data-lucide="cookie" width="18" height="18"></i></div>
+            <p class="re-empty__title" style="margin: 0">No hay cookies en esta pestaña</p>
+            <p class="re-empty__text" style="margin: 0">Esta página no ha guardado nada todavía.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dialogs -->
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">ReDialog · editor y confirmación</h2>
+        <div class="g-row" style="align-items: stretch">
+          <div class="g-frame g-flex1" style="height: 420px; min-width: 320px">
+            <div class="re-dialog-overlay re-dialog-overlay--contained">
+              <form class="re-dialog" role="dialog" aria-modal="true" aria-labelledby="gDlg" onsubmit="return false">
+                <header class="re-dialog__header">
+                  <div style="min-width: 0">
+                    <h3 class="re-dialog__title" id="gDlg"><i data-lucide="cookie" width="14" height="14"></i>Editar cookie</h3>
+                    <p class="re-dialog__subtitle" style="margin: 0">.github.com · /</p>
+                  </div>
+                  <button type="button" class="re-icon-btn re-icon-btn--sm" title="Cerrar" aria-label="Cerrar"><i data-lucide="x" width="13" height="13"></i></button>
+                </header>
+                <div class="re-dialog__body">
+                  <div class="re-field">
+                    <label class="re-label" for="gDn">Nombre</label>
+                    <div class="re-input-group"><input id="gDn" class="re-mono" value="user_session" /></div>
+                  </div>
+                  <div class="g-grid2">
+                    <div class="re-field"><label class="re-label" for="gDd">Dominio</label><div class="re-input-group"><input id="gDd" class="re-mono" value=".github.com" /></div></div>
+                    <div class="re-field"><label class="re-label" for="gDp">Ruta</label><div class="re-input-group"><input id="gDp" class="re-mono" value="/" /></div></div>
+                  </div>
+                  <fieldset class="re-fieldset">
+                    <legend><span class="re-section-title">Seguridad</span></legend>
+                    <div class="g-grid2">
+                      <label class="re-option"><input type="checkbox" class="re-checkbox" checked /><span class="re-option__text"><span class="re-option__title">HttpOnly</span></span></label>
+                      <label class="re-option"><input type="checkbox" class="re-checkbox" checked /><span class="re-option__text"><span class="re-option__title">Secure</span></span></label>
+                    </div>
+                  </fieldset>
+                </div>
+                <footer class="re-dialog__footer">
+                  <button type="button" class="re-btn re-btn--danger-ghost re-dialog__footer-start"><i data-lucide="trash-2" width="12" height="12"></i>Eliminar</button>
+                  <button type="button" class="re-btn re-btn--ghost">Cancelar</button>
+                  <button type="submit" class="re-btn re-btn--primary">Guardar</button>
+                </footer>
+              </form>
+            </div>
+          </div>
+          <div class="g-frame" style="height: 420px; width: 340px">
+            <div class="re-dialog-overlay re-dialog-overlay--contained re-dialog-overlay--confirm">
+              <div class="re-dialog re-dialog--confirm" role="alertdialog" aria-modal="true" aria-labelledby="gCf">
+                <div class="re-dialog__confirm-body">
+                  <span class="re-dialog__confirm-icon"><i data-lucide="triangle-alert" width="15" height="15"></i></span>
+                  <div>
+                    <h3 class="re-dialog__title" id="gCf">¿Eliminar user_session?</h3>
+                    <p class="re-dialog__message">Está <strong>protegida</strong>. Solo se borrará esta cookie.</p>
+                  </div>
+                </div>
+                <footer class="re-dialog__footer">
+                  <button type="button" class="re-btn re-btn--ghost">Cancelar</button>
+                  <button type="button" class="re-btn re-btn--danger">Eliminar</button>
+                </footer>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const BRANDS = [
+        ['reroute', 'ReRoute'],
+        ['resession', 'ReSession'],
+        ['retabs', 'ReTabs'],
+        ['relink', 'ReLink'],
+        ['rebooks', 'ReBooks'],
+      ];
+      const ACCENTS = ['brand', 'rose', 'amber', 'emerald', 'orange', 'teal', 'sky', 'violet', 'purple'];
+      const SHADES = [50, 100, 200, 300, 400, 500, 600, 700, 800];
+
+      const picker = document.getElementById('brandPicker');
+      picker.innerHTML = BRANDS.map(
+        ([id, name], i) =>
+          `<button type="button" role="tab" class="re-segmented__item" data-brand="${id}" aria-selected="${i === 0}">${name}</button>`,
+      ).join('');
+      picker.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-brand]');
+        if (!btn) return;
+        document.getElementById('brandSheet').href = `../tokens/brands/${btn.dataset.brand}.css`;
+        picker.querySelectorAll('[data-brand]').forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+        document.querySelectorAll('[data-brand-name]').forEach((el) => (el.textContent = btn.textContent));
+      });
+
+      document.getElementById('themePicker').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-theme]');
+        if (!btn) return;
+        document.documentElement.classList.toggle('dark', btn.dataset.theme === 'dark');
+        document.querySelectorAll('#themePicker [data-theme]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      });
+
+      const sw = document.getElementById('swatches');
+      sw.innerHTML =
+        '<span></span>' +
+        SHADES.map((s) => `<span class="re-mono" style="text-align:center;color:var(--re-slate-400)">${s}</span>`).join('') +
+        ACCENTS.map(
+          (a) =>
+            `<span class="re-mono" style="color:var(--re-slate-600)">${a}</span>` +
+            SHADES.map((s) => `<span class="g-sw" style="background:var(--re-${a}-${s})" title="--re-${a}-${s}"></span>`).join(''),
+        ).join('') +
+        `<span class="re-mono" style="color:var(--re-slate-600)">slate</span>` +
+        SHADES.map((s) => `<span class="g-sw" style="background:var(--re-slate-${s})" title="--re-slate-${s}"></span>`).join('');
+
+      const gear = document.getElementById('gearBtn');
+      const menu = document.getElementById('gearMenu');
+      gear.addEventListener('click', () => {
+        menu.hidden = !menu.hidden;
+        gear.setAttribute('aria-expanded', String(!menu.hidden));
+      });
+
+      document.getElementById('indet').indeterminate = true;
+      document.getElementById('indet2').indeterminate = true;
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

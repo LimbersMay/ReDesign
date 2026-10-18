@@ -1,0 +1,36 @@
+{
+  "name": "re-design",
+  "version": "1.0.0",
+  "description": "Sistema de diseño de la Suite Re: tokens, componentes CSS, puente a Tailwind y lint.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LimbersMay/ReDesign.git"
+  },
+  "files": [
+    "tokens",
+    "tailwind",
+    "components.css",
+    "scripts/design-lint.mjs",
+    "AGENTS.md",
+    "docs"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens/tokens.css",
+    "./brands/*": "./tokens/brands/*",
+    "./tailwind.css": "./tailwind/theme.css",
+    "./preset-v3": "./tailwind/preset-v3.cjs",
+    "./components.css": "./components.css",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "re-design-lint": "scripts/design-lint.mjs"
+  },
+  "scripts": {
+    "lint:gallery": "node scripts/design-lint.mjs gallery"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

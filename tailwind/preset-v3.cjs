@@ -1,0 +1,162 @@
+/**
+ * ReDesign · Tailwind v3 preset (only for products still on v3, today ReTabs).
+ *
+ *   // tailwind.config.ts
+ *   import reDesign from 're-design/preset-v3';
+ *   export default { presets: [reDesign], content: [...] };
+ *
+ * And in the CSS entry, after the @tailwind directives:
+ *   @import 're-design/tokens.css'; @import 're-design/brands/retabs.css'; @import 're-design/components.css';
+ *
+ * Limitation of v3: opacity modifiers (`bg-brand-50/40`) do not work on CSS-variable colors.
+ * Avoid them in v3 products; Tailwind v4 is the suite baseline (D6).
+ */
+module.exports = {
+  darkMode: 'class',
+  theme: {
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      inherit: 'inherit',
+      white: '#ffffff',
+      black: '#000000',
+      background: 'var(--re-background)',
+      foreground: 'var(--re-foreground)',
+      card: { DEFAULT: 'var(--re-card)', foreground: 'var(--re-foreground)' },
+      overlay: 'var(--re-overlay)',
+      primary: { DEFAULT: 'var(--re-primary)', foreground: 'var(--re-primary-foreground)' },
+      destructive: { DEFAULT: 'var(--re-destructive)', foreground: 'var(--re-destructive-foreground)' },
+      muted: { DEFAULT: 'var(--re-slate-100)', foreground: 'var(--re-slate-500)' },
+      border: 'var(--re-border)',
+      ring: 'var(--re-ring)',
+      slate: {
+        50: "var(--re-slate-50)",
+        100: "var(--re-slate-100)",
+        200: "var(--re-slate-200)",
+        300: "var(--re-slate-300)",
+        400: "var(--re-slate-400)",
+        500: "var(--re-slate-500)",
+        600: "var(--re-slate-600)",
+        700: "var(--re-slate-700)",
+        800: "var(--re-slate-800)",
+        900: "var(--re-slate-900)",
+        950: "var(--re-slate-950)",
+      },
+      brand: {
+        50: "var(--re-brand-50)",
+        100: "var(--re-brand-100)",
+        200: "var(--re-brand-200)",
+        300: "var(--re-brand-300)",
+        400: "var(--re-brand-400)",
+        500: "var(--re-brand-500)",
+        600: "var(--re-brand-600)",
+        700: "var(--re-brand-700)",
+        800: "var(--re-brand-800)",
+      },
+      rose: {
+        50: "var(--re-rose-50)",
+        100: "var(--re-rose-100)",
+        200: "var(--re-rose-200)",
+        300: "var(--re-rose-300)",
+        400: "var(--re-rose-400)",
+        500: "var(--re-rose-500)",
+        600: "var(--re-rose-600)",
+        700: "var(--re-rose-700)",
+        800: "var(--re-rose-800)",
+      },
+      orange: {
+        50: "var(--re-orange-50)",
+        100: "var(--re-orange-100)",
+        200: "var(--re-orange-200)",
+        300: "var(--re-orange-300)",
+        400: "var(--re-orange-400)",
+        500: "var(--re-orange-500)",
+        600: "var(--re-orange-600)",
+        700: "var(--re-orange-700)",
+        800: "var(--re-orange-800)",
+      },
+      amber: {
+        50: "var(--re-amber-50)",
+        100: "var(--re-amber-100)",
+        200: "var(--re-amber-200)",
+        300: "var(--re-amber-300)",
+        400: "var(--re-amber-400)",
+        500: "var(--re-amber-500)",
+        600: "var(--re-amber-600)",
+        700: "var(--re-amber-700)",
+        800: "var(--re-amber-800)",
+      },
+      emerald: {
+        50: "var(--re-emerald-50)",
+        100: "var(--re-emerald-100)",
+        200: "var(--re-emerald-200)",
+        300: "var(--re-emerald-300)",
+        400: "var(--re-emerald-400)",
+        500: "var(--re-emerald-500)",
+        600: "var(--re-emerald-600)",
+        700: "var(--re-emerald-700)",
+        800: "var(--re-emerald-800)",
+      },
+      teal: {
+        50: "var(--re-teal-50)",
+        100: "var(--re-teal-100)",
+        200: "var(--re-teal-200)",
+        300: "var(--re-teal-300)",
+        400: "var(--re-teal-400)",
+        500: "var(--re-teal-500)",
+        600: "var(--re-teal-600)",
+        700: "var(--re-teal-700)",
+        800: "var(--re-teal-800)",
+      },
+      sky: {
+        50: "var(--re-sky-50)",
+        100: "var(--re-sky-100)",
+        200: "var(--re-sky-200)",
+        300: "var(--re-sky-300)",
+        400: "var(--re-sky-400)",
+        500: "var(--re-sky-500)",
+        600: "var(--re-sky-600)",
+        700: "var(--re-sky-700)",
+        800: "var(--re-sky-800)",
+      },
+      violet: {
+        50: "var(--re-violet-50)",
+        100: "var(--re-violet-100)",
+        200: "var(--re-violet-200)",
+        300: "var(--re-violet-300)",
+        400: "var(--re-violet-400)",
+        500: "var(--re-violet-500)",
+        600: "var(--re-violet-600)",
+        700: "var(--re-violet-700)",
+        800: "var(--re-violet-800)",
+      },
+      purple: {
+        50: "var(--re-purple-50)",
+        100: "var(--re-purple-100)",
+        200: "var(--re-purple-200)",
+        300: "var(--re-purple-300)",
+        400: "var(--re-purple-400)",
+        500: "var(--re-purple-500)",
+        600: "var(--re-purple-600)",
+        700: "var(--re-purple-700)",
+        800: "var(--re-purple-800)",
+      },
+    },
+    extend: {
+      fontFamily: {
+        sans: ['var(--re-font-sans)'],
+        mono: ['var(--re-font-mono)'],
+      },
+      fontSize: {
+        '2xs': ['var(--re-text-2xs)', 'var(--re-text-2xs-lh)'],
+      },
+      borderRadius: {
+        sm: 'var(--re-radius-sm)',
+        md: 'var(--re-radius-md)',
+        lg: 'var(--re-radius)',
+        xl: 'var(--re-radius-xl)',
+        '2xl': 'var(--re-radius-2xl)',
+      },
+    },
+  },
+};

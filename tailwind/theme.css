@@ -1,0 +1,162 @@
+/*
+ * ReDesign · Tailwind v4 bridge.
+ * Maps the `--re-*` tokens to Tailwind utilities (`bg-card`, `text-slate-700`, `border-brand-200`…).
+ *
+ *   @import 'tailwindcss';
+ *   @import 're-design/tailwind.css';
+ *   @import 're-design/tokens.css';
+ *   @import 're-design/brands/<product>.css';
+ *   @import 're-design/components.css';
+ *
+ * The palette is CLOSED: Tailwind's default colors are removed (`--color-*: initial`), so
+ * `bg-blue-500` or `text-zinc-400` generate nothing and the mistake shows at once.
+ */
+
+/* Escape hatch only (see AGENTS.md R3): the palette already swaps itself in dark. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* `data-state` variants (switches, tabs, menus). */
+@custom-variant data-checked (&:where([data-state='checked']));
+@custom-variant data-unchecked (&:where([data-state='unchecked']));
+@custom-variant data-disabled (&:where([data-disabled]:not([data-disabled='false'])));
+
+@theme inline {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Surfaces and roles */
+  --color-background: var(--re-background);
+  --color-foreground: var(--re-foreground);
+  --color-card: var(--re-card);
+  --color-card-foreground: var(--re-foreground);
+  --color-popover: var(--re-card);
+  --color-popover-foreground: var(--re-foreground);
+  --color-overlay: var(--re-overlay);
+  --color-primary: var(--re-primary);
+  --color-primary-foreground: var(--re-primary-foreground);
+  --color-destructive: var(--re-destructive);
+  --color-destructive-foreground: var(--re-destructive-foreground);
+  --color-muted: var(--re-slate-100);
+  --color-muted-foreground: var(--re-slate-500);
+  --color-accent: var(--re-brand-50);
+  --color-accent-foreground: var(--re-brand-700);
+  --color-border: var(--re-border);
+  --color-input: var(--re-border);
+  --color-ring: var(--re-ring);
+  --color-inverse: var(--re-inverse);
+  --color-inverse-foreground: var(--re-inverse-foreground);
+
+  /* Neutrals and accents */
+  --color-slate-50: var(--re-slate-50);
+  --color-slate-100: var(--re-slate-100);
+  --color-slate-200: var(--re-slate-200);
+  --color-slate-300: var(--re-slate-300);
+  --color-slate-400: var(--re-slate-400);
+  --color-slate-500: var(--re-slate-500);
+  --color-slate-600: var(--re-slate-600);
+  --color-slate-700: var(--re-slate-700);
+  --color-slate-800: var(--re-slate-800);
+  --color-slate-900: var(--re-slate-900);
+  --color-slate-950: var(--re-slate-950);
+  --color-brand-50: var(--re-brand-50);
+  --color-brand-100: var(--re-brand-100);
+  --color-brand-200: var(--re-brand-200);
+  --color-brand-300: var(--re-brand-300);
+  --color-brand-400: var(--re-brand-400);
+  --color-brand-500: var(--re-brand-500);
+  --color-brand-600: var(--re-brand-600);
+  --color-brand-700: var(--re-brand-700);
+  --color-brand-800: var(--re-brand-800);
+  --color-rose-50: var(--re-rose-50);
+  --color-rose-100: var(--re-rose-100);
+  --color-rose-200: var(--re-rose-200);
+  --color-rose-300: var(--re-rose-300);
+  --color-rose-400: var(--re-rose-400);
+  --color-rose-500: var(--re-rose-500);
+  --color-rose-600: var(--re-rose-600);
+  --color-rose-700: var(--re-rose-700);
+  --color-rose-800: var(--re-rose-800);
+  --color-orange-50: var(--re-orange-50);
+  --color-orange-100: var(--re-orange-100);
+  --color-orange-200: var(--re-orange-200);
+  --color-orange-300: var(--re-orange-300);
+  --color-orange-400: var(--re-orange-400);
+  --color-orange-500: var(--re-orange-500);
+  --color-orange-600: var(--re-orange-600);
+  --color-orange-700: var(--re-orange-700);
+  --color-orange-800: var(--re-orange-800);
+  --color-amber-50: var(--re-amber-50);
+  --color-amber-100: var(--re-amber-100);
+  --color-amber-200: var(--re-amber-200);
+  --color-amber-300: var(--re-amber-300);
+  --color-amber-400: var(--re-amber-400);
+  --color-amber-500: var(--re-amber-500);
+  --color-amber-600: var(--re-amber-600);
+  --color-amber-700: var(--re-amber-700);
+  --color-amber-800: var(--re-amber-800);
+  --color-emerald-50: var(--re-emerald-50);
+  --color-emerald-100: var(--re-emerald-100);
+  --color-emerald-200: var(--re-emerald-200);
+  --color-emerald-300: var(--re-emerald-300);
+  --color-emerald-400: var(--re-emerald-400);
+  --color-emerald-500: var(--re-emerald-500);
+  --color-emerald-600: var(--re-emerald-600);
+  --color-emerald-700: var(--re-emerald-700);
+  --color-emerald-800: var(--re-emerald-800);
+  --color-teal-50: var(--re-teal-50);
+  --color-teal-100: var(--re-teal-100);
+  --color-teal-200: var(--re-teal-200);
+  --color-teal-300: var(--re-teal-300);
+  --color-teal-400: var(--re-teal-400);
+  --color-teal-500: var(--re-teal-500);
+  --color-teal-600: var(--re-teal-600);
+  --color-teal-700: var(--re-teal-700);
+  --color-teal-800: var(--re-teal-800);
+  --color-sky-50: var(--re-sky-50);
+  --color-sky-100: var(--re-sky-100);
+  --color-sky-200: var(--re-sky-200);
+  --color-sky-300: var(--re-sky-300);
+  --color-sky-400: var(--re-sky-400);
+  --color-sky-500: var(--re-sky-500);
+  --color-sky-600: var(--re-sky-600);
+  --color-sky-700: var(--re-sky-700);
+  --color-sky-800: var(--re-sky-800);
+  --color-violet-50: var(--re-violet-50);
+  --color-violet-100: var(--re-violet-100);
+  --color-violet-200: var(--re-violet-200);
+  --color-violet-300: var(--re-violet-300);
+  --color-violet-400: var(--re-violet-400);
+  --color-violet-500: var(--re-violet-500);
+  --color-violet-600: var(--re-violet-600);
+  --color-violet-700: var(--re-violet-700);
+  --color-violet-800: var(--re-violet-800);
+  --color-purple-50: var(--re-purple-50);
+  --color-purple-100: var(--re-purple-100);
+  --color-purple-200: var(--re-purple-200);
+  --color-purple-300: var(--re-purple-300);
+  --color-purple-400: var(--re-purple-400);
+  --color-purple-500: var(--re-purple-500);
+  --color-purple-600: var(--re-purple-600);
+  --color-purple-700: var(--re-purple-700);
+  --color-purple-800: var(--re-purple-800);
+
+  /* Type */
+  --font-sans: var(--re-font-sans);
+  --font-mono: var(--re-font-mono);
+  --text-2xs: var(--re-text-2xs);
+  --text-2xs--line-height: var(--re-text-2xs-lh);
+
+  /* Shape */
+  --radius-sm: var(--re-radius-sm);
+  --radius-md: var(--re-radius-md);
+  --radius-lg: var(--re-radius);
+  --radius-xl: var(--re-radius-xl);
+  --radius-2xl: var(--re-radius-2xl);
+}
+
+@layer base {
+  * {
+    border-color: var(--re-border);
+  }
+}

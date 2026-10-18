@@ -1,0 +1,88 @@
+# Registro de decisiones
+
+Cada decisión tiene contexto, decisión y consecuencias. Si una deja de servir, se reemplaza con una
+nueva entrada que diga a cuál sustituye; no se borra.
+
+## D1 · Un repositorio versionado como única fuente
+
+**Contexto.** La guía vivía en `ReSession/.claude/design-system`, copiada a mano de ReRoute; a las pocas
+semanas ya no coincidía con el código (ReDropdown con otra API y otra altura) y ReSession tenía en su
+`styles.css` una paleta distinta a la de su propia guía.
+**Decisión.** ReDesign es un repo propio. Los productos lo instalan fijando un tag
+(`github:LimbersMay/ReDesign#vX.Y.Z`); nunca copian archivos.
+**Consecuencias.** Cambiar el sistema exige un PR aquí y subir la versión en cada producto: más lento,
+pero un cambio no se pierde ni diverge.
+
+## D2 · Componentes como clases CSS, no como cadenas de utilidades
+
+**Contexto.** La guía anterior daba HTML con 15–20 utilidades por elemento. Cada agente las copiaba con
+pequeñas variaciones (`h-7` vs `h-[30px]`, `py-0.2`, `text-[10px]`). ReRoute ya había resuelto los
+casos más repetidos con CSS (`app-input-group`, `.ui-checkbox`, `.ui-inline-select`).
+**Decisión.** El aspecto de cada componente compartido vive en `components.css` como clases `re-*`, en
+`@layer components`. Los frameworks aportan el comportamiento; las utilidades, el layout.
+**Consecuencias.** El mismo HTML sirve en Angular, React y wireframes. Una plantilla deja de poder
+desviarse en color, alto o radio. A cambio, hay que leer `components.css` para saber qué hace una clase.
+
+## D3 · Tokens propios (`--re-*`) independientes de Tailwind
+
+**Contexto.** ReRoute redefinía `--color-slate-*` de Tailwind; ReTabs usa Tailwind v3 con `tw-colors`;
+los wireframes usan el CDN de v3. Un mixin Sass no sirve fuera de ReRoute.
+**Decisión.** Los valores son variables CSS `--re-*`. `tailwind/theme.css` (v4) y `preset-v3.cjs` las
+mapean a utilidades. La marca se calcula en CSS a partir de un tono (`--re-brand-hue`) y un pastel
+(`--re-brand-dark`).
+**Consecuencias.** Cambiar de marca es cambiar cuatro variables. Funciona sin build.
+
+## D4 · Oscuro derivado de un solo pastel por acento
+
+**Contexto.** ReRoute escribía cinco hex por acento en oscuro (`dark-accent(base, mid4, mid6, lighter,
+lightest)`); el error más común al añadir una marca era olvidar uno.
+**Decisión.** Cada acento oscuro se deriva de su base con `color-mix`: 50–200 tiñen la tarjeta (12/20/32 %),
+300–800 mezclan blanco. Las bases son Catppuccin Frappé.
+**Consecuencias.** Los valores difieren de los de ReRoute v1 en uno o dos puntos de luminosidad;
+imperceptible y documentado aquí.
+
+## D5 · Paleta cerrada en Tailwind
+
+**Decisión.** `theme.css` borra los colores por defecto (`--color-*: initial`) y registra solo los del
+sistema. `bg-blue-500` no genera nada.
+**Consecuencias.** El error se ve en el acto, antes de llegar al lint.
+
+## D6 · Tailwind v4 como base
+
+**Decisión.** v4 es la base de la suite. ReTabs (v3) usa el preset mientras migra; en v3 no funcionan
+los modificadores de opacidad sobre colores en variables (`bg-brand-50/40`).
+
+## D7 · Las reglas se comprueban con una herramienta
+
+**Contexto.** Una guía en prosa no basta: los agentes (y las personas) se desvían sin darse cuenta.
+**Decisión.** `re-design-lint` comprueba las reglas mecánicas (paleta, escala, iconos, `type`, `dark:`,
+espaciados inválidos). Cada producto lo ejecuta en CI y antes de entregar.
+**Consecuencias.** Lo que no se puede comprobar con una expresión regular (jerarquía, textos) sigue
+dependiendo de la revisión.
+
+## D8 · Componentes firma por producto
+
+**Decisión.** Lo que hace reconocible a un producto además del color (ReTree de cookies en ReSession, la
+tarjeta de regla con barra por tipo en ReRoute) se documenta en `docs/products/<x>.md`, no en
+`components/`. Un componente firma se construye con piezas compartidas; si otro producto lo necesita,
+se generaliza y sube a `components/`.
+
+## D9 · Tonos de marca pendientes (abierta)
+
+- **ReSession = amber (75)** coincide con el rol de aviso. Opciones: orange (50) o un dorado de 85–90.
+- **ReLink (280) y ReBooks (300)** están a 20°; en claro se confunden. Opción: ReLink a 260 (índigo)
+  o ReBooks a 330 (magenta).
+Se decide antes del rediseño; hasta entonces `brands/resession.css` es provisional.
+
+## D10 · Un acento por pantalla
+
+**Contexto.** El primer wireframe de ReSession y la primera galería pintaban de marca la pestaña activa,
+la opción activa de cada segmented, los iconos de carpeta, el logo, el candado, los badges y los
+botones secundarios. La marca dejaba de señalar la acción principal.
+**Decisión.** La marca se limita a la lista de `foundations/color.md` §2. El activo de un segmented es
+neutro (elevación), como en ReRoute. El primario mantiene L 0.53 en todas las marcas para que el texto
+del botón sea blanco en claro (ReSession con L 0.59 daba 4.2:1).
+**Consecuencias.** `components.css` cambia `re-segmented`, `re-header__logo` y `re-tree__icon` (1.0.0
+aún no publicado, no es un cambio incompatible). El lint no puede medir esto: se revisa con la prueba
+de los tres segundos.
+

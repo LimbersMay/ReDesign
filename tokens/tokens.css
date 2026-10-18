@@ -1,0 +1,313 @@
+/*
+ * ReDesign · tokens.css
+ * Framework-agnostic design tokens of the Re suite (ReRoute, ReSession, ReTabs, ReLink, ReBooks).
+ * Plain CSS custom properties, namespace `--re-*`. Tailwind reads them through `tailwind/theme.css`;
+ * `components.css` reads them directly. Load ONE brand file (`brands/<product>.css`) next to this one.
+ *
+ * Do not edit values here for a single product: a product only changes its brand file.
+ * Light: OKLCH, one lightness/chroma curve shared by every accent (only the hue changes).
+ * Dark: `.dark` on <html>. Catppuccin Frappé surfaces; every accent is derived from ONE pastel base.
+ * Neutrals (slate) are inverted in dark, so the same class keeps its role in both themes.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---------- Brand inputs (defaults = ReRoute; overridden by brands/*.css) ---------- */
+  --re-brand-hue: 225;
+  --re-brand-l-shift: 0; /* added to shades 400–800 (warm hues need more light). Never to primary: it must keep white text at AA */
+  --re-brand-c-scale: 1; /* multiplies chroma of every brand shade */
+  --re-brand-dark: #85c1dc; /* single pastel base for the dark theme */
+  --re-brand-on-primary: #ffffff; /* text on bg-primary in light */
+  --re-brand-on-primary-dark: #232634; /* text on bg-primary in dark */
+
+  /* ---------- Shade curve (light) ---------- */
+  /* 50–200 quiet tints · 300 borders on tint · 400 side bars · 500–600 icons and fills · 700–800 text */
+  --re-l-50: 0.975; --re-c-50: 0.015;
+  --re-l-100: 0.95; --re-c-100: 0.03;
+  --re-l-200: 0.91; --re-c-200: 0.05;
+  --re-l-300: 0.83; --re-c-300: 0.085;
+  --re-l-400: 0.72; --re-c-400: 0.12;
+  --re-l-500: 0.6; --re-c-500: 0.145;
+  --re-l-600: 0.53; --re-c-600: 0.14;
+  --re-l-700: 0.45; --re-c-700: 0.12;
+  --re-l-800: 0.38; --re-c-800: 0.1;
+
+  /* ---------- Neutrals (light) ---------- */
+  /* 50 inputs · 100 chips, raised rows · 200 lines · 300 switch off · 400 icons · 500 muted text · 800 text */
+  --re-slate-50: oklch(0.975 0.003 255);
+  --re-slate-100: oklch(0.955 0.005 255);
+  --re-slate-200: oklch(0.9 0.006 255);
+  --re-slate-300: oklch(0.86 0.008 255);
+  --re-slate-400: oklch(0.68 0.01 260);
+  --re-slate-500: oklch(0.52 0.012 260);
+  --re-slate-600: oklch(0.44 0.013 260);
+  --re-slate-700: oklch(0.36 0.014 260);
+  --re-slate-800: oklch(0.3 0.015 260);
+  --re-slate-900: oklch(0.25 0.015 260);
+  --re-slate-950: oklch(0.2 0.015 260);
+
+  /* ---------- Surfaces and semantic roles ---------- */
+  --re-background: oklch(0.965 0.004 255);
+  --re-foreground: var(--re-slate-800);
+  --re-card: oklch(0.993 0.002 255);
+  --re-overlay: oklch(0.2 0.015 260 / 0.55);
+  --re-primary: oklch(0.53 calc(0.12 * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-primary-foreground: var(--re-brand-on-primary);
+  --re-destructive: var(--re-rose-600);
+  --re-destructive-foreground: #ffffff;
+  --re-border: var(--re-slate-200);
+  --re-ring: var(--re-brand-500);
+  /* Inverse surface (toasts): dark in light, raised dark in dark */
+  --re-inverse: oklch(0.3 0.015 260);
+  --re-inverse-foreground: oklch(0.975 0.003 255);
+  --re-inverse-action: var(--re-brand-200);
+
+  /* ---------- Accents (light, generated) ---------- */
+  /* Roles, reserved in every product: rose = danger · emerald = success / live · amber = warning.
+     Category accents (any product): orange, teal, sky, violet, purple — never the product's own hue. */
+  --re-brand-50: oklch(var(--re-l-50) calc(var(--re-c-50) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-100: oklch(var(--re-l-100) calc(var(--re-c-100) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-200: oklch(var(--re-l-200) calc(var(--re-c-200) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-300: oklch(var(--re-l-300) calc(var(--re-c-300) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-400: oklch(calc(var(--re-l-400) + var(--re-brand-l-shift)) calc(var(--re-c-400) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-500: oklch(calc(var(--re-l-500) + var(--re-brand-l-shift)) calc(var(--re-c-500) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-600: oklch(calc(var(--re-l-600) + var(--re-brand-l-shift)) calc(var(--re-c-600) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-700: oklch(calc(var(--re-l-700) + var(--re-brand-l-shift)) calc(var(--re-c-700) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-brand-800: oklch(calc(var(--re-l-800) + var(--re-brand-l-shift)) calc(var(--re-c-800) * var(--re-brand-c-scale)) var(--re-brand-hue));
+  --re-rose-50: oklch(var(--re-l-50) var(--re-c-50) 25);
+  --re-rose-100: oklch(var(--re-l-100) var(--re-c-100) 25);
+  --re-rose-200: oklch(var(--re-l-200) var(--re-c-200) 25);
+  --re-rose-300: oklch(var(--re-l-300) var(--re-c-300) 25);
+  --re-rose-400: oklch(var(--re-l-400) var(--re-c-400) 25);
+  --re-rose-500: oklch(var(--re-l-500) var(--re-c-500) 25);
+  --re-rose-600: oklch(var(--re-l-600) var(--re-c-600) 25);
+  --re-rose-700: oklch(var(--re-l-700) var(--re-c-700) 25);
+  --re-rose-800: oklch(var(--re-l-800) var(--re-c-800) 25);
+  --re-orange-50: oklch(var(--re-l-50) var(--re-c-50) 50);
+  --re-orange-100: oklch(var(--re-l-100) var(--re-c-100) 50);
+  --re-orange-200: oklch(var(--re-l-200) var(--re-c-200) 50);
+  --re-orange-300: oklch(var(--re-l-300) var(--re-c-300) 50);
+  --re-orange-400: oklch(var(--re-l-400) var(--re-c-400) 50);
+  --re-orange-500: oklch(var(--re-l-500) var(--re-c-500) 50);
+  --re-orange-600: oklch(var(--re-l-600) var(--re-c-600) 50);
+  --re-orange-700: oklch(var(--re-l-700) var(--re-c-700) 50);
+  --re-orange-800: oklch(var(--re-l-800) var(--re-c-800) 50);
+  --re-amber-50: oklch(var(--re-l-50) var(--re-c-50) 75);
+  --re-amber-100: oklch(var(--re-l-100) var(--re-c-100) 75);
+  --re-amber-200: oklch(var(--re-l-200) var(--re-c-200) 75);
+  --re-amber-300: oklch(var(--re-l-300) var(--re-c-300) 75);
+  --re-amber-400: oklch(var(--re-l-400) var(--re-c-400) 75);
+  --re-amber-500: oklch(var(--re-l-500) var(--re-c-500) 75);
+  --re-amber-600: oklch(var(--re-l-600) var(--re-c-600) 75);
+  --re-amber-700: oklch(var(--re-l-700) var(--re-c-700) 75);
+  --re-amber-800: oklch(var(--re-l-800) var(--re-c-800) 75);
+  --re-emerald-50: oklch(var(--re-l-50) var(--re-c-50) 155);
+  --re-emerald-100: oklch(var(--re-l-100) var(--re-c-100) 155);
+  --re-emerald-200: oklch(var(--re-l-200) var(--re-c-200) 155);
+  --re-emerald-300: oklch(var(--re-l-300) var(--re-c-300) 155);
+  --re-emerald-400: oklch(var(--re-l-400) var(--re-c-400) 155);
+  --re-emerald-500: oklch(var(--re-l-500) var(--re-c-500) 155);
+  --re-emerald-600: oklch(var(--re-l-600) var(--re-c-600) 155);
+  --re-emerald-700: oklch(var(--re-l-700) var(--re-c-700) 155);
+  --re-emerald-800: oklch(var(--re-l-800) var(--re-c-800) 155);
+  --re-teal-50: oklch(var(--re-l-50) var(--re-c-50) 190);
+  --re-teal-100: oklch(var(--re-l-100) var(--re-c-100) 190);
+  --re-teal-200: oklch(var(--re-l-200) var(--re-c-200) 190);
+  --re-teal-300: oklch(var(--re-l-300) var(--re-c-300) 190);
+  --re-teal-400: oklch(var(--re-l-400) var(--re-c-400) 190);
+  --re-teal-500: oklch(var(--re-l-500) var(--re-c-500) 190);
+  --re-teal-600: oklch(var(--re-l-600) var(--re-c-600) 190);
+  --re-teal-700: oklch(var(--re-l-700) var(--re-c-700) 190);
+  --re-teal-800: oklch(var(--re-l-800) var(--re-c-800) 190);
+  --re-sky-50: oklch(var(--re-l-50) var(--re-c-50) 225);
+  --re-sky-100: oklch(var(--re-l-100) var(--re-c-100) 225);
+  --re-sky-200: oklch(var(--re-l-200) var(--re-c-200) 225);
+  --re-sky-300: oklch(var(--re-l-300) var(--re-c-300) 225);
+  --re-sky-400: oklch(var(--re-l-400) var(--re-c-400) 225);
+  --re-sky-500: oklch(var(--re-l-500) var(--re-c-500) 225);
+  --re-sky-600: oklch(var(--re-l-600) var(--re-c-600) 225);
+  --re-sky-700: oklch(var(--re-l-700) var(--re-c-700) 225);
+  --re-sky-800: oklch(var(--re-l-800) var(--re-c-800) 225);
+  --re-violet-50: oklch(var(--re-l-50) var(--re-c-50) 280);
+  --re-violet-100: oklch(var(--re-l-100) var(--re-c-100) 280);
+  --re-violet-200: oklch(var(--re-l-200) var(--re-c-200) 280);
+  --re-violet-300: oklch(var(--re-l-300) var(--re-c-300) 280);
+  --re-violet-400: oklch(var(--re-l-400) var(--re-c-400) 280);
+  --re-violet-500: oklch(var(--re-l-500) var(--re-c-500) 280);
+  --re-violet-600: oklch(var(--re-l-600) var(--re-c-600) 280);
+  --re-violet-700: oklch(var(--re-l-700) var(--re-c-700) 280);
+  --re-violet-800: oklch(var(--re-l-800) var(--re-c-800) 280);
+  --re-purple-50: oklch(var(--re-l-50) var(--re-c-50) 300);
+  --re-purple-100: oklch(var(--re-l-100) var(--re-c-100) 300);
+  --re-purple-200: oklch(var(--re-l-200) var(--re-c-200) 300);
+  --re-purple-300: oklch(var(--re-l-300) var(--re-c-300) 300);
+  --re-purple-400: oklch(var(--re-l-400) var(--re-c-400) 300);
+  --re-purple-500: oklch(var(--re-l-500) var(--re-c-500) 300);
+  --re-purple-600: oklch(var(--re-l-600) var(--re-c-600) 300);
+  --re-purple-700: oklch(var(--re-l-700) var(--re-c-700) 300);
+  --re-purple-800: oklch(var(--re-l-800) var(--re-c-800) 300);
+
+  /* ---------- Typography ---------- */
+  --re-font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --re-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  /* Popup scale: exactly three sizes. 2xs = captions, badges, all mono · xs = body, controls · sm = titles */
+  --re-text-2xs: 0.6875rem; --re-text-2xs-lh: 1rem;
+  --re-text-xs: 0.75rem; --re-text-xs-lh: 1rem;
+  --re-text-sm: 0.875rem; --re-text-sm-lh: 1.25rem;
+
+  /* ---------- Shape, depth, motion, layers ---------- */
+  --re-radius: 0.5rem; /* rounded-lg = 8px */
+  --re-radius-sm: 0.25rem;
+  --re-radius-md: 0.375rem;
+  --re-radius-xl: 0.75rem;
+  --re-radius-2xl: 1rem;
+  --re-shadow-2xs: 0 1px rgb(0 0 0 / 0.04);
+  --re-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --re-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --re-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
+  --re-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.12), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --re-duration-fast: 100ms;
+  --re-duration: 150ms;
+  --re-duration-slow: 200ms;
+  --re-ease: cubic-bezier(0.2, 0, 0, 1);
+  --re-z-dropdown: 50;
+  --re-z-dialog: 60;
+  --re-z-confirm: 70;
+  --re-z-toast: 80;
+
+  /* ---------- Window ---------- */
+  --re-popup-w: 540px; /* Chrome caps popups at 800×600 */
+  --re-popup-h: 600px;
+}
+
+/* ===================================== DARK ===================================== */
+:root.dark {
+  color-scheme: dark;
+
+  --re-slate-50: #2b2f40;
+  --re-slate-100: #383c50;
+  --re-slate-200: #414559;
+  --re-slate-300: #51576d;
+  --re-slate-400: #8f97b3;
+  --re-slate-500: #a3abc9;
+  --re-slate-600: #b8c0dd;
+  --re-slate-700: #ccd4f2;
+  --re-slate-800: #dde3fa;
+  --re-slate-900: #e8ecfc;
+  --re-slate-950: #f2f4fe;
+
+  --re-background: #292c3c;
+  --re-foreground: #dde3fa;
+  --re-card: #303446;
+  --re-overlay: rgb(17 17 27 / 0.6);
+  --re-primary: var(--re-brand-dark);
+  --re-primary-foreground: var(--re-brand-on-primary-dark);
+  --re-destructive: #e78284;
+  --re-destructive-foreground: #232634;
+  --re-inverse: #414559;
+  --re-inverse-foreground: #c6d0f5;
+  --re-inverse-action: var(--re-brand-500);
+
+  /* Accents: 50–200 tints of the base over the card, 300–800 pastels (white mixed in) */
+  --re-brand-50: color-mix(in srgb, var(--re-brand-dark) 12%, var(--re-card));
+  --re-brand-100: color-mix(in srgb, var(--re-brand-dark) 20%, var(--re-card));
+  --re-brand-200: color-mix(in srgb, var(--re-brand-dark) 32%, var(--re-card));
+  --re-brand-300: color-mix(in srgb, var(--re-brand-dark), white 40%);
+  --re-brand-400: color-mix(in srgb, var(--re-brand-dark), white 15%);
+  --re-brand-500: var(--re-brand-dark);
+  --re-brand-600: color-mix(in srgb, var(--re-brand-dark), white 22%);
+  --re-brand-700: color-mix(in srgb, var(--re-brand-dark), white 40%);
+  --re-brand-800: color-mix(in srgb, var(--re-brand-dark), white 62%);
+  --re-rose-50: color-mix(in srgb, #e78284 12%, var(--re-card));
+  --re-rose-100: color-mix(in srgb, #e78284 20%, var(--re-card));
+  --re-rose-200: color-mix(in srgb, #e78284 32%, var(--re-card));
+  --re-rose-300: color-mix(in srgb, #e78284, white 40%);
+  --re-rose-400: color-mix(in srgb, #e78284, white 15%);
+  --re-rose-500: #e78284;
+  --re-rose-600: color-mix(in srgb, #e78284, white 22%);
+  --re-rose-700: color-mix(in srgb, #e78284, white 40%);
+  --re-rose-800: color-mix(in srgb, #e78284, white 62%);
+  --re-orange-50: color-mix(in srgb, #ef9f76 12%, var(--re-card));
+  --re-orange-100: color-mix(in srgb, #ef9f76 20%, var(--re-card));
+  --re-orange-200: color-mix(in srgb, #ef9f76 32%, var(--re-card));
+  --re-orange-300: color-mix(in srgb, #ef9f76, white 40%);
+  --re-orange-400: color-mix(in srgb, #ef9f76, white 15%);
+  --re-orange-500: #ef9f76;
+  --re-orange-600: color-mix(in srgb, #ef9f76, white 22%);
+  --re-orange-700: color-mix(in srgb, #ef9f76, white 40%);
+  --re-orange-800: color-mix(in srgb, #ef9f76, white 62%);
+  --re-amber-50: color-mix(in srgb, #e5c890 12%, var(--re-card));
+  --re-amber-100: color-mix(in srgb, #e5c890 20%, var(--re-card));
+  --re-amber-200: color-mix(in srgb, #e5c890 32%, var(--re-card));
+  --re-amber-300: color-mix(in srgb, #e5c890, white 40%);
+  --re-amber-400: color-mix(in srgb, #e5c890, white 15%);
+  --re-amber-500: #e5c890;
+  --re-amber-600: color-mix(in srgb, #e5c890, white 22%);
+  --re-amber-700: color-mix(in srgb, #e5c890, white 40%);
+  --re-amber-800: color-mix(in srgb, #e5c890, white 62%);
+  --re-emerald-50: color-mix(in srgb, #a6d189 12%, var(--re-card));
+  --re-emerald-100: color-mix(in srgb, #a6d189 20%, var(--re-card));
+  --re-emerald-200: color-mix(in srgb, #a6d189 32%, var(--re-card));
+  --re-emerald-300: color-mix(in srgb, #a6d189, white 40%);
+  --re-emerald-400: color-mix(in srgb, #a6d189, white 15%);
+  --re-emerald-500: #a6d189;
+  --re-emerald-600: color-mix(in srgb, #a6d189, white 22%);
+  --re-emerald-700: color-mix(in srgb, #a6d189, white 40%);
+  --re-emerald-800: color-mix(in srgb, #a6d189, white 62%);
+  --re-teal-50: color-mix(in srgb, #81c8be 12%, var(--re-card));
+  --re-teal-100: color-mix(in srgb, #81c8be 20%, var(--re-card));
+  --re-teal-200: color-mix(in srgb, #81c8be 32%, var(--re-card));
+  --re-teal-300: color-mix(in srgb, #81c8be, white 40%);
+  --re-teal-400: color-mix(in srgb, #81c8be, white 15%);
+  --re-teal-500: #81c8be;
+  --re-teal-600: color-mix(in srgb, #81c8be, white 22%);
+  --re-teal-700: color-mix(in srgb, #81c8be, white 40%);
+  --re-teal-800: color-mix(in srgb, #81c8be, white 62%);
+  --re-sky-50: color-mix(in srgb, #85c1dc 12%, var(--re-card));
+  --re-sky-100: color-mix(in srgb, #85c1dc 20%, var(--re-card));
+  --re-sky-200: color-mix(in srgb, #85c1dc 32%, var(--re-card));
+  --re-sky-300: color-mix(in srgb, #85c1dc, white 40%);
+  --re-sky-400: color-mix(in srgb, #85c1dc, white 15%);
+  --re-sky-500: #85c1dc;
+  --re-sky-600: color-mix(in srgb, #85c1dc, white 22%);
+  --re-sky-700: color-mix(in srgb, #85c1dc, white 40%);
+  --re-sky-800: color-mix(in srgb, #85c1dc, white 62%);
+  --re-violet-50: color-mix(in srgb, #babbf1 12%, var(--re-card));
+  --re-violet-100: color-mix(in srgb, #babbf1 20%, var(--re-card));
+  --re-violet-200: color-mix(in srgb, #babbf1 32%, var(--re-card));
+  --re-violet-300: color-mix(in srgb, #babbf1, white 40%);
+  --re-violet-400: color-mix(in srgb, #babbf1, white 15%);
+  --re-violet-500: #babbf1;
+  --re-violet-600: color-mix(in srgb, #babbf1, white 22%);
+  --re-violet-700: color-mix(in srgb, #babbf1, white 40%);
+  --re-violet-800: color-mix(in srgb, #babbf1, white 62%);
+  --re-purple-50: color-mix(in srgb, #ca9ee6 12%, var(--re-card));
+  --re-purple-100: color-mix(in srgb, #ca9ee6 20%, var(--re-card));
+  --re-purple-200: color-mix(in srgb, #ca9ee6 32%, var(--re-card));
+  --re-purple-300: color-mix(in srgb, #ca9ee6, white 40%);
+  --re-purple-400: color-mix(in srgb, #ca9ee6, white 15%);
+  --re-purple-500: #ca9ee6;
+  --re-purple-600: color-mix(in srgb, #ca9ee6, white 22%);
+  --re-purple-700: color-mix(in srgb, #ca9ee6, white 40%);
+  --re-purple-800: color-mix(in srgb, #ca9ee6, white 62%);
+}
+
+/*
+ * Code and tester panels: dark in BOTH themes (`.re-code-surface`, legacy `.always-dark`).
+ * In light the slate scale already gives a dark panel with `bg-slate-800 text-slate-100`; in dark
+ * the inversion is undone here so the same classes stay dark.
+ */
+:root.dark :where(.re-code-surface, .always-dark) {
+  --re-slate-50: #e1e7fa;
+  --re-slate-100: #d3dbf7;
+  --re-slate-200: #c6d0f5;
+  --re-slate-300: #c6d0f5;
+  --re-slate-400: #a5adce;
+  --re-slate-500: #838ba7;
+  --re-slate-600: #626880;
+  --re-slate-700: #414559;
+  --re-slate-800: #292c3c;
+  --re-slate-900: #232634;
+  --re-slate-950: #1e2030;
+}

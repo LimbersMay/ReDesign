@@ -1,0 +1,7 @@
+/* ReRoute · Sky / Sapphire. Load after tokens.css (the `html:root` selector wins regardless of order). */
+html:root {
+  --re-brand-hue: 225;
+  --re-brand-l-shift: 0;
+  --re-brand-c-scale: 1;
+  --re-brand-dark: #85c1dc;
+}

@@ -1,0 +1,2055 @@
+/*
+ * ReDesign · components.css
+ * The look of every shared component, as plain CSS on the `--re-*` tokens. No framework, no build:
+ * the same classes work in Angular, React, a static wireframe or the gallery.
+ *
+ * Why classes and not long utility strings (D2): a template that says `class="re-btn re-btn--primary"`
+ * cannot drift; one that copies 18 utilities does, a little more with every copy. Behaviour (opening
+ * a menu, keyboard navigation) lives in each framework's component; the look lives here, once.
+ *
+ * Everything is in `@layer components`, so any Tailwind utility on the element still wins
+ * (layout, margins, widths). Do not use utilities to change colors, sizes or radii of a `re-*`.
+ *
+ * Legacy aliases (ReRoute v1): `app-input-group`, `.ui-checkbox`, `.ui-inline-select`, `.always-dark`.
+ */
+
+@layer base {
+  :where(button, [role='button'], a, summary, select, textarea, input:not([type='checkbox'], [type='radio'])):focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: 1px;
+  }
+}
+
+@layer components {
+  /* =============================== Window =============================== */
+
+  .re-app {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: var(--re-popup-w);
+    height: var(--re-popup-h);
+    overflow: hidden;
+    background: var(--re-background);
+    color: var(--re-foreground);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Side panel: fill whatever width the user gives it. */
+  html.fluid .re-app {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .re-scroll {
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--re-slate-200) transparent;
+  }
+
+  /*
+   * Mono (URLs, keys, values, code) is always 11px regular: JetBrains Mono looks larger than Inter
+   * at the same size, so this keeps both on one visual scale.
+   */
+  .re-mono,
+  .font-mono {
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 400;
+  }
+
+  .re-section-title {
+    display: block;
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--re-slate-400);
+  }
+
+  /* =============================== Header / status bar =============================== */
+
+  .re-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    height: 3rem;
+    padding: 0 0.875rem;
+    background: var(--re-card);
+    border-bottom: 1px solid var(--re-border);
+  }
+
+  .re-header__brand {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-header__logo {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--re-radius);
+    border: 1px solid var(--re-slate-200);
+    background: var(--re-slate-50);
+    color: var(--re-slate-600);
+    box-shadow: var(--re-shadow-2xs);
+  }
+
+  /* Prefer the product logo asset (it carries its own colour). The tile is neutral on purpose. */
+  .re-header__logo > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .re-header__title {
+    font-size: var(--re-text-xs);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--re-slate-800);
+    white-space: nowrap;
+  }
+
+  .re-header__subtitle {
+    margin-top: 0.125rem;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 500;
+    color: var(--re-slate-500);
+  }
+
+  .re-header__actions {
+    position: relative;
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .re-statusbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    height: 2rem;
+    padding: 0 0.875rem;
+    background: var(--re-card);
+    border-top: 1px solid var(--re-border);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-500);
+  }
+
+  /* The product's guarantee, said once and always visible (patterns/guarantee.md). */
+  .re-statusbar__guarantee {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  /* "Protected" is the success role, not the brand (color.md §2) */
+  .re-statusbar__guarantee > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+    color: var(--re-emerald-500);
+  }
+
+  .re-statusbar__guarantee > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-statusbar__guarantee strong {
+    font-weight: 600;
+    color: var(--re-slate-700);
+  }
+
+  .re-link {
+    flex-shrink: 0;
+    border: 0;
+    background: none;
+    padding: 0;
+    font: inherit;
+    font-weight: 600;
+    color: var(--re-brand-600);
+    cursor: pointer;
+  }
+
+  .re-link:hover {
+    text-decoration: underline;
+  }
+
+  /* =============================== Buttons =============================== */
+
+  .re-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    height: 30px;
+    padding: 0 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--re-radius);
+    background: transparent;
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      color var(--re-duration),
+      opacity var(--re-duration),
+      transform var(--re-duration-fast);
+  }
+
+  .re-btn:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .re-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .re-btn > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+  }
+
+  /* Sizes: default 30px (forms, dialogs) · sm 28px (header) · xs 24px (batch bars) · 2xs 20px (tree heads) */
+  .re-btn--sm {
+    height: 1.75rem;
+    padding: 0 0.625rem;
+    font-size: var(--re-text-2xs);
+  }
+
+  .re-btn--xs {
+    height: 1.5rem;
+    padding: 0 0.625rem;
+    border-radius: var(--re-radius-md);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+  }
+
+  .re-btn--2xs {
+    height: 1.25rem;
+    gap: 0.25rem;
+    padding: 0 0.5rem;
+    border-radius: var(--re-radius-md);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+  }
+
+  .re-btn--block {
+    width: 100%;
+  }
+
+  .re-btn--primary {
+    background: var(--re-primary);
+    color: var(--re-primary-foreground);
+    box-shadow: var(--re-shadow-xs);
+  }
+
+  .re-btn--primary:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  .re-btn--secondary {
+    border-color: var(--re-slate-200);
+    background: var(--re-card);
+    color: var(--re-slate-700);
+    box-shadow: var(--re-shadow-2xs);
+  }
+
+  .re-btn--secondary:hover:not(:disabled) {
+    border-color: var(--re-brand-200);
+    background: var(--re-slate-50);
+  }
+
+  .re-btn--ghost {
+    color: var(--re-slate-600);
+  }
+
+  .re-btn--ghost:hover:not(:disabled) {
+    background: var(--re-slate-100);
+    color: var(--re-slate-800);
+  }
+
+  /* Confirms a destructive dialog. */
+  .re-btn--danger {
+    background: var(--re-destructive);
+    color: var(--re-destructive-foreground);
+    box-shadow: var(--re-shadow-xs);
+  }
+
+  .re-btn--danger:hover:not(:disabled) {
+    opacity: 0.9;
+  }
+
+  /* A destructive action that is not the main one (bulk clean, purge). */
+  .re-btn--danger-soft {
+    border-color: var(--re-rose-200);
+    background: var(--re-rose-50);
+    color: var(--re-rose-600);
+  }
+
+  .re-btn--danger-soft:hover:not(:disabled) {
+    background: var(--re-rose-100);
+  }
+
+  /* Destructive, quiet until hovered (the "Delete" at the start of a dialog footer). */
+  .re-btn--danger-ghost {
+    color: var(--re-slate-500);
+  }
+
+  .re-btn--danger-ghost:hover:not(:disabled) {
+    background: var(--re-rose-50);
+    color: var(--re-rose-600);
+  }
+
+  /* Icon-only button. ALWAYS with `title` and `aria-label`. */
+  .re-icon-btn {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    color: var(--re-slate-400);
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      color var(--re-duration),
+      opacity var(--re-duration);
+  }
+
+  .re-icon-btn:hover,
+  .re-icon-btn[aria-expanded='true'],
+  .re-icon-btn.is-active {
+    background: var(--re-slate-100);
+    color: var(--re-slate-700);
+  }
+
+  .re-icon-btn--brand:hover {
+    background: var(--re-brand-50);
+    color: var(--re-brand-600);
+  }
+
+  .re-icon-btn--danger:hover {
+    background: var(--re-rose-50);
+    color: var(--re-rose-600);
+  }
+
+  .re-icon-btn--sm {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .re-icon-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Actions that appear on hover or keyboard focus of their row/card (never permanently). */
+  .re-reveal {
+    opacity: 0;
+    transition: opacity var(--re-duration);
+  }
+
+  .re-reveal-host:hover .re-reveal,
+  .re-reveal-host:focus-within .re-reveal,
+  .re-reveal.is-pinned {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .re-reveal {
+      opacity: 1;
+    }
+  }
+
+  /* =============================== Fields =============================== */
+
+  .re-field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .re-label {
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 600;
+    color: var(--re-slate-700);
+  }
+
+  .re-label__optional {
+    font-weight: 400;
+    color: var(--re-slate-400);
+  }
+
+  .re-hint {
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-400);
+  }
+
+  .re-hint strong {
+    font-weight: 600;
+    color: var(--re-slate-600);
+  }
+
+  .re-hint--warning {
+    color: var(--re-amber-700);
+  }
+
+  .re-error {
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 500;
+    color: var(--re-rose-600);
+  }
+
+  /* Frame for text inputs: draws border, fill and focus ring; projected inputs stay bare. */
+  .re-input-group,
+  app-input-group {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    height: 30px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.625rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-slate-50);
+    font-size: var(--re-text-xs);
+    color: var(--re-slate-700);
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      box-shadow var(--re-duration);
+  }
+
+  .re-input-group:hover,
+  app-input-group:hover {
+    background: var(--re-slate-100);
+  }
+
+  .re-input-group:focus-within,
+  app-input-group:focus-within {
+    border-color: var(--re-brand-500);
+    background: var(--re-card);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-brand-500) 30%, transparent);
+  }
+
+  .re-input-group.is-invalid,
+  .re-input-group:has(> input[aria-invalid='true']) {
+    border-color: var(--re-rose-500);
+  }
+
+  .re-input-group.is-invalid:focus-within,
+  .re-input-group:has(> input[aria-invalid='true']):focus-within {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-rose-500) 30%, transparent);
+  }
+
+  :is(.re-input-group, app-input-group) > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+    transition: color var(--re-duration);
+  }
+
+  :is(.re-input-group, app-input-group):focus-within > :is(svg, ng-icon, i) {
+    color: var(--re-brand-500);
+  }
+
+  :is(.re-input-group, app-input-group) > input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    flex: 1;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+    color: var(--re-slate-700);
+    outline: none;
+  }
+
+  :is(.re-input-group, app-input-group) > input.re-mono,
+  :is(.re-input-group, app-input-group) > input.font-mono {
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    font-weight: 400;
+  }
+
+  :is(.re-input-group, app-input-group) > input::placeholder {
+    font-weight: 400;
+    color: var(--re-slate-400);
+  }
+
+  :is(.re-input-group, app-input-group) > input[type='number'] {
+    appearance: textfield;
+  }
+
+  :is(.re-input-group, app-input-group) > input[type='number']::-webkit-inner-spin-button,
+  :is(.re-input-group, app-input-group) > input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  :is(.re-input-group, app-input-group) > input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+
+  :root.dark :is(.re-input-group, app-input-group) > input[type='datetime-local']::-webkit-calendar-picker-indicator {
+    filter: invert(0.85);
+  }
+
+  .re-textarea {
+    display: block;
+    width: 100%;
+    min-height: 4.5rem;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-slate-50);
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: 1.5;
+    color: var(--re-slate-700);
+    resize: vertical;
+    outline: none;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      box-shadow var(--re-duration);
+  }
+
+  .re-textarea:focus {
+    border-color: var(--re-brand-500);
+    background: var(--re-card);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-brand-500) 30%, transparent);
+  }
+
+  .re-textarea[readonly] {
+    background: var(--re-slate-100);
+    resize: none;
+  }
+
+  /* Bare <select> inside a frame: text and an arrow. Chrome 135+ styles its menu like re-dropdown. */
+  .re-select-inline,
+  .ui-inline-select {
+    height: 100%;
+    flex-shrink: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: var(--re-text-2xs);
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+  }
+
+  :is(.re-select-inline, .ui-inline-select) option {
+    background-color: var(--re-card);
+    color: var(--re-slate-700);
+  }
+
+  @supports (appearance: base-select) {
+    :is(.re-select-inline, .ui-inline-select),
+    :is(.re-select-inline, .ui-inline-select)::picker(select) {
+      appearance: base-select;
+    }
+
+    :is(.re-select-inline, .ui-inline-select) {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.25rem;
+    }
+
+    :is(.re-select-inline, .ui-inline-select)::picker-icon {
+      content: '';
+      width: 9px;
+      height: 9px;
+      background-color: var(--re-slate-400);
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+        center / contain no-repeat;
+      transition: rotate var(--re-duration-slow);
+    }
+
+    :is(.re-select-inline, .ui-inline-select):open::picker-icon {
+      rotate: 180deg;
+    }
+
+    :is(.re-select-inline, .ui-inline-select)::picker(select) {
+      margin-top: 0.25rem;
+      min-width: 120px;
+      padding: 0.25rem 0;
+      border: 1px solid var(--re-slate-200);
+      border-radius: var(--re-radius);
+      background: var(--re-card);
+      box-shadow: var(--re-shadow-xl);
+    }
+
+    :is(.re-select-inline, .ui-inline-select) option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.625rem;
+      font-size: var(--re-text-xs);
+      font-weight: 400;
+      cursor: pointer;
+    }
+
+    :is(.re-select-inline, .ui-inline-select) option:hover,
+    :is(.re-select-inline, .ui-inline-select) option:focus-visible {
+      background: var(--re-slate-50);
+      outline: none;
+    }
+
+    :is(.re-select-inline, .ui-inline-select) option::checkmark {
+      content: '✓';
+      font-size: 11px;
+      color: var(--re-brand-500);
+    }
+
+    :is(.re-select-inline, .ui-inline-select) option:checked {
+      background: var(--re-brand-50);
+      font-weight: 700;
+      color: var(--re-brand-700);
+    }
+  }
+
+  /* =============================== Booleans =============================== */
+
+  .re-checkbox,
+  .ui-checkbox {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    margin: 0;
+    appearance: none;
+    border: 1px solid var(--re-slate-300);
+    border-radius: 5px;
+    background-color: var(--re-card);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    box-shadow: var(--re-shadow-xs);
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      box-shadow var(--re-duration);
+  }
+
+  :is(.re-checkbox, .ui-checkbox):hover {
+    border-color: var(--re-brand-500);
+  }
+
+  :is(.re-checkbox, .ui-checkbox):focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-brand-500) 30%, transparent);
+  }
+
+  :is(.re-checkbox, .ui-checkbox):is(:checked, :indeterminate) {
+    border-color: var(--re-brand-500);
+    background-color: var(--re-brand-500);
+  }
+
+  :is(.re-checkbox, .ui-checkbox):checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  }
+
+  :is(.re-checkbox, .ui-checkbox):indeterminate {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  }
+
+  /* On dark pastels a white tick is unreadable: same tick in the dark foreground. */
+  :root.dark :is(.re-checkbox, .ui-checkbox):checked {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23232634' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  }
+
+  :root.dark :is(.re-checkbox, .ui-checkbox):indeterminate {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23232634' stroke-width='3.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  }
+
+  :is(.re-checkbox, .ui-checkbox):disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /*
+   * Switch: <label class="re-switch"><input type="checkbox" role="switch" /><span class="re-switch__track"></span></label>
+   * One size in the whole suite (32×16).
+   */
+  .re-switch {
+    position: relative;
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .re-switch > input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+  }
+
+  .re-switch__track {
+    position: relative;
+    width: 2rem;
+    height: 1rem;
+    border-radius: 9999px;
+    background: var(--re-slate-300);
+    transition: background-color var(--re-duration-slow) var(--re-ease);
+  }
+
+  .re-switch__track::after {
+    content: '';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.125rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background: #ffffff;
+    box-shadow: var(--re-shadow-xs);
+    transition: transform var(--re-duration-slow) var(--re-ease);
+  }
+
+  .re-switch > input:checked + .re-switch__track {
+    background: var(--re-brand-500);
+  }
+
+  .re-switch > input:checked + .re-switch__track::after {
+    transform: translateX(1rem);
+  }
+
+  .re-switch > input:focus-visible + .re-switch__track {
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-brand-500) 40%, transparent);
+  }
+
+  .re-switch > input:disabled + .re-switch__track {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* The product's master on/off: live = emerald. */
+  .re-switch--live > input:checked + .re-switch__track {
+    background: var(--re-emerald-500);
+  }
+
+  /* A boolean with a title and a description, clickable as a whole (option lists, menus, dialogs). */
+  .re-option {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.625rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .re-option > .re-checkbox,
+  .re-option > .ui-checkbox {
+    margin-top: 0.0625rem;
+  }
+
+  .re-option__text {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .re-option__title {
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 600;
+    color: var(--re-slate-700);
+  }
+
+  .re-option__desc {
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-400);
+  }
+
+  /* =============================== Badges, pills, keys =============================== */
+
+  /* Technical data: methods, counts, flags, formats. Always mono. */
+  .re-badge {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.375rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-sm);
+    background: var(--re-slate-100);
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 700;
+    color: var(--re-slate-600);
+    white-space: nowrap;
+  }
+
+  .re-badge--micro {
+    padding: 0 0.25rem;
+    font-weight: 600;
+    color: var(--re-slate-500);
+  }
+
+  .re-badge--brand {
+    border-color: var(--re-brand-200);
+    background: var(--re-brand-50);
+    color: var(--re-brand-700);
+  }
+
+  .re-badge--danger {
+    border-color: var(--re-rose-200);
+    background: var(--re-rose-50);
+    color: var(--re-rose-600);
+  }
+
+  .re-badge--success {
+    border-color: var(--re-emerald-200);
+    background: var(--re-emerald-50);
+    color: var(--re-emerald-700);
+  }
+
+  .re-badge--warning {
+    border-color: var(--re-amber-200);
+    background: var(--re-amber-50);
+    color: var(--re-amber-700);
+  }
+
+  /* Status words in prose ("Whitelist", "Paused"). Sans, rounded. */
+  .re-pill {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 0.5rem;
+    height: 1.125rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: 9999px;
+    background: var(--re-slate-50);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-2xs);
+    line-height: 1;
+    font-weight: 600;
+    color: var(--re-slate-600);
+    white-space: nowrap;
+  }
+
+  .re-pill--brand {
+    border-color: var(--re-brand-200);
+    background: var(--re-brand-50);
+    color: var(--re-brand-700);
+  }
+
+  .re-pill--success {
+    border-color: var(--re-emerald-200);
+    background: var(--re-emerald-50);
+    color: var(--re-emerald-700);
+  }
+
+  .re-pill--danger {
+    border-color: var(--re-rose-200);
+    background: var(--re-rose-50);
+    color: var(--re-rose-600);
+  }
+
+  .re-kbd {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.375rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-sm);
+    background: var(--re-card);
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 600;
+    color: var(--re-slate-700);
+    box-shadow: var(--re-shadow-2xs);
+  }
+
+  .re-kbd-combo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    color: var(--re-slate-400);
+  }
+
+  .re-dot {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: var(--re-slate-300);
+  }
+
+  .re-dot--live {
+    background: var(--re-emerald-500);
+  }
+
+  .re-dot--pulse {
+    animation: re-pulse 2s ease-in-out infinite;
+  }
+
+  /* =============================== Navigation =============================== */
+
+  /* Pills that switch a view or a scope. Mark the active one with aria-pressed / aria-selected. */
+  .re-segmented {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    padding: 0.125rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-slate-50);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 600;
+  }
+
+  .re-segmented__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border: 1px solid transparent;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    font: inherit;
+    color: var(--re-slate-500);
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      color var(--re-duration);
+  }
+
+  .re-segmented__item:hover {
+    color: var(--re-slate-700);
+  }
+
+  /* Active = elevation, never the brand colour (color.md §2). Same recipe as ReRoute's settings menu. */
+  .re-segmented__item:is([aria-pressed='true'], [aria-selected='true'], .is-active) {
+    border-color: color-mix(in srgb, var(--re-slate-200) 50%, transparent);
+    background: var(--re-card);
+    color: var(--re-slate-800);
+    box-shadow: var(--re-shadow-xs);
+  }
+
+  :root.dark .re-segmented__item:is([aria-pressed='true'], [aria-selected='true'], .is-active) {
+    background: var(--re-slate-300);
+  }
+
+  .re-segmented__item:is([aria-pressed='true'], [aria-selected='true'], .is-active) > :is(svg, ng-icon, i) {
+    color: inherit;
+  }
+
+  /* Options that ARE roles (whitelist · blacklist): the role tints text and icon, never the border. */
+  .re-segmented__item--success:is([aria-pressed='true'], [aria-selected='true'], .is-active) {
+    color: var(--re-emerald-700);
+  }
+
+  .re-segmented__item--success:is([aria-pressed='true'], [aria-selected='true'], .is-active) > :is(svg, ng-icon, i) {
+    color: var(--re-emerald-500);
+  }
+
+  .re-segmented__item--danger:is([aria-pressed='true'], [aria-selected='true'], .is-active) {
+    color: var(--re-rose-700);
+  }
+
+  .re-segmented__item--danger:is([aria-pressed='true'], [aria-selected='true'], .is-active) > :is(svg, ng-icon, i) {
+    color: var(--re-rose-500);
+  }
+
+  .re-segmented--sm .re-segmented__item {
+    padding: 0.125rem 0.5rem;
+  }
+
+  .re-segmented--block {
+    display: flex;
+    width: 100%;
+  }
+
+  .re-segmented--block .re-segmented__item {
+    flex: 1;
+  }
+
+  /* Underlined tabs, for sections inside a dialog. */
+  .re-tabs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--re-border);
+    font-size: var(--re-text-xs);
+  }
+
+  .re-tabs__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    margin-bottom: -1px;
+    padding: 0 0 0.5rem;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    font: inherit;
+    font-weight: 500;
+    color: var(--re-slate-400);
+    cursor: pointer;
+    transition: color var(--re-duration);
+  }
+
+  .re-tabs__item:hover {
+    color: var(--re-slate-700);
+  }
+
+  .re-tabs__item:is([aria-selected='true'], .is-active) {
+    border-bottom-color: var(--re-brand-500);
+    font-weight: 600;
+    color: var(--re-slate-800);
+  }
+
+  .re-tabs__item:is([aria-selected='true'], .is-active) > :is(svg, ng-icon, i) {
+    color: var(--re-brand-500);
+  }
+
+  /* =============================== Cards and lists =============================== */
+
+  /* Repeated item with identity: a rule, a book, an automation. Side bar = state/category. */
+  .re-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-xl);
+    background: var(--re-card);
+    box-shadow: var(--re-shadow-sm);
+    transition:
+      box-shadow var(--re-duration-slow),
+      border-color var(--re-duration-slow),
+      opacity var(--re-duration-slow);
+  }
+
+  .re-card:hover {
+    border-color: var(--re-brand-200);
+    box-shadow: var(--re-shadow-md);
+  }
+
+  .re-card.is-paused {
+    opacity: 0.6;
+    background: var(--re-slate-100);
+  }
+
+  /* Color it with `style="--re-card-accent: var(--re-purple-500)"`; default = brand. */
+  .re-card__bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 0.25rem;
+    background: var(--re-card-accent, var(--re-brand-500));
+    transition: background-color var(--re-duration-slow);
+  }
+
+  .re-card.is-paused .re-card__bar {
+    background: var(--re-slate-300);
+  }
+
+  .re-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 0.25rem;
+  }
+
+  .re-card__heading {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-card__title {
+    overflow: hidden;
+    font-size: var(--re-text-sm);
+    line-height: var(--re-text-sm-lh);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--re-slate-800);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-card__actions {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .re-card__body {
+    padding-left: 0.25rem;
+  }
+
+  /* Inset mono box: patterns, targets, values. */
+  .re-code-box {
+    margin-left: 0.25rem;
+    padding: 0.375rem 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--re-slate-100);
+    border-radius: var(--re-radius-sm);
+    background: color-mix(in srgb, var(--re-slate-50) 80%, transparent);
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-600);
+  }
+
+  /* Bordered list of light rows (domains, entries). For hundreds of items use re-tree. */
+  .re-list {
+    overflow: hidden;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-xl);
+    background: var(--re-card);
+    box-shadow: var(--re-shadow-2xs);
+  }
+
+  .re-list__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    transition: background-color var(--re-duration);
+  }
+
+  .re-list__row + .re-list__row {
+    border-top: 1px solid color-mix(in srgb, var(--re-slate-200) 70%, transparent);
+  }
+
+  .re-list__row:hover {
+    background: var(--re-slate-50);
+  }
+
+  .re-list__empty {
+    padding: 0.75rem;
+    text-align: center;
+    font-size: var(--re-text-2xs);
+    color: var(--re-slate-400);
+  }
+
+  /* Group of related controls inside a dialog. */
+  .re-fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin: 0;
+    padding: 0.75rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-xl);
+    background: color-mix(in srgb, var(--re-slate-50) 60%, transparent);
+    min-width: 0;
+  }
+
+  .re-fieldset > legend {
+    float: left;
+    width: 100%;
+    padding: 0;
+  }
+
+  .re-fieldset > legend + * {
+    clear: both;
+  }
+
+  /* =============================== Tree (dense hierarchical data) =============================== */
+
+  /* Bar above a tree: select all + batch actions. */
+  .re-batchbar {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    height: 2rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--re-slate-200);
+    background: color-mix(in srgb, var(--re-slate-50) 80%, transparent);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    user-select: none;
+  }
+
+  .re-batchbar__select {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--re-slate-500);
+    cursor: pointer;
+  }
+
+  .re-batchbar__select:hover {
+    color: var(--re-slate-800);
+  }
+
+  .re-batchbar__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .re-tree {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    background: var(--re-background);
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+  }
+
+  .re-tree__group + .re-tree__group {
+    border-top: 1px solid color-mix(in srgb, var(--re-slate-200) 70%, transparent);
+  }
+
+  /* Group head. It is the toggle: role="button" + aria-expanded; the items carry `hidden` when closed. */
+  .re-tree__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    height: 2rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--re-slate-200) 60%, transparent);
+    background: var(--re-card);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color var(--re-duration);
+  }
+
+  .re-tree__head:hover {
+    background: var(--re-slate-50);
+  }
+
+  .re-tree__head:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: -2px;
+  }
+
+  .re-tree__head--l2 {
+    height: 1.75rem;
+    padding-left: 1.75rem;
+    background: var(--re-slate-50);
+  }
+
+  .re-tree__head--l2:hover {
+    background: color-mix(in srgb, var(--re-slate-100) 80%, transparent);
+  }
+
+  .re-tree__head-main {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-tree__chevron {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+    transition: transform var(--re-duration);
+  }
+
+  .re-tree__head[aria-expanded='false'] .re-tree__chevron {
+    transform: rotate(-90deg);
+  }
+
+  /* Type icons are neutral; only roles colour them (--danger trackers, --success whitelist). */
+  .re-tree__icon {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+  }
+
+  .re-tree__icon--muted {
+    color: var(--re-slate-400);
+  }
+
+  .re-tree__icon--danger {
+    color: var(--re-rose-500);
+  }
+
+  .re-tree__icon--success {
+    color: var(--re-emerald-500);
+  }
+
+  .re-tree__label {
+    overflow: hidden;
+    font-family: var(--re-font-sans);
+    font-weight: 600;
+    color: var(--re-slate-800);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree__meta {
+    overflow: hidden;
+    color: var(--re-slate-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree__actions {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .re-tree__items {
+    background: color-mix(in srgb, var(--re-slate-50) 30%, transparent);
+  }
+
+  .re-tree__items > * + * {
+    border-top: 1px solid color-mix(in srgb, var(--re-slate-200) 50%, transparent);
+  }
+
+  /* Leaf row: 1 line (36px) · --2line (44px, key + value) · --l3 (inside a level-2 group, 32px) */
+  .re-tree__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    height: 2.25rem;
+    padding: 0 1rem 0 2rem;
+    transition: background-color var(--re-duration);
+  }
+
+  .re-tree__row:hover {
+    background: color-mix(in srgb, var(--re-brand-50) 40%, transparent);
+  }
+
+  .re-tree__row--2line {
+    height: 2.75rem;
+  }
+
+  .re-tree__row--l3 {
+    height: 2rem;
+    padding-left: 3rem;
+  }
+
+  .re-tree__row--danger:hover {
+    background: color-mix(in srgb, var(--re-rose-50) 40%, transparent);
+  }
+
+  .re-tree__row-main {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .re-tree__row-end {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-tree__key {
+    overflow: hidden;
+    font-weight: 500;
+    color: var(--re-slate-600);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree__key--strong {
+    font-weight: 600;
+    color: var(--re-slate-800);
+  }
+
+  .re-tree__value {
+    max-width: 40%;
+    overflow: hidden;
+    color: var(--re-slate-400);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree__note {
+    padding: 0.5rem 2rem;
+    font-family: var(--re-font-sans);
+    color: var(--re-slate-400);
+  }
+
+  /* =============================== Overlays =============================== */
+
+  /* Custom dropdown (look of ReRoute's app-custom-dropdown). Behaviour: components/ReDropdown.md */
+  .re-dropdown {
+    position: relative;
+    width: 100%;
+  }
+
+  .re-dropdown__trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-slate-50);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 600;
+    color: var(--re-slate-700);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      box-shadow var(--re-duration);
+  }
+
+  .re-dropdown__trigger.re-mono {
+    font-weight: 400;
+  }
+
+  .re-dropdown__trigger:hover {
+    background: var(--re-slate-100);
+  }
+
+  .re-dropdown__trigger:focus-visible,
+  .re-dropdown__trigger[aria-expanded='true'] {
+    border-color: var(--re-brand-500);
+    outline: none;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--re-brand-500) 30%, transparent);
+  }
+
+  .re-dropdown__trigger:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .re-dropdown__chevron {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+    transition: transform var(--re-duration-slow);
+  }
+
+  .re-dropdown__trigger[aria-expanded='true'] .re-dropdown__chevron {
+    transform: rotate(180deg);
+  }
+
+  .re-dropdown__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--re-z-dropdown);
+    display: flex;
+    width: 100%;
+    min-width: 130px;
+    flex-direction: column;
+    margin-top: 0.25rem;
+    overflow: hidden;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-card);
+    box-shadow: var(--re-shadow-xl);
+    transform-origin: top left;
+    animation: re-pop var(--re-duration-fast) var(--re-ease);
+  }
+
+  .re-dropdown__panel--end {
+    right: 0;
+    left: auto;
+    transform-origin: top right;
+  }
+
+  .re-dropdown__list {
+    max-height: 12rem;
+    overflow-y: auto;
+    padding: 0.25rem 0;
+  }
+
+  .re-dropdown__option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.375rem 0.625rem;
+    font-size: var(--re-text-xs);
+    color: var(--re-slate-700);
+    cursor: pointer;
+    transition: background-color var(--re-duration);
+  }
+
+  .re-dropdown__option + .re-dropdown__option {
+    border-top: 1px solid var(--re-slate-50);
+  }
+
+  .re-dropdown__option:hover,
+  .re-dropdown__option.is-focused {
+    background: var(--re-slate-50);
+  }
+
+  .re-dropdown__option[aria-selected='true'] {
+    background: var(--re-brand-50);
+  }
+
+  .re-dropdown__option-main {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-dropdown__check {
+    flex-shrink: 0;
+    color: var(--re-brand-500);
+    opacity: 0;
+  }
+
+  .re-dropdown__option[aria-selected='true'] .re-dropdown__check {
+    opacity: 1;
+  }
+
+  .re-dropdown__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-dropdown__option[aria-selected='true'] .re-dropdown__label {
+    font-weight: 700;
+    color: var(--re-brand-700);
+  }
+
+  .re-dropdown__footer {
+    padding: 0.375rem;
+    border-top: 1px solid var(--re-slate-100);
+    background: color-mix(in srgb, var(--re-slate-50) 50%, transparent);
+  }
+
+  .re-dropdown__add {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    font: inherit;
+    font-size: var(--re-text-xs);
+    font-weight: 700;
+    color: var(--re-brand-600);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .re-dropdown__add:hover {
+    border-color: var(--re-brand-100);
+    background: var(--re-brand-50);
+  }
+
+  /* Menu anchored to a header button (settings). Pattern: patterns/settings-menu.md */
+  .re-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: var(--re-z-dropdown);
+    display: flex;
+    width: 15rem;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    overflow: hidden;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-xl);
+    background: var(--re-card);
+    box-shadow: var(--re-shadow-xl);
+    transform-origin: top right;
+    animation: re-pop var(--re-duration-fast) var(--re-ease);
+  }
+
+  .re-menu__section {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--re-slate-100);
+    background: color-mix(in srgb, var(--re-slate-50) 50%, transparent);
+  }
+
+  .re-menu__section > .re-section-title {
+    margin-bottom: 0.5rem;
+  }
+
+  .re-menu__group {
+    padding: 0.25rem 0;
+  }
+
+  .re-menu__group + .re-menu__group {
+    border-top: 1px solid var(--re-slate-100);
+  }
+
+  .re-menu__item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 0;
+    background: transparent;
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 500;
+    color: var(--re-slate-600);
+    text-align: left;
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      color var(--re-duration);
+  }
+
+  .re-menu__item > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+    transition: color var(--re-duration);
+  }
+
+  .re-menu__item:is(:hover, :focus-visible) {
+    background: var(--re-brand-50);
+    color: var(--re-brand-600);
+    outline: none;
+  }
+
+  .re-menu__item:is(:hover, :focus-visible) > :is(svg, ng-icon, i) {
+    color: var(--re-brand-500);
+  }
+
+  .re-menu__item-end {
+    margin-left: auto;
+  }
+
+  /* Dialog. The overlay covers the popup; inside a wireframe container use --contained. */
+  .re-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: var(--re-z-dialog);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    background: var(--re-overlay);
+    backdrop-filter: blur(4px);
+    animation: re-fade var(--re-duration) var(--re-ease);
+  }
+
+  .re-dialog-overlay--contained {
+    position: absolute;
+  }
+
+  .re-dialog-overlay--confirm {
+    z-index: var(--re-z-confirm);
+    backdrop-filter: blur(2px);
+  }
+
+  .re-dialog {
+    display: flex;
+    width: 100%;
+    max-width: 32rem;
+    max-height: 92%;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-2xl);
+    background: var(--re-card);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    animation: re-pop var(--re-duration) var(--re-ease);
+  }
+
+  .re-dialog__header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--re-border);
+    background: var(--re-slate-50);
+  }
+
+  .re-dialog__title {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    font-size: var(--re-text-sm);
+    line-height: var(--re-text-sm-lh);
+    font-weight: 700;
+    color: var(--re-slate-800);
+  }
+
+  .re-dialog__title > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+    color: var(--re-primary);
+  }
+
+  .re-dialog__subtitle {
+    overflow: hidden;
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    font-weight: 400;
+    color: var(--re-slate-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-dialog__body {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.25rem;
+    overflow-y: auto;
+    font-size: var(--re-text-xs);
+  }
+
+  .re-dialog__footer {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--re-border);
+    background: var(--re-slate-50);
+  }
+
+  /* Destructive action of an editor: alone, at the start of the footer. */
+  .re-dialog__footer-start {
+    margin-right: auto;
+  }
+
+  .re-dialog--confirm {
+    max-width: 20rem;
+    border-radius: var(--re-radius-xl);
+  }
+
+  .re-dialog__confirm-body {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  .re-dialog__confirm-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    background: var(--re-rose-100);
+    color: var(--re-rose-600);
+  }
+
+  .re-dialog__confirm-icon--warning {
+    background: var(--re-amber-100);
+    color: var(--re-amber-700);
+  }
+
+  .re-dialog__message {
+    margin: 0.25rem 0 0;
+    font-size: var(--re-text-xs);
+    line-height: 1.375;
+    color: var(--re-slate-500);
+  }
+
+  .re-dialog__message strong {
+    font-weight: 600;
+    color: var(--re-slate-700);
+  }
+
+  /* Toast: feedback of an action, with optional Undo. Above the status bar, centered. */
+  .re-toast-region {
+    position: fixed;
+    bottom: 2.75rem;
+    left: 50%;
+    z-index: var(--re-z-toast);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .re-toast-region--contained {
+    position: absolute;
+  }
+
+  .re-toast {
+    position: relative;
+    display: flex;
+    min-width: 14rem;
+    max-width: 22rem;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.5rem 0.5rem 0.5rem 0.75rem;
+    overflow: hidden;
+    border-radius: var(--re-radius);
+    background: var(--re-inverse);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 500;
+    color: var(--re-inverse-foreground);
+    box-shadow: var(--re-shadow-xl);
+    pointer-events: auto;
+    animation: re-toast-in var(--re-duration-slow) var(--re-ease);
+  }
+
+  .re-toast__icon {
+    flex-shrink: 0;
+    color: var(--re-inverse-action);
+  }
+
+  .re-toast--danger .re-toast__icon {
+    color: var(--re-rose-300);
+  }
+
+  .re-toast__message {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .re-toast__action {
+    flex-shrink: 0;
+    padding: 0.25rem 0.5rem;
+    border: 0;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    font: inherit;
+    font-weight: 700;
+    color: var(--re-inverse-action);
+    cursor: pointer;
+  }
+
+  .re-toast__action:hover {
+    background: color-mix(in srgb, var(--re-inverse-foreground) 12%, transparent);
+  }
+
+  .re-toast__timer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--re-inverse-action);
+    transform-origin: left;
+    animation: re-toast-timer var(--re-toast-duration, 5s) linear forwards;
+  }
+
+  /* =============================== Feedback =============================== */
+
+  .re-empty {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .re-empty__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.25rem;
+    border-radius: var(--re-radius-xl);
+    background: var(--re-slate-100);
+    color: var(--re-slate-400);
+  }
+
+  .re-empty__title {
+    font-size: var(--re-text-sm);
+    line-height: var(--re-text-sm-lh);
+    font-weight: 700;
+    color: var(--re-slate-800);
+  }
+
+  .re-empty__text {
+    max-width: 20rem;
+    font-size: var(--re-text-xs);
+    color: var(--re-slate-500);
+  }
+
+  /* Inline message inside a view or dialog. */
+  .re-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius);
+    background: var(--re-slate-50);
+    font-size: var(--re-text-2xs);
+    line-height: 1.5;
+    color: var(--re-slate-600);
+  }
+
+  .re-notice > :is(svg, ng-icon, i) {
+    flex-shrink: 0;
+    margin-top: 0.125rem;
+    color: var(--re-slate-400);
+  }
+
+  .re-notice strong {
+    font-weight: 600;
+    color: var(--re-slate-800);
+  }
+
+  .re-notice--brand {
+    border-color: var(--re-brand-200);
+    background: var(--re-brand-50);
+    color: var(--re-brand-800);
+  }
+
+  .re-notice--brand > :is(svg, ng-icon, i) {
+    color: var(--re-brand-500);
+  }
+
+  .re-notice--success {
+    border-color: var(--re-emerald-200);
+    background: var(--re-emerald-50);
+    color: var(--re-emerald-800);
+  }
+
+  .re-notice--success > :is(svg, ng-icon, i) {
+    color: var(--re-emerald-500);
+  }
+
+  .re-notice--warning {
+    border-color: var(--re-amber-200);
+    background: var(--re-amber-50);
+    color: var(--re-amber-800);
+  }
+
+  .re-notice--warning > :is(svg, ng-icon, i) {
+    color: var(--re-amber-600);
+  }
+
+  .re-notice--danger {
+    border-color: var(--re-rose-200);
+    background: var(--re-rose-50);
+    color: var(--re-rose-800);
+  }
+
+  .re-notice--danger > :is(svg, ng-icon, i) {
+    color: var(--re-rose-500);
+  }
+}
+
+/* =============================== Motion =============================== */
+
+@keyframes re-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes re-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes re-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+}
+
+@keyframes re-toast-timer {
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes re-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.re-app, .re-dialog-overlay, .re-toast-region) *,
+  :where(.re-dialog-overlay, .re-toast-region) {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}

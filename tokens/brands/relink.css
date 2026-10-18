@@ -1,0 +1,10 @@
+/*
+ * ReLink · Violet / Lavender.
+ * PENDIENTE (D9): 280 está a 20° de ReBooks (300); en claro se confunden. Ver docs/foundations/color.md §4.
+ */
+html:root {
+  --re-brand-hue: 280;
+  --re-brand-l-shift: 0;
+  --re-brand-c-scale: 1;
+  --re-brand-dark: #babbf1;
+}
