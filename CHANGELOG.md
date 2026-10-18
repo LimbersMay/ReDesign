@@ -6,6 +6,11 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 1.3.0 — 2026-10-18
+
+- `re-tree__icon--warning` (`amber-500`): el icono del grupo de rastreadores avisa, no es un error ni
+  una acción destructiva; el rojo se queda en su conteo y su «Limpiar» (D12).
+
 ## 1.2.0 — 2026-10-18
 
 - `re-tree__value--strong`: variante del valor de una fila (`slate-600` en lugar de `slate-400`), para

@@ -96,3 +96,12 @@ marca y `color.md` §2 deja los badges de formato neutros; no existe un rol de c
 (`slate-800`). La jerarquía sale del tono y el peso, no de un color; el color queda para roles reales
 (caducidad = aviso, rastreador = rose, protegido = success).
 **Consecuencias.** MINOR (1.2.0). Misma caja que `re-tree__value`, sin cambio incompatible.
+
+## D12 · El icono de rastreadores avisa (`re-tree__icon--warning`)
+
+**Contexto.** El grupo de rastreadores pintaba su icono en `rose`, igual que «Limpiar» y los errores.
+Pero el grupo no es un error ni una acción destructiva: es una advertencia.
+**Decisión.** El icono pasa a `amber` (`re-tree__icon--warning`). `rose` queda en lo que sí destruye
+(«Limpiar») y en el conteo.
+**Consecuencias.** MINOR (1.3.0). Ojo con D9: la marca provisional de ReSession también es ámbar (75),
+así que este aviso se parece a la marca hasta que D9 se resuelva.

@@ -30,7 +30,7 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   `{JWT}`, `{JSON}`) + valor (`re-tree__value--strong`). El tamaño y la caducidad son `re-hint`; la
   caducidad pasa a `re-hint--warning` solo cuando importa. Sin
   candado: «Vaciar» un área siempre se confirma.
-- **Grupo de rastreadores**: `re-tree__icon--danger`, conteo `re-badge--danger`. Es el único grupo con
+- **Grupo de rastreadores**: `re-tree__icon--warning` (avisa; lo destructivo es su «Limpiar»), conteo `re-badge--danger`. Es el único grupo con
   la acción siempre visible (`re-btn--2xs re-btn--danger-soft` «Limpiar (n)»); en el resto, «Limpiar» se
   revela al pasar el ratón.
 - **Barra de lote**: «Proteger» y «Limpiar», con la cifra si hay selección, y contraer/expandir todo.

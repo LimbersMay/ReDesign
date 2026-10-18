@@ -38,8 +38,8 @@ compite con la acción que el usuario viene a hacer.
 
 ### Roles: solo donde el significado es el mensaje
 
-- **rose**: lo destructivo (hover de eliminar, `re-btn--danger*`), los errores y los **rastreadores**
-  (su grupo, su cifra y su «Limpiar»). Es el único caso en que un color está en reposo dentro de una
+- **rose**: lo destructivo (hover de eliminar, `re-btn--danger*`), los errores y la **acción** sobre los
+  rastreadores (su cifra y su «Limpiar»); el **icono** de su grupo es `amber`, porque avisa, no destruye. Es el único caso en que un color está en reposo dentro de una
   lista, porque avisar de ellos es el producto.
 - **emerald**: en vivo (`re-dot--live`, `re-switch--live`) y «protegido por lista blanca» (`re-pill--success`).
 - En un segmented cuyas opciones **son** roles (Lista blanca · Lista negra; en ReRoute, Request ·

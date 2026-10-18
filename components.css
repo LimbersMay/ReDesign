@@ -1330,7 +1330,7 @@
     transform: rotate(-90deg);
   }
 
-  /* Type icons are neutral; only roles colour them (--danger trackers, --success whitelist). */
+  /* Type icons are neutral; only roles colour them (--warning trackers, --success whitelist). */
   .re-tree__icon {
     flex-shrink: 0;
     color: var(--re-slate-400);
@@ -1342,6 +1342,10 @@
 
   .re-tree__icon--danger {
     color: var(--re-rose-500);
+  }
+
+  .re-tree__icon--warning {
+    color: var(--re-amber-500);
   }
 
   .re-tree__icon--success {
