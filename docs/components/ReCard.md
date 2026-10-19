@@ -32,7 +32,7 @@ datos homogéneos usa [ReTree](ReTree.md); para filas ligeras, [ReList](ReList.m
 - Barra lateral siempre. Su color es el estado o la **categoría** (`--re-card-accent`): marca por
   defecto, una categoría (`--re-purple-500`…) para tipos; nunca un rol (`rose`) como categoría.
 - Pausada (`is-paused`): opacidad 60 %, fondo `slate-100`, barra y punto en `slate-300`.
-- Las acciones se revelan en hover o foco (`re-reveal`), salvo que la tarjeta sea única en su vista.
+- Las acciones se revelan en hover o foco de teclado (`re-reveal`), salvo que la tarjeta sea única en su vista.
 - El contenido técnico va en `re-code-box` (mono, hundido).
 - Variante con miniatura (ReBooks) y variante de automatización (ReSession) son **componentes firma**:
   ver `docs/products/`.

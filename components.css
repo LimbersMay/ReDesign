@@ -404,14 +404,18 @@
     cursor: not-allowed;
   }
 
-  /* Actions that appear on hover or keyboard focus of their row/card (never permanently). */
+  /*
+   * Actions that appear on hover or keyboard focus of their row/card (never permanently).
+   * :focus-visible, not :focus-within: a mouse click focuses the host and would pin them open.
+   */
   .re-reveal {
     opacity: 0;
     transition: opacity var(--re-duration);
   }
 
   .re-reveal-host:hover .re-reveal,
-  .re-reveal-host:focus-within .re-reveal,
+  .re-reveal-host:focus-visible .re-reveal,
+  .re-reveal-host:has(:focus-visible) .re-reveal,
   .re-reveal.is-pinned {
     opacity: 1;
   }

@@ -6,6 +6,11 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.1.1 — 2026-10-18
+
+- Fix: `re-reveal` se revela con `:focus-visible` en lugar de `:focus-within`. Un clic con el ratón dejaba las
+  acciones fijas a la vista (p. ej. el «Limpiar» de un grupo tras desplegarlo); el foco de teclado sigue revelándolas.
+
 ## 2.1.0 — 2026-10-18
 
 - Nuevo: `re-btn--danger-outline`, la acción destructiva revelada de una cabecera de grupo: neutra hasta el
