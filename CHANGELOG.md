@@ -6,6 +6,24 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.2.0 — 2026-10-19
+
+Productos afectados: **ReSession** (probado en su maqueta) y **ReRoute** (al migrar; ver
+`docs/products/reroute.md`, «Cambios de la librería que ReRoute verá al migrar»).
+
+- Nuevo: `re-pill--sm` (18 px) para cabeceras y zonas densas; `re-pill` conserva los 22 px.
+- Texto +1 px para leer mejor en pantallas grandes: `--re-text-2xs` 12 px, `--re-text-xs` 13 px
+  (lh 18 px), `--re-text-sm` 15 px. Lo mono sigue a `2xs` (12 px) y el check de `re-select-inline` también.
+  Un producto que prefiera la escala anterior sobrescribe los tokens en su `styles.css`.
+- Alto del popup `--re-popup-h`: 600 → 580 px, por defecto para todos los productos.
+- `re-card` más ligera: `padding` `0.75rem 1rem`, `re-card__header` `margin-bottom` `0.5rem`,
+  `re-code-box` `padding` `0.25rem 0.5rem`. Con 580 caben dos tarjetas con redirect.
+- Líneas más suaves: `re-tree__head` `border-bottom` al 35 %, `re-batchbar` con `slate-50` al 60 %, y se
+  elimina el `border-top` entre grupos de `re-tree` (la línea de la cabecera ya los separa).
+- Nueva regla R14 en `AGENTS.md`: un cambio que toca una marca se registra y propone alternativas (D17).
+- Docs: R5, R9, `typography.md`, `layout.md`, `resession.md`, `ReBadge.md`, `reroute.md`; el mensaje del
+  lint de tamaños de texto cita la escala nueva.
+
 ## 2.1.1 — 2026-10-18
 
 - Fix: `re-reveal` se revela con `:focus-visible` en lugar de `:focus-within`. Un clic con el ratón dejaba las

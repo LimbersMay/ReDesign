@@ -41,7 +41,7 @@ const LINE_RULES = [
     id: 'type-scale',
     level: 'error',
     re: /\btext-\[\d[^\]]*\]|\btext-3xs\b/g,
-    message: 'Tamaño fuera de la escala. En el popup solo existen text-2xs (11px), text-xs (12px) y text-sm (14px).',
+    message: 'Tamaño fuera de la escala. En el popup solo existen text-2xs (12px), text-xs (13px) y text-sm (15px).',
   },
   {
     id: 'type-scale-popup',

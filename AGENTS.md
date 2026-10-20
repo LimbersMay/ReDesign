@@ -49,9 +49,9 @@ un caso de verdad lo necesita, justifícalo con `re-design-ignore-next-line no-d
 de headers o footers de color sólido, ni badges chillones (fondo `-50`, borde `-200`, texto `-700`).
 Texto sobre `bg-primary`: siempre `text-primary-foreground`, nunca `text-white`.
 
-**R5 · Tres tamaños de texto en el popup.** `text-2xs` (11px: captions, badges, todo lo mono),
-`text-xs` (12px: cuerpo y controles) y `text-sm` (14px: títulos). Lo monoespaciado usa `re-mono` /
-`font-mono` y queda en 11px regular. `text-base` y mayores solo en páginas completas (ayuda, opciones).
+**R5 · Tres tamaños de texto en el popup.** `text-2xs` (12px: captions, badges, todo lo mono),
+`text-xs` (13px: cuerpo y controles) y `text-sm` (15px: títulos). Lo monoespaciado usa `re-mono` /
+`font-mono` y queda en 12px regular. `text-base` y mayores solo en páginas completas (ayuda, opciones).
 
 **R6 · Iconos Lucide.** `@ng-icons/lucide` (Angular), `lucide-react` (React), `lucide` (wireframes).
 Tamaños por contenedor en `docs/foundations/iconography.md`. Ningún otro set (Font Awesome, Phosphor,
@@ -65,7 +65,7 @@ foco (`re-reveal`), nunca están fijas. Destructivo = `rose`.
 («Limpiar», «Guardar»). **Una garantía del producto se dice una vez**, en su lugar fijo
 (`docs/patterns/guarantee.md`), no se repite en cada botón.
 
-**R9 · Ventana.** Popup de 540×600 (`re-app`); en el panel lateral, `html.fluid`. Otro tamaño
+**R9 · Ventana.** Popup de 540×580 (`re-app`); en el panel lateral, `html.fluid`. Otro tamaño
 solo si está declarado en `docs/products/<x>.md`.
 
 **R10 · Capas.** Los menús son `re-dropdown` / `re-menu`. Los diálogos (`re-dialog`) se abren dentro
@@ -85,6 +85,14 @@ encendidos, en el foco y en estados transitorios (hover, dropdown abierto). Nunc
 de un segmented (se marca por elevación, neutra), ni en iconos de tipo, datos, badges de formato,
 botones secundarios o el logo. Los roles (`rose`, `emerald`) solo donde el significado es el mensaje.
 Lista completa y prueba de los tres segundos: `docs/foundations/color.md` §2.
+
+**R14 · Un cambio que toca una marca se registra y trae alternativas.** Todo cambio de la librería
+(tokens, componentes, tamaños, densidad, ventana, docs) que afecte al branding de algún producto (su
+color, su tipografía, su densidad, su ventana o sus componentes firma) no se publica en silencio. En
+`docs/products/<x>.md` de **cada** producto afectado se anota: qué se nota en pantalla y **al menos una
+solución o alternativa** (adoptarlo tal cual, sobrescribir un token en el producto, o una Propuesta de
+variante). El `CHANGELOG.md` nombra los productos afectados. Si no hay forma de cuantificar el efecto,
+se prueba con el producto real antes de publicar.
 
 ## Archivos
 

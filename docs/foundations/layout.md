@@ -2,7 +2,7 @@
 
 ## Ventana
 
-- Popup: `re-app` = 540×600 (el máximo de Chrome es 800×600). Panel lateral: `html.fluid`, 100% × 100vh.
+- Popup: `re-app` = 540×580 (el máximo de Chrome es 800×600). Panel lateral: `html.fluid`, 100% × 100vh.
 - Estructura fija: `re-header` (48px) · vista (`flex-1 min-h-0`, con su propio scroll) · `re-statusbar` (32px).
 - Los diálogos y los toasts viven **dentro** de la ventana.
 

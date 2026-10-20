@@ -161,3 +161,14 @@ icono (y en el borde, los botones). `re-pill` pasa a 22 px de alto.
 **Consecuencias.** MINOR (2.1.0): una variante nueva, ninguna eliminada. Sustituye a D14 en lo de `flame`:
 los rastreadores ya no tienen un «Limpiar» propio. `re-btn--danger-ghost` queda para el pie del editor.
 Cuesta descubrimiento: limpiar un grupo pide pasar el ratón o el foco, como las acciones de fila.
+
+## D17 · Un cambio que toca una marca se registra y trae alternativas (2.2.0)
+
+**Contexto.** Subir el texto 1 px, bajar el popup a 580 y aligerar la tarjeta salieron de un producto
+(ReSession) pero cambian también lo que ReRoute verá al migrar. Sin un registro, el efecto se descubre
+al migrar y sin una salida a mano.
+**Decisión.** Todo cambio de la librería que afecte al branding de un producto (color, tipografía,
+densidad, ventana, componentes firma) se anota en el `docs/products/<x>.md` de cada producto afectado con
+qué se nota y al menos una solución o alternativa, y el `CHANGELOG.md` nombra los productos. Es la regla R14.
+**Consecuencias.** MINOR (2.2.0): una regla nueva, ninguna eliminada. Publicar cuesta un párrafo por
+producto afectado; a cambio, nadie migra a ciegas.

@@ -8,6 +8,8 @@
 | `re-kbd` / `re-kbd-combo` | Atajo de teclado | Mono, 600 |
 | `re-dot` (`--live`, `--pulse`) | Estado vivo/inactivo sin texto | — |
 
+Tamaño de `re-pill`: 22px por defecto; `re-pill--sm` (18px) para cabeceras y zonas densas.
+
 Tonos (en `re-badge` y `re-pill`): neutro (por defecto), `--brand`, `--danger`, `--success`,
 `--warning` (solo en `re-badge`).
 

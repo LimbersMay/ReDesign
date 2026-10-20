@@ -4,7 +4,7 @@
 |---|---|
 | Qué es | Inspector y limpiador de cookies y storage con protección por cookie, listas blanca/negra y limpieza automática |
 | Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · definitiva (D14) |
-| Ventana | 540×600 + panel lateral |
+| Ventana | 540×580 + panel lateral |
 | Stack | Angular 20 (subir a 21 como ReRoute) · Tailwind v4 · `@ng-icons/lucide` · Transloco (propuesto: ver `ReSession/docs/architecture.md`) |
 | Estado frente a ReDesign | Wireframe (`index.html`); el código aún es el placeholder de Angular |
 

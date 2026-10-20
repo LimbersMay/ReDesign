@@ -152,9 +152,9 @@
   --re-font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   --re-font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   /* Popup scale: exactly three sizes. 2xs = captions, badges, all mono · xs = body, controls · sm = titles */
-  --re-text-2xs: 0.6875rem; --re-text-2xs-lh: 1rem;
-  --re-text-xs: 0.75rem; --re-text-xs-lh: 1rem;
-  --re-text-sm: 0.875rem; --re-text-sm-lh: 1.25rem;
+  --re-text-2xs: 0.75rem; --re-text-2xs-lh: 1rem;
+  --re-text-xs: 0.8125rem; --re-text-xs-lh: 1.125rem;
+  --re-text-sm: 0.9375rem; --re-text-sm-lh: 1.25rem;
 
   /* ---------- Shape, depth, motion, layers ---------- */
   --re-radius: 0.5rem; /* rounded-lg = 8px */
@@ -178,7 +178,7 @@
 
   /* ---------- Window ---------- */
   --re-popup-w: 540px; /* Chrome caps popups at 800×600 */
-  --re-popup-h: 600px;
+  --re-popup-h: 580px;
 }
 
 /* ===================================== DARK ===================================== */

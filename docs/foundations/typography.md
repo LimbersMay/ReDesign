@@ -5,11 +5,11 @@
 
 | Clase | Tamaño | Uso |
 |---|---|---|
-| `text-sm` | 14px | Títulos de tarjeta, de diálogo y de empty state (`font-bold tracking-tight`) |
-| `text-xs` | 12px | Cuerpo, botones, inputs, labels, opciones de menú, nombre de la app |
-| `text-2xs` | 11px | Captions, hints, badges, títulos de sección, filas de árbol, **todo lo mono** |
+| `text-sm` | 15px | Títulos de tarjeta, de diálogo y de empty state (`font-bold tracking-tight`) |
+| `text-xs` | 13px | Cuerpo, botones, inputs, labels, opciones de menú, nombre de la app |
+| `text-2xs` | 12px | Captions, hints, badges, títulos de sección, filas de árbol, **todo lo mono** |
 
-- Lo monoespaciado (URLs, claves, valores, patrones, código) usa `re-mono` o `font-mono`: siempre 11px
+- Lo monoespaciado (URLs, claves, valores, patrones, código) usa `re-mono` o `font-mono`: siempre 12px
   regular, porque JetBrains Mono se ve más grande que Inter al mismo tamaño.
 - Pesos: 400 cuerpo · 500 controles · 600 labels y botones · 700 títulos y badges.
 - Títulos de sección: `re-section-title` (2xs, 700, mayúsculas, `slate-400`), sin dos puntos al final.

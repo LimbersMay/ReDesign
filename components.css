@@ -51,7 +51,7 @@
   }
 
   /*
-   * Mono (URLs, keys, values, code) is always 11px regular: JetBrains Mono looks larger than Inter
+   * Mono (URLs, keys, values, code) is always 12px regular: JetBrains Mono looks larger than Inter
    * at the same size, so this keeps both on one visual scale.
    */
   .re-mono,
@@ -674,7 +674,7 @@
 
     :is(.re-select-inline, .ui-inline-select) option::checkmark {
       content: '✓';
-      font-size: 11px;
+      font-size: 12px;
       color: var(--re-brand-500);
     }
 
@@ -928,6 +928,12 @@
     white-space: nowrap;
   }
 
+  /* Dense areas (headers): the previous 18px height. */
+  .re-pill--sm {
+    height: 1.125rem;
+    padding: 0 0.5rem;
+  }
+
   .re-pill--brand {
     border-color: var(--re-brand-200);
     background: var(--re-brand-50);
@@ -1118,7 +1124,7 @@
   .re-card {
     position: relative;
     overflow: hidden;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     border: 1px solid var(--re-slate-200);
     border-radius: var(--re-radius-xl);
     background: var(--re-card);
@@ -1159,7 +1165,7 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     padding-left: 0.25rem;
   }
 
@@ -1195,7 +1201,7 @@
   /* Inset mono box: patterns, targets, values. */
   .re-code-box {
     margin-left: 0.25rem;
-    padding: 0.375rem 0.5rem;
+    padding: 0.25rem 0.5rem;
     overflow: hidden;
     border: 1px solid var(--re-slate-100);
     border-radius: var(--re-radius-sm);
@@ -1274,7 +1280,7 @@
     height: 2rem;
     padding: 0 1rem;
     border-bottom: 1px solid var(--re-slate-200);
-    background: color-mix(in srgb, var(--re-slate-50) 80%, transparent);
+    background: color-mix(in srgb, var(--re-slate-50) 60%, transparent);
     font-size: var(--re-text-2xs);
     line-height: var(--re-text-2xs-lh);
     user-select: none;
@@ -1315,10 +1321,6 @@
     line-height: var(--re-text-2xs-lh);
   }
 
-  .re-tree__group + .re-tree__group {
-    border-top: 1px solid color-mix(in srgb, var(--re-slate-200) 70%, transparent);
-  }
-
   /* Group head. It is the toggle: role="button" + aria-expanded; the items carry `hidden` when closed. */
   .re-tree__head {
     display: flex;
@@ -1327,7 +1329,7 @@
     gap: 0.5rem;
     height: 2rem;
     padding: 0 1rem 0 calc(1rem + var(--re-tree-depth, 0) * var(--re-tree-indent, 1rem));
-    border-bottom: 1px solid color-mix(in srgb, var(--re-slate-200) 60%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--re-slate-200) 35%, transparent);
     background: var(--re-card);
     cursor: pointer;
     user-select: none;
