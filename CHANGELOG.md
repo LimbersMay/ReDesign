@@ -6,6 +6,43 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.3.0 — 2026-10-21
+
+Productos afectados: **ReSession** (probado en su maqueta: «El sitio primero», D19; ver
+`docs/products/resession.md`). Los demás productos solo notan los cambios marcados con **Se nota** (para ReRoute, ver
+`docs/products/reroute.md`, «Cambios de la librería que ReRoute verá al migrar»);
+todo lo demás es opcional y no cambia nada hasta que se añade la clase.
+
+- Nuevo: `re-tree--sticky` fija la cabecera del grupo abierto al hacer scroll; las anidadas se apilan
+  bajo la de su padre (D18).
+- **Se nota**: tema claro de la familia Latte (`--re-background` `#eceef3`, `--re-card` `#f8f9fb`), con
+  los tokens nuevos `--re-chrome-sheen`, `--re-chrome-sheen-up`, `--re-line`, `--re-line-sunken` y
+  `--re-line-hover`. El oscuro no cambia.
+- Nuevo (ReSummary): `re-summary` con `__main`, `__title`, `__stats`, `__stat--success`, `__actions` y
+  `__count`; `re-summary--selection` (el resumen en modo selección, que hace de barra de lote); `re-favicon`
+  (`--lg`).
+- Nuevo: `re-tabs--header` (las vistas como pestañas subrayadas en el header), `re-tabs__count` y
+  `re-segmented__count`.
+- Nuevo (ReTree): `re-tree--flat` y `re-tree__title`; `re-tree__row--dense` con `re-tree__lead`,
+  `re-tree__trail`, `re-tree__time` (`--warning`), `re-tree__end` y las acciones flotantes; `re-flags` y
+  `re-flag`. En menos de 400px la fila densa pierde la celda del valor y el header oculta el nombre y los
+  iconos de las pestañas.
+- Nuevo: tooltip `re-tip` / `re-tip__bubble` (`re-tip--end`), con hover y foco de teclado.
+- Nuevo (ReList): `re-nav-list` (lista cuyas filas abren una página), `re-meter` (`--success`) y
+  `re-breadcrumb`.
+- Nuevo (ReDialog): la hoja `re-dialog--sheet` / `re-dialog-overlay--sheet` con `re-dialog__heading`;
+  `re-toggle-pill`, `re-props`, `re-check-chip` y `re-disclosure`; `re-dropdown__hint`.
+- Nuevo: `re-icon-btn--outline` (30px, junto a un campo) y `re-card__subtitle`.
+- **Se nota**: el toast baja a 14px del borde inferior cuando la ventana no tiene `re-statusbar`; con ella,
+  sigue encima a 44px.
+- **Se nota**: el placeholder de un campo `re-mono` sale en sans (es prosa, no un dato).
+- **Se nota** (contenido): «Vaciar» se retira; borrar en lote es siempre «Limpiar», también un contenedor sin
+  protección. Un producto que diga «Vaciar» lo cambia al migrar.
+- Docs: `ReSummary.md` (nuevo), `ReTree.md`, `ReHeader.md`, `ReSegmented.md`, `ReDialog.md`, `ReList.md`,
+  `ReBadge.md`, `ReButton.md`, `ReInput.md`, `ReCard.md`, `ReDropdown.md`; patrones `guarantee.md` (la
+  garantía junto a la acción), `editor-dialog.md` (variante hoja) y `destructive-actions.md`; `content.md`,
+  `iconography.md`, `resession.md`; D18 y D19. Galería: tres paneles nuevos.
+
 ## 2.2.0 — 2026-10-19
 
 Productos afectados: **ReSession** (probado en su maqueta) y **ReRoute** (al migrar; ver

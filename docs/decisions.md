@@ -172,3 +172,28 @@ densidad, ventana, componentes firma) se anota en el `docs/products/<x>.md` de c
 qué se nota y al menos una solución o alternativa, y el `CHANGELOG.md` nombra los productos. Es la regla R14.
 **Consecuencias.** MINOR (2.2.0): una regla nueva, ninguna eliminada. Publicar cuesta un párrafo por
 producto afectado; a cambio, nadie migra a ciegas.
+
+## D18 · Cabeceras fijas opcionales en el árbol (2.3.0)
+
+**Contexto.** En listas largas, al hacer scroll por las filas de un grupo la cabecera salía de la vista y se
+perdía a qué dominio pertenecían. Se probó también dibujar la jerarquía con guías verticales y conectores en
+L (`re-tree--guides`); en ReSession se descartó: cansaba la vista y añadía líneas que competían con las filas.
+**Decisión.** `re-tree--sticky` es opcional y por árbol: la cabecera del grupo abierto queda fija y las
+anidadas se apilan bajo la de su padre. La jerarquía sigue leyéndose por la sangría y el icono, sin guías.
+**Consecuencias.** MINOR (2.3.0): una clase nueva, ninguna eliminada; sin la clase nada cambia. Cuesta
+espacio vertical mientras hay varias cabeceras apiladas (32px + 28px por nivel anidado).
+
+## D19 · El sitio primero: resumen, árbol plano, fila densa, hoja (2.3.0)
+
+**Contexto.** ReSession rehízo su layout en cuatro tandas de exploración (`ReSession/docs/design-explorations/`).
+La garantía en una status bar fija nadie la leía y quitaba 32px a la lista; el árbol sitio → dominio → cookie
+obligaba a plegar y desplegar; las filas de dos líneas dejaban ver pocas cookies; el editor centrado no
+cabía sin scroll; y «Limpiar» y «Vaciar» hacían lo mismo con dos verbos.
+**Decisión.** Piezas nuevas y opcionales: `re-summary` (con su modo selección, que hace de barra de lote),
+`re-tabs--header`, `re-tree--flat`, `re-tree__row--dense` con `re-flags` y el tooltip `re-tip`,
+`re-nav-list` con `re-meter` y `re-breadcrumb`, y la hoja `re-dialog--sheet` con `re-toggle-pill`,
+`re-props`, `re-check-chip` y `re-disclosure`. La garantía puede vivir en el resumen en lugar de en la status
+bar (patterns/guarantee.md). El verbo de borrar en lote es solo «Limpiar»; «Vaciar» se retira.
+**Consecuencias.** MINOR (2.3.0): ninguna clase se renombra ni se elimina. Dos cambios se notan sin tocar
+nada: el toast baja a 14px del borde cuando no hay status bar, y el placeholder de un campo mono sale en
+sans. Un producto que diga «Vaciar» lo cambia por «Limpiar» al migrar.

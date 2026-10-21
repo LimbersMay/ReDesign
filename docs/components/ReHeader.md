@@ -14,7 +14,7 @@ solo cambian el logo, el nombre y lo que va en las zonas centrales.
 | Zona | Contenido | Reglas |
 |---|---|---|
 | Identidad | `re-header__logo` + `re-header__title` (+ `re-header__subtitle` opcional) | El logo es el icono del producto; el nombre, en `text-xs` 700 |
-| Vista (opcional) | Un `re-segmented` con las vistas principales | Máximo 3 vistas; si hay más, la app necesita otra navegación |
+| Vista (opcional) | Las vistas principales: pestañas subrayadas (`re-tabs re-tabs--header`) o un `re-segmented` | Máximo 3 vistas; si hay más, la app necesita otra navegación |
 | Acciones | Icon buttons de la vista activa · **una** primaria `re-btn--sm` · **siempre al final** el engranaje de ajustes | El engranaje abre el [menú de ajustes](../patterns/settings-menu.md) |
 
 ```html
@@ -39,7 +39,33 @@ solo cambian el logo, el nombre y lo que va en las zonas centrales.
 </header>
 ```
 
+## Vistas como pestañas
+
+`re-tabs--header` pone las vistas a toda la altura del header y marca la activa con un subrayado
+**neutro**: el header no lleva acento (R13) y la marca queda libre para la acción principal de la pantalla.
+Una pestaña puede llevar un conteo (`re-tabs__count`, más callado que la etiqueta).
+
+```html
+<nav class="re-tabs re-tabs--header" role="tablist" [attr.aria-label]="t('header.views')">
+  <button type="button" role="tab" class="re-tabs__item" aria-selected="true">
+    <ng-icon name="lucideTarget" size="12" />{{ t('header.tab') }}
+  </button>
+  <button type="button" role="tab" class="re-tabs__item" aria-selected="false">
+    <ng-icon name="lucideGlobe" size="12" />{{ t('header.global') }}<span class="re-tabs__count">7</span>
+  </button>
+</nav>
+```
+
+Con las vistas en pestañas, la acción de crear deja el header y va a la vista donde tiene sentido (ReSession:
+el `+` de «Esta pestaña», con `re-icon-btn--outline` junto a la búsqueda).
+
+**Ventana estrecha** (menos de 400px): el header oculta `re-header__title` (queda el logo) y las pestañas
+pierden sus iconos.
+
 ## Status bar
+
+Opcional. Un producto que dice su garantía en el resumen de cada vista ([ReSummary](ReSummary.md)) no la
+necesita, y el toast baja solo a su sitio cuando no hay status bar.
 
 Dos zonas: a la izquierda el **estado** o la **garantía** del producto; a la derecha un enlace
 (normalmente «Ayuda»).

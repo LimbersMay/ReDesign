@@ -5,7 +5,7 @@
 | Borrar **un** elemento normal, reversible | Borrar al instante + toast con **Deshacer** |
 | Borrar **en lote** (un grupo, una selección, un sitio) | Borrar al instante + toast con cifras y **Deshacer**, si se puede restaurar. Si no se puede (cookies `HttpOnly` de terceros, storage de otra pestaña), **confirmación** con la cifra exacta |
 | Borrar algo que el producto **protege** (cookie con candado) a mano | **Confirmación** que lo diga: «Está protegida» |
-| Vaciar un contenedor entero sin protección | Confirmación |
+| Limpiar un contenedor entero sin protección (un `sessionStorage`) | Confirmación |
 | Ajustes o perfiles completos | Confirmación |
 
 ## Reglas

@@ -22,6 +22,7 @@
 | `re-btn--xs` | 24px | Barras de lote y cabeceras de grupo del árbol | 11 |
 | `re-btn--2xs` | 20px | Controles muy densos, nunca la acción de una cabecera (a 20 px parece un badge) | 10 |
 | `re-icon-btn` / `--sm` | 28 / 24px | Tarjetas y header / filas densas | 13 / 11 |
+| `re-icon-btn--outline` | 30px, con borde | Junto a un campo de búsqueda, a su misma altura (el `+` de crear) | 13 |
 
 ## HTML
 

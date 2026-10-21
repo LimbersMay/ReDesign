@@ -13,6 +13,21 @@ de cookies). El contenedor es [ReDialog](../components/ReDialog.md).
 5. **Opciones avanzadas o técnicas**: en un `re-fieldset` con `re-section-title`.
 6. **Estado de producto**: protección, activación. Un `re-option` con switch, al final.
 
+## Variante hoja
+
+Cuando el formulario no cabe en un diálogo centrado, el editor es una **hoja** (`re-dialog--sheet`,
+[ReDialog](../components/ReDialog.md#hoja)) y el orden cambia para enseñar primero lo que se edita:
+
+1. **Header**: ✕, el nombre del elemento como título (mono) y su estado de producto a la derecha, como
+   píldoras (`re-toggle-pill` para lo que se cambia, `re-pill` para lo que solo se informa).
+2. **Contenido**: el valor principal, con su modo de vista.
+3. **Propiedades**: `re-props`, una por fila. Las opciones con fecha usan un `re-dropdown` con la fecha
+   resultante en `re-dropdown__hint`, en lugar de atajos sueltos.
+4. **Identidad y ámbito**, plegados al final (`re-disclosure`) si cambiarlos crea otro elemento. En un
+   elemento **nuevo** van arriba y abiertos, con el foco: es lo primero que hay que escribir.
+
+El pie es el mismo; en un elemento nuevo la primaria dice «Crear».
+
 ## Reglas
 
 - Labels encima (`re-label`), hints debajo (`re-hint`), errores en `re-error` debajo del campo y

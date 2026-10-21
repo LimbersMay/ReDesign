@@ -4,6 +4,7 @@
 |---|---|
 | `re-segmented` | Cambiar la vista principal (en el header), el ámbito (Cookies / Storage) o un modo excluyente dentro de un formulario (Raw / Decodificado, Sesión / Fecha fija) |
 | `re-tabs` | Secciones dentro de un diálogo editor (ReRoute: Redirect / Headers / Params / Mock) |
+| `re-tabs re-tabs--header` | Las vistas principales, dentro del header ([ReHeader](ReHeader.md#vistas-como-pestañas)) |
 
 ## HTML
 
@@ -33,6 +34,15 @@
 ```
 
 `re-segmented--sm` reduce el padding (barras secundarias).
+
+**Conteo**: `re-segmented__count` (y `re-tabs__count` en las pestañas) pone una cifra junto a la etiqueta,
+más callada que ella: «Cookies 16 · Storage 20». Cambia con la búsqueda si la vista filtra.
+
+```html
+<button type="button" class="re-segmented__item" aria-pressed="true">
+  {{ t('tab.cookies') }}<span class="re-segmented__count">16</span>
+</button>
+```
 
 ## Reglas
 

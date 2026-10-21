@@ -48,9 +48,21 @@
   --re-slate-950: oklch(0.2 0.015 260);
 
   /* ---------- Surfaces and semantic roles ---------- */
-  --re-background: oklch(0.965 0.004 255);
+  /* Light = the Latte family of the dark Frappé: a cool blue-grey canvas where the content lives, and an
+     off-white (never pure white) that only what rises uses: chrome, menus, dialogs. */
+  --re-background: #eceef3;
   --re-foreground: var(--re-slate-800);
-  --re-card: oklch(0.993 0.002 255);
+  --re-card: #f8f9fb;
+  /* Neutral sheen on the chrome: off-white at the window edge, fading towards the canvas. Depth without a
+     tint. The header fades down, the footer fades up. */
+  --re-chrome-sheen: linear-gradient(to bottom, var(--re-card), color-mix(in oklab, var(--re-card) 45%, var(--re-background)));
+  --re-chrome-sheen-up: linear-gradient(to top, var(--re-card), color-mix(in oklab, var(--re-card) 45%, var(--re-background)));
+  /* Lines of content (tree heads, batch bar). In light they sit on the canvas, with no fill of their own:
+     the level shows in the indent and the dividers. In dark they are raised, the canvas is the deepest. */
+  --re-line: transparent;
+  --re-line-sunken: transparent;
+  /* Hover darkens with a translucent ink: it reads the same on the canvas and on a card. */
+  --re-line-hover: color-mix(in srgb, var(--re-slate-900) 5%, transparent);
   --re-overlay: oklch(0.2 0.015 260 / 0.55);
   --re-primary: oklch(0.53 calc(0.12 * var(--re-brand-c-scale)) var(--re-brand-hue));
   --re-primary-foreground: var(--re-brand-on-primary);
@@ -200,6 +212,11 @@
   --re-background: #292c3c;
   --re-foreground: #dde3fa;
   --re-card: #303446;
+  --re-chrome-sheen: none;
+  --re-chrome-sheen-up: none;
+  --re-line: var(--re-card);
+  --re-line-sunken: var(--re-slate-50);
+  --re-line-hover: color-mix(in srgb, var(--re-slate-100) 70%, transparent);
   --re-overlay: rgb(17 17 27 / 0.6);
   --re-primary: var(--re-brand-dark);
   --re-primary-foreground: var(--re-brand-on-primary-dark);

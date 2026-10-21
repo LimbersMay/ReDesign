@@ -45,6 +45,9 @@ esto es lo que cambia en pantalla al adoptarla y cómo resolverlo. Probado en Ch
 | `re-pill` de 18 a 22px (2.1.0) | El badge de versión de la cabecera (`rounded-full`, ~20px) pasa a 22px. | `re-pill--brand`. Si 22px resulta grande en una cabecera densa, ver la propuesta de abajo. |
 | Oscuro: `danger-soft`, `badge`/`pill` `--danger` y `--success` con relleno opaco de tarjeta y color en el texto (2.1.0) | Desaparecen los fondos semitransparentes de los botones y badges de peligro/éxito. | Aceptado: ReRoute queda como ReSession (D16). |
 | Árbol (`re-tree`): hover único, niveles, líneas suaves | Ninguno: ReRoute no usa `re-tree`. | — |
+| Tema claro Latte (2.3.0): fondo `#eceef3`, tarjeta `#f8f9fb`, brillo neutro en el header | En claro, el lienzo es un gris azulado frío y las tarjetas se separan más de él; el header gana un degradado muy suave. El oscuro no cambia. | Aceptarlo, o sobrescribir `--re-background`, `--re-card` y `--re-chrome-sheen` en `styles.css` para volver al gris anterior. Sin probar aún en ReRoute |
+| Toast sin status bar (2.3.0) | Ninguno: ReRoute tiene status bar y el toast sigue a 44px. | — |
+| Placeholder sans en campos mono (2.3.0) | El buscador de reglas y los campos de patrón muestran el placeholder en Inter en lugar de JetBrains Mono. | Nada: es la regla de la suite (un placeholder es prosa) |
 
 ## Propuestas
 

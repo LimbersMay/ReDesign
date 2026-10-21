@@ -83,8 +83,8 @@
     gap: 0.5rem;
     height: 3rem;
     padding: 0 0.875rem;
-    background: var(--re-card);
-    border-bottom: 1px solid var(--re-border);
+    background: var(--re-chrome-sheen), var(--re-card);
+    border-bottom: 1px solid var(--re-slate-200);
   }
 
   .re-header__brand {
@@ -148,8 +148,8 @@
     gap: 0.75rem;
     height: 2rem;
     padding: 0 0.875rem;
-    background: var(--re-card);
-    border-top: 1px solid var(--re-border);
+    background: var(--re-chrome-sheen-up), var(--re-card);
+    border-top: 1px solid var(--re-slate-200);
     font-size: var(--re-text-2xs);
     line-height: var(--re-text-2xs-lh);
     color: var(--re-slate-500);
@@ -399,6 +399,15 @@
     height: 1.5rem;
   }
 
+  /* Bordered icon button, the height of an input: an action that sits next to a search field. */
+  .re-icon-btn--outline {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--re-slate-200);
+    background: var(--re-slate-50);
+    color: var(--re-slate-500);
+  }
+
   .re-icon-btn:disabled {
     opacity: 0.4;
     cursor: not-allowed;
@@ -547,6 +556,11 @@
   :is(.re-input-group, app-input-group) > input::placeholder {
     font-weight: 400;
     color: var(--re-slate-400);
+  }
+
+  :is(.re-input-group, app-input-group) > input.re-mono::placeholder {
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
   }
 
   :is(.re-input-group, app-input-group) > input[type='number'] {
@@ -1118,6 +1132,56 @@
     color: var(--re-brand-500);
   }
 
+  /*
+   * Header tabs: the views of a popup, inside `re-header`. They fill the header height and mark the
+   * active view with a neutral underline: the header holds no accent (R13), the brand stays free for
+   * the screen's primary action.
+   */
+  .re-tabs--header {
+    align-self: stretch;
+    gap: 0.125rem;
+    margin-right: auto;
+    margin-left: 0.375rem;
+    border-bottom: 0;
+  }
+
+  .re-tabs--header .re-tabs__item {
+    height: 100%;
+    margin-bottom: 0;
+    padding: 0 0.625rem;
+    border-bottom-width: 2px;
+    font-weight: 600;
+    color: var(--re-slate-500);
+    white-space: nowrap;
+  }
+
+  .re-tabs--header .re-tabs__item:hover {
+    color: var(--re-slate-800);
+  }
+
+  .re-tabs--header .re-tabs__item:is([aria-selected='true'], .is-active) {
+    border-bottom-color: var(--re-slate-800);
+    color: var(--re-slate-900);
+  }
+
+  .re-tabs--header .re-tabs__item:is([aria-selected='true'], .is-active) > :is(svg, ng-icon, i) {
+    color: inherit;
+  }
+
+  .re-tabs--header .re-tabs__item:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: -2px;
+  }
+
+  /* Count next to a tab or segmented label ("Global 8", "Cookies 16"): quieter than the label. */
+  .re-tabs__count,
+  .re-segmented__count {
+    font-size: var(--re-text-2xs);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--re-slate-400);
+  }
+
   /* =============================== Cards and lists =============================== */
 
   /* Repeated item with identity: a rule, a book, an automation. Side bar = state/category. */
@@ -1245,6 +1309,164 @@
     color: var(--re-slate-400);
   }
 
+  /*
+   * Navigation list: each row opens a page of its own (a site of Global). Media · title and subtitle ·
+   * trailing data · chevron. The whole row is the button; a checkbox in it stops the click.
+   */
+  .re-nav-list {
+    background: var(--re-card);
+  }
+
+  .re-nav-list__row {
+    display: flex;
+    width: 100%;
+    min-height: 2.875rem;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.375rem 0.75rem 0.375rem 1rem;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color var(--re-duration);
+  }
+
+  .re-nav-list__row + .re-nav-list__row {
+    border-top: 1px solid var(--re-slate-100);
+  }
+
+  .re-nav-list__row:hover {
+    background: var(--re-line-hover);
+  }
+
+  .re-nav-list__row:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: -2px;
+  }
+
+  .re-nav-list__main {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .re-nav-list__title {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 600;
+    color: var(--re-slate-800);
+  }
+
+  .re-nav-list__sub {
+    overflow: hidden;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-400);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-nav-list__end {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: var(--re-text-2xs);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    color: var(--re-slate-500);
+  }
+
+  .re-nav-list__end > :is(svg, ng-icon, i):last-child {
+    color: var(--re-slate-400);
+  }
+
+  /*
+   * Meter: how much of a whole has a role. The filled part is `--re-meter-value` (0–1) of the bar;
+   * `--success` = protected.
+   */
+  .re-meter {
+    position: relative;
+    width: 3.5rem;
+    height: 0.25rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: var(--re-slate-200);
+  }
+
+  .re-meter::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: calc(var(--re-meter-value, 0) * 100%);
+    border-radius: inherit;
+    background: var(--re-slate-500);
+  }
+
+  .re-meter--success::after {
+    background: var(--re-emerald-500);
+  }
+
+  /* Breadcrumb bar of a page opened from a list: back to the list, then where you are. */
+  .re-breadcrumb {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.25rem;
+    height: 2.125rem;
+    padding: 0 0.75rem 0 0.5rem;
+    border-bottom: 1px solid var(--re-slate-100);
+    font-size: var(--re-text-xs);
+    font-weight: 550;
+    color: var(--re-slate-500);
+  }
+
+  .re-breadcrumb__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    height: 1.5rem;
+    padding: 0 0.25rem;
+    border: 0;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .re-breadcrumb__back:hover {
+    background: var(--re-line-hover);
+    color: var(--re-slate-800);
+  }
+
+  .re-breadcrumb__current {
+    overflow: hidden;
+    font-weight: 600;
+    color: var(--re-slate-800);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-breadcrumb__current.re-mono {
+    font-size: var(--re-text-xs);
+  }
+
+  /* One line under a card title with its latest result ("3 min ago: 12 removed, 4 protected"). */
+  .re-card__subtitle {
+    overflow: hidden;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-500);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   /* Group of related controls inside a dialog. */
   .re-fieldset {
     display: flex;
@@ -1268,6 +1490,132 @@
     clear: both;
   }
 
+  /* =============================== Summary =============================== */
+
+  /*
+   * What a view is about, with its one primary action: the site of the tab, a site of Global.
+   * With a selection it becomes the batch bar (`re-summary--selection`), same height, so nothing
+   * below moves. The guarantee is said here, where the user decides (patterns/guarantee.md).
+   */
+  .re-summary {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 4rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .re-summary__main {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .re-summary__title {
+    overflow: hidden;
+    margin: 0;
+    font-size: var(--re-text-sm);
+    line-height: var(--re-text-sm-lh);
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--re-slate-900);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-summary__title.re-mono {
+    font-size: var(--re-text-sm);
+    letter-spacing: 0;
+  }
+
+  /* Facts separated by dots. A stat with a role (`--success`) carries its icon. */
+  .re-summary__stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.125rem 0.375rem;
+    margin-top: 0.1875rem;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-500);
+  }
+
+  .re-summary__stats > * + *::before {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    margin-right: 0.375rem;
+    border-radius: 9999px;
+    background: var(--re-slate-300);
+    vertical-align: middle;
+  }
+
+  .re-summary__stat--success {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--re-emerald-600);
+  }
+
+  .re-summary__stat--success::before {
+    margin-right: 0.125rem;
+  }
+
+  .re-summary__actions {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  /* Selection mode: master checkbox · count · select all link … actions · close. */
+  .re-summary--selection {
+    gap: 0.625rem;
+    background: color-mix(in srgb, var(--re-brand-500) 6%, transparent);
+  }
+
+  .re-summary__count {
+    font-size: var(--re-text-xs);
+    font-weight: 600;
+    color: var(--re-slate-800);
+    white-space: nowrap;
+  }
+
+  /* Favicon tile: the site's own icon, or its initial on a neutral tile. */
+  .re-favicon {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 1.375rem;
+    height: 1.375rem;
+    overflow: hidden;
+    border-radius: var(--re-radius-sm);
+    background: var(--re-slate-100);
+    font-family: var(--re-font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--re-slate-600);
+    text-transform: uppercase;
+  }
+
+  .re-favicon > img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .re-favicon--lg {
+    width: 2.125rem;
+    height: 2.125rem;
+    border-radius: var(--re-radius);
+    font-size: var(--re-text-sm);
+  }
+
+  .re-favicon--lg > img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
   /* =============================== Tree (dense hierarchical data) =============================== */
 
   /* Bar above a tree: select all + batch actions. */
@@ -1280,7 +1628,7 @@
     height: 2rem;
     padding: 0 1rem;
     border-bottom: 1px solid var(--re-slate-200);
-    background: color-mix(in srgb, var(--re-slate-50) 60%, transparent);
+    background: color-mix(in srgb, var(--re-line-sunken) 60%, transparent);
     font-size: var(--re-text-2xs);
     line-height: var(--re-text-2xs-lh);
     user-select: none;
@@ -1330,7 +1678,7 @@
     height: 2rem;
     padding: 0 1rem 0 calc(1rem + var(--re-tree-depth, 0) * var(--re-tree-indent, 1rem));
     border-bottom: 1px solid color-mix(in srgb, var(--re-slate-200) 35%, transparent);
-    background: var(--re-card);
+    background: var(--re-line);
     cursor: pointer;
     user-select: none;
     transition: background-color var(--re-duration);
@@ -1341,7 +1689,7 @@
   .re-tree__head:hover,
   .re-tree .re-tree__items .re-tree__head:hover,
   .re-tree__row:hover {
-    background: color-mix(in srgb, var(--re-slate-100) 70%, transparent);
+    background: var(--re-line-hover);
   }
 
   .re-tree__head:focus-visible {
@@ -1352,7 +1700,7 @@
   /* A head inside another group's items is nested, at any depth: compact and sunken. */
   .re-tree__items .re-tree__head {
     height: 1.75rem;
-    background: var(--re-slate-50);
+    background: var(--re-line-sunken);
   }
 
   .re-tree__head-main {
@@ -1418,7 +1766,7 @@
   }
 
   .re-tree__items {
-    background: color-mix(in srgb, var(--re-slate-50) 30%, transparent);
+    background: color-mix(in srgb, var(--re-line-sunken) 30%, transparent);
   }
 
   .re-tree__items > * + * {
@@ -1485,10 +1833,300 @@
     color: var(--re-slate-600);
   }
 
+  /*
+   * Opt-in sticky heads (`re-tree--sticky` on `re-tree`). An open group keeps its head pinned while its
+   * rows scroll; a nested head stacks under its parent's (32px, then 28px per extra level). A head
+   * sticks inside its own group only, so it leaves with it. The head tokens can be translucent, so each
+   * state is painted over the opaque tree background.
+   */
+  .re-tree--sticky .re-tree__head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: linear-gradient(var(--re-line), var(--re-line)), var(--re-background);
+  }
+
+  .re-tree--sticky .re-tree__items .re-tree__head {
+    top: calc(2rem + (var(--re-tree-depth, 1) - 1) * 1.75rem);
+    z-index: 1;
+    background: linear-gradient(var(--re-line-sunken), var(--re-line-sunken)), var(--re-background);
+  }
+
+  .re-tree--sticky .re-tree__head:hover,
+  .re-tree.re-tree--sticky .re-tree__items .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-background);
+  }
+
   .re-tree__note {
     padding: 0.5rem 2rem;
     font-family: var(--re-font-sans);
     color: var(--re-slate-400);
+  }
+
+  /*
+   * Flat tree (`re-tree--flat`): one level of sections over a continuous list, for views where the
+   * groups are the places the data lives (the domains of a site). Heads are sticky dividers on the
+   * page background; rows sit on the card. Use it with dense rows.
+   */
+  .re-tree--flat .re-tree__head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 2rem;
+    border-top: 1px solid var(--re-slate-100);
+    border-bottom: 1px solid var(--re-slate-100);
+    background: var(--re-background);
+  }
+
+  .re-tree--flat .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-background);
+  }
+
+  /* The section's name is data (a domain): mono. What kind of section it is goes after, in sans. */
+  /* The domain keeps its width; the kind after it is what gives way. */
+  .re-tree--flat .re-tree__title {
+    flex-shrink: 0;
+    max-width: 100%;
+    overflow: hidden;
+    font-weight: 650;
+    color: var(--re-slate-800);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree--flat .re-tree__meta {
+    font-family: var(--re-font-sans);
+    color: var(--re-slate-400);
+  }
+
+  .re-tree--flat .re-tree__items {
+    background: var(--re-card);
+  }
+
+  .re-tree--flat .re-tree__items > * + * {
+    border-top-color: var(--re-slate-100);
+  }
+
+  /*
+   * Dense row (`re-tree__row--dense`): one 32px line per item, in four cells that line up across
+   * rows: lead (checkbox, lock) · key · value · trail (flags, time). The key column is fixed
+   * (`--re-tree-key`), the value takes the rest. Row actions float over the end of the trail on
+   * hover or focus (`re-tree__actions`), hiding the cell marked `re-tree__end`.
+   */
+  .re-tree__row--dense {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto var(--re-tree-key, 10rem) minmax(0, 1fr) auto;
+    column-gap: 0.625rem;
+    height: 2rem;
+    padding: 0 1rem;
+  }
+
+  .re-tree__items .re-tree__items .re-tree__row--dense:not(.re-tree__row--2line) {
+    height: 2rem;
+  }
+
+  .re-tree__row--dense:has(.re-tree__lead .re-checkbox:checked) {
+    background: color-mix(in srgb, var(--re-brand-500) 6%, transparent);
+  }
+
+  .re-tree__row--dense:has(.re-tree__lead .re-checkbox:checked):hover {
+    background: color-mix(in srgb, var(--re-brand-500) 9%, transparent);
+  }
+
+  .re-tree__lead,
+  .re-tree__trail {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .re-tree__trail {
+    justify-content: flex-end;
+  }
+
+  .re-tree__row--dense .re-tree__key {
+    font-size: var(--re-text-xs);
+    color: var(--re-slate-800);
+  }
+
+  .re-tree__row--dense .re-tree__key--strong {
+    font-weight: 700;
+    color: var(--re-slate-900);
+  }
+
+  .re-tree__row--dense .re-tree__value {
+    max-width: none;
+    font-size: var(--re-text-xs);
+  }
+
+  /* Remaining time or size, right-aligned in a fixed column. */
+  .re-tree__time {
+    width: 3.625rem;
+    overflow: hidden;
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-2xs);
+    font-variant-numeric: tabular-nums;
+    color: var(--re-slate-400);
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-tree__time--warning {
+    color: var(--re-amber-700);
+  }
+
+  .re-tree__row--dense > .re-tree__actions {
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    bottom: 0;
+    gap: 0.125rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--re-duration);
+  }
+
+  .re-tree__row--dense:is(:hover, :has(:focus-visible)) > .re-tree__actions {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .re-tree__row--dense:is(:hover, :has(:focus-visible)) .re-tree__end {
+    visibility: hidden;
+  }
+
+  @media (hover: none) {
+    .re-tree__row--dense > .re-tree__actions {
+      position: static;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  /*
+   * Flags: one-letter chips for boolean attributes (H = HttpOnly, S = Secure). Fixed slots, so each
+   * letter keeps its column; an absent flag leaves its slot empty. The full word is in the tooltip.
+   */
+  .re-flags {
+    display: grid;
+    grid-template-columns: repeat(var(--re-flags, 2), 0.9375rem);
+    gap: 0.25rem;
+  }
+
+  .re-flag {
+    display: grid;
+    place-items: center;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    padding-top: 1px;
+    border-radius: 3px;
+    background: var(--re-slate-100);
+    font-family: var(--re-font-mono);
+    font-size: 0.625rem;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--re-slate-500);
+    cursor: default;
+  }
+
+  /* =============================== Tooltip =============================== */
+
+  /*
+   * Rich tooltip on hover or keyboard focus: `re-tip` on the trigger, `re-tip__bubble` inside it
+   * (it may hold <strong>). Above the trigger, centred; `re-tip--end` aligns it to the trigger's
+   * right edge for triggers near the right of the window. Plain hints keep using `title`.
+   */
+  .re-tip {
+    position: relative;
+  }
+
+  .re-tip__bubble {
+    position: absolute;
+    bottom: calc(100% + 0.4375rem);
+    left: 50%;
+    z-index: var(--re-z-dropdown);
+    padding: 0.375rem 0.5625rem;
+    border-radius: var(--re-radius-md);
+    background: var(--re-inverse);
+    box-shadow: var(--re-shadow-md);
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-2xs);
+    line-height: 1.35;
+    font-weight: 400;
+    color: color-mix(in srgb, var(--re-inverse-foreground) 75%, transparent);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(2px);
+    transition:
+      opacity var(--re-duration),
+      transform var(--re-duration);
+  }
+
+  .re-tip__bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: calc(50% - 4px);
+    width: 8px;
+    height: 8px;
+    background: inherit;
+    transform: rotate(45deg);
+  }
+
+  .re-tip__bubble strong {
+    font-weight: 650;
+    color: var(--re-inverse-foreground);
+  }
+
+  .re-tip:is(:hover, :focus-visible) > .re-tip__bubble {
+    opacity: 1;
+    transform: translateX(-50%);
+    transition-delay: 250ms;
+  }
+
+  .re-tip--end > .re-tip__bubble {
+    right: -0.375rem;
+    left: auto;
+    transform: translateY(2px);
+  }
+
+  .re-tip--end:is(:hover, :focus-visible) > .re-tip__bubble {
+    transform: none;
+  }
+
+  .re-tip--end > .re-tip__bubble::after {
+    right: calc(0.375rem + 0.46875rem - 4px);
+    left: auto;
+  }
+
+  /*
+   * Narrow window (a side panel from 320px): the header keeps the logo, the tabs lose their icons,
+   * and dense rows drop the value column. Views stack their own tools (layout, Tailwind).
+   */
+  @media (max-width: 24.99rem) {
+    .re-header .re-header__title {
+      display: none;
+    }
+
+    /* !important: ng-icon sets its display in an unlayered host style, which beats any layer. */
+    .re-tabs--header .re-tabs__item > :is(svg, ng-icon, i) {
+      display: none !important;
+    }
+
+    .re-tabs--header .re-tabs__item {
+      padding: 0 0.5rem;
+    }
+
+    .re-tree__row--dense {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .re-tree__row--dense > .re-tree__value {
+      display: none;
+    }
   }
 
   /* =============================== Overlays =============================== */
@@ -1883,10 +2521,252 @@
     color: var(--re-slate-700);
   }
 
+  /*
+   * Sheet: an editor that takes the whole popup instead of floating in it. For a form with more
+   * fields than a centred dialog can show without scrolling in a 540×580 window. Same header, body
+   * and footer as `re-dialog`; the overlay carries `re-dialog-overlay--sheet`.
+   */
+  .re-dialog-overlay--sheet {
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .re-dialog--sheet {
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    background: var(--re-background);
+    box-shadow: none;
+    animation: re-sheet-in var(--re-duration-slow) var(--re-ease);
+  }
+
+  .re-dialog--sheet .re-dialog__header {
+    justify-content: flex-start;
+    gap: 0.625rem;
+    padding: 0.625rem 0.75rem 0.625rem 0.625rem;
+    border-bottom-color: var(--re-slate-100);
+    background: var(--re-card);
+  }
+
+  .re-dialog__heading {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .re-dialog--sheet .re-dialog__title {
+    display: block;
+    overflow: hidden;
+    font-weight: 650;
+    color: var(--re-slate-900);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-dialog--sheet .re-dialog__title.re-mono {
+    font-size: var(--re-text-sm);
+  }
+
+  .re-dialog--sheet .re-dialog__subtitle {
+    margin-top: 0.0625rem;
+    color: var(--re-slate-400);
+  }
+
+  .re-dialog--sheet .re-dialog__body {
+    gap: 0.875rem;
+    padding: 0.875rem 1rem 1rem;
+  }
+
+  .re-dialog--sheet .re-dialog__footer {
+    border-top-color: var(--re-slate-100);
+    background: var(--re-card);
+  }
+
+  /* What an option gives, right-aligned in a dropdown option ("In 30 days · Nov 20"). */
+  .re-dropdown__hint {
+    flex-shrink: 0;
+    font-size: var(--re-text-2xs);
+    font-variant-numeric: tabular-nums;
+    color: var(--re-slate-400);
+  }
+
+  /* Toggle whose label is its state ("Locked" / "Not locked"), for a header or a toolbar. */
+  .re-toggle-pill {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.375rem;
+    height: 1.75rem;
+    padding: 0 0.625rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: 9999px;
+    background: transparent;
+    font: inherit;
+    font-size: var(--re-text-2xs);
+    font-weight: 600;
+    color: var(--re-slate-500);
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      border-color var(--re-duration),
+      color var(--re-duration);
+  }
+
+  .re-toggle-pill:hover {
+    color: var(--re-slate-800);
+  }
+
+  .re-toggle-pill[aria-pressed='true'] {
+    border-color: var(--re-slate-300);
+    background: var(--re-slate-100);
+    color: var(--re-slate-900);
+  }
+
+  .re-toggle-pill:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: 2px;
+  }
+
+  /*
+   * Property list: label on the left, control on the right, one property per row, with an
+   * optional one-line hint under the control. For short settings of one object (expiry, SameSite,
+   * flags) that would otherwise each need a titled section.
+   */
+  .re-props {
+    border: 1px solid color-mix(in srgb, var(--re-slate-200) 70%, transparent);
+    border-radius: var(--re-radius);
+    background: var(--re-card);
+  }
+
+  .re-props__row {
+    display: grid;
+    grid-template-columns: var(--re-props-label, 5.75rem) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.4375rem 0.75rem;
+  }
+
+  .re-props__row + .re-props__row {
+    border-top: 1px solid var(--re-slate-100);
+  }
+
+  .re-props__label {
+    font-size: var(--re-text-xs);
+    font-weight: 550;
+    color: var(--re-slate-600);
+  }
+
+  .re-props__control {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-props__hint {
+    grid-column: 2;
+    margin-top: 0.1875rem;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-400);
+  }
+
+  /* Checkbox with its label in a bordered chip, for a short set of independent flags. */
+  .re-check-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    height: 1.75rem;
+    padding: 0 0.625rem 0 0.5rem;
+    border: 1px solid var(--re-slate-200);
+    border-radius: var(--re-radius-md);
+    font-size: var(--re-text-xs);
+    font-weight: 550;
+    color: var(--re-slate-800);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .re-check-chip:has(:disabled) {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+
+  /*
+   * Disclosure (`<details class="re-disclosure">`): a section that starts closed because it is
+   * rarely changed. The summary can show the current value on the right (`re-disclosure__value`).
+   */
+  .re-disclosure {
+    border: 1px solid color-mix(in srgb, var(--re-slate-200) 70%, transparent);
+    border-radius: var(--re-radius);
+    background: var(--re-card);
+  }
+
+  .re-disclosure__summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    font-size: var(--re-text-xs);
+    font-weight: 550;
+    color: var(--re-slate-600);
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .re-disclosure__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .re-disclosure__summary > :is(svg, ng-icon, i):first-child {
+    flex-shrink: 0;
+    color: var(--re-slate-400);
+    transition: transform var(--re-duration);
+  }
+
+  .re-disclosure[open] > .re-disclosure__summary > :is(svg, ng-icon, i):first-child {
+    transform: rotate(90deg);
+  }
+
+  .re-disclosure__summary:focus-visible {
+    border-radius: var(--re-radius);
+    outline: 2px solid color-mix(in srgb, var(--re-ring) 55%, transparent);
+    outline-offset: -2px;
+  }
+
+  .re-disclosure__value {
+    min-width: 0;
+    margin-left: auto;
+    overflow: hidden;
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    font-weight: 400;
+    color: var(--re-slate-400);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .re-disclosure[open] .re-disclosure__value {
+    display: none;
+  }
+
+  .re-disclosure__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 0.25rem 0.75rem 0.75rem;
+  }
+
   /* Toast: feedback of an action, with optional Undo. Above the status bar, centered. */
   .re-toast-region {
     position: fixed;
-    bottom: 2.75rem;
+    bottom: 0.875rem;
     left: 50%;
     z-index: var(--re-z-toast);
     display: flex;
@@ -1895,6 +2775,10 @@
     gap: 0.5rem;
     transform: translateX(-50%);
     pointer-events: none;
+  }
+
+  .re-app:has(.re-statusbar) .re-toast-region {
+    bottom: 2.75rem;
   }
 
   .re-toast-region--contained {
@@ -2068,6 +2952,13 @@
 }
 
 /* =============================== Motion =============================== */
+
+@keyframes re-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
 
 @keyframes re-fade {
   from {

@@ -29,7 +29,7 @@ Para que la misma acción tenga el mismo icono en toda la suite:
 | Añadir | `plus` |
 | Editar | `square-pen` (tarjetas) · `pencil` (filas densas) |
 | Eliminar | `trash-2` |
-| Limpiar · vaciar | Sin icono: el verbo, la posición y la cifra dicen el alcance (D16) |
+| Limpiar | Sin icono: el verbo, la posición y la cifra dicen el alcance (D16) |
 | Copiar | `copy` |
 | Exportar / importar | `download` / `upload` |
 | Ayuda | `circle-help` · Atajos: `keyboard` |

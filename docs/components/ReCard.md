@@ -34,5 +34,8 @@ datos homogéneos usa [ReTree](ReTree.md); para filas ligeras, [ReList](ReList.m
 - Pausada (`is-paused`): opacidad 60 %, fondo `slate-100`, barra y punto en `slate-300`.
 - Las acciones se revelan en hover o foco de teclado (`re-reveal`), salvo que la tarjeta sea única en su vista.
 - El contenido técnico va en `re-code-box` (mono, hundido).
+- `re-card__subtitle`, bajo `re-card__title` (los dos dentro de un `min-w-0`), dice en una línea el último
+  resultado de lo que la tarjeta hace: «Último ciclo hace 3 min · 12 eliminadas · 4 protegidas». Es lo que
+  da confianza en algo que trabaja solo.
 - Variante con miniatura (ReBooks) y variante de automatización (ReSession) son **componentes firma**:
   ver `docs/products/`.

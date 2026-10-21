@@ -253,6 +253,315 @@
       </section>
 
       <!-- Buttons -->
+      <!-- 2.3.0: summary, header tabs, flat tree, dense rows, nav list, sheet (D19) -->
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">ReSummary · pestañas · árbol plano y fila densa</h2>
+        <p class="g-p">El resumen dice la garantía junto a «Limpiar»; con selección pasa a modo selección. Pasa el ratón por una fila (acciones flotantes) o por H y S (tooltip).</p>
+        <div class="g-frame" style="height: 430px; display: flex; flex-direction: column">
+          <header class="re-header">
+            <div class="re-header__brand">
+              <div class="re-header__logo"><i data-lucide="cookie" width="13" height="13"></i></div>
+              <span class="re-header__title" data-brand-name>ReSession</span>
+            </div>
+            <nav class="re-tabs re-tabs--header" role="tablist" aria-label="Vistas">
+              <button type="button" role="tab" class="re-tabs__item" aria-selected="true"><i data-lucide="target" width="12" height="12"></i>Esta pestaña</button>
+              <button type="button" role="tab" class="re-tabs__item" aria-selected="false"><i data-lucide="globe" width="12" height="12"></i>Global<span class="re-tabs__count">7</span></button>
+              <button type="button" role="tab" class="re-tabs__item" aria-selected="false"><i data-lucide="zap" width="12" height="12"></i>Auto</button>
+            </nav>
+            <div class="re-header__actions">
+              <button type="button" class="re-icon-btn" title="Ajustes" aria-label="Ajustes"><i data-lucide="settings" width="13" height="13"></i></button>
+            </div>
+          </header>
+
+          <section class="re-summary">
+            <span class="re-favicon re-favicon--lg">g</span>
+            <div class="re-summary__main">
+              <h1 class="re-summary__title re-mono">gist.github.com</h1>
+              <div class="re-summary__stats">
+                <span>16 cookies</span>
+                <span>20 claves de storage</span>
+                <span class="re-summary__stat--success"><i data-lucide="shield-check" width="11" height="11"></i>8 protegidas</span>
+              </div>
+            </div>
+            <div class="re-summary__actions">
+              <button type="button" class="re-btn re-btn--sm re-btn--danger-soft">Limpiar (8)</button>
+            </div>
+          </section>
+
+          <div style="display: flex; gap: 0.375rem; padding: 0 1rem 0.625rem">
+            <div class="re-input-group" style="flex: 1">
+              <i data-lucide="search" width="13" height="13"></i>
+              <input type="text" class="re-mono" placeholder="Buscar clave, valor o dominio" aria-label="Buscar" />
+              <kbd class="re-kbd">/</kbd>
+            </div>
+            <button type="button" class="re-icon-btn re-icon-btn--outline" title="Nueva cookie" aria-label="Nueva cookie"><i data-lucide="plus" width="13" height="13"></i></button>
+            <div class="re-segmented re-segmented--sm">
+              <button type="button" class="re-segmented__item" aria-pressed="true">Cookies<span class="re-segmented__count">16</span></button>
+              <button type="button" class="re-segmented__item" aria-pressed="false">Storage<span class="re-segmented__count">20</span></button>
+            </div>
+          </div>
+
+          <div class="re-tree re-tree--flat">
+            <section class="re-tree__group">
+              <div class="re-tree__head re-reveal-host" role="button" tabindex="0" aria-expanded="true">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <span class="re-tree__title">gist.github.com</span>
+                  <span class="re-tree__meta">Subdominio · 3</span>
+                </div>
+                <div class="re-tree__actions re-reveal">
+                  <button type="button" class="re-btn re-btn--xs re-btn--danger-outline">Limpiar</button>
+                </div>
+              </div>
+              <div class="re-tree__items">
+                <div class="re-tree__row re-tree__row--dense">
+                  <span class="re-tree__lead">
+                    <input type="checkbox" class="re-checkbox" aria-label="Seleccionar gist_session" />
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand" title="Quitar candado" aria-label="Quitar candado" aria-pressed="true"><i data-lucide="lock" width="12" height="12"></i></button>
+                  </span>
+                  <span class="re-tree__key re-tree__key--strong">gist_session</span>
+                  <span class="re-tree__value">ghs_89A7sdFk982jKqP2xL0mQ71bBf</span>
+                  <span class="re-tree__trail">
+                    <span class="re-flags">
+                      <span class="re-flag re-tip re-tip--end" aria-label="HttpOnly">H<span class="re-tip__bubble" aria-hidden="true"><strong>HttpOnly</strong> · los scripts de la página no la leen</span></span>
+                      <span class="re-flag re-tip re-tip--end" aria-label="Secure">S<span class="re-tip__bubble" aria-hidden="true"><strong>Secure</strong> · solo viaja por HTTPS</span></span>
+                    </span>
+                    <span class="re-tree__time re-tree__end" title="Caduca dentro de 14 días">14 d</span>
+                  </span>
+                  <span class="re-tree__actions">
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand" title="Editar" aria-label="Editar"><i data-lucide="pencil" width="12" height="12"></i></button>
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="12" height="12"></i></button>
+                  </span>
+                </div>
+                <div class="re-tree__row re-tree__row--dense">
+                  <span class="re-tree__lead">
+                    <input type="checkbox" class="re-checkbox" checked aria-label="Seleccionar _gh_sess" />
+                    <button type="button" class="re-icon-btn re-icon-btn--sm" title="Proteger con candado" aria-label="Proteger con candado" aria-pressed="false"><i data-lucide="lock-open" width="12" height="12"></i></button>
+                  </span>
+                  <span class="re-tree__key">_gh_sess</span>
+                  <span class="re-tree__value">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ODIxIn0</span>
+                  <span class="re-tree__trail">
+                    <span class="re-flags">
+                      <span class="re-flag re-tip re-tip--end" aria-label="HttpOnly">H<span class="re-tip__bubble" aria-hidden="true"><strong>HttpOnly</strong> · los scripts de la página no la leen</span></span>
+                      <span></span>
+                    </span>
+                    <span class="re-tree__time re-tree__time--warning re-tree__end" title="Caduca dentro de 20 min">20 min</span>
+                  </span>
+                  <span class="re-tree__actions">
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand" title="Editar" aria-label="Editar"><i data-lucide="pencil" width="12" height="12"></i></button>
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="12" height="12"></i></button>
+                  </span>
+                </div>
+                <div class="re-tree__row re-tree__row--dense">
+                  <span class="re-tree__lead">
+                    <input type="checkbox" class="re-checkbox" aria-label="Seleccionar color_mode" />
+                    <button type="button" class="re-icon-btn re-icon-btn--sm" title="Proteger con candado" aria-label="Proteger con candado" aria-pressed="false"><i data-lucide="lock-open" width="12" height="12"></i></button>
+                  </span>
+                  <span class="re-tree__key">color_mode</span>
+                  <span class="re-tree__value">%7B%22color_mode%22%3A%22auto%22%7D</span>
+                  <span class="re-tree__trail">
+                    <span class="re-flags"><span></span><span></span></span>
+                    <span class="re-tree__time re-tree__end" title="Hasta cerrar el navegador">Sesión</span>
+                  </span>
+                  <span class="re-tree__actions">
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--brand" title="Editar" aria-label="Editar"><i data-lucide="pencil" width="12" height="12"></i></button>
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="12" height="12"></i></button>
+                  </span>
+                </div>
+              </div>
+            </section>
+            <section class="re-tree__group">
+              <div class="re-tree__head re-reveal-host" role="button" tabindex="0" aria-expanded="true">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <span class="re-tree__title">Rastreadores</span>
+                  <span class="re-tree__meta">Terceros · 1</span>
+                </div>
+                <div class="re-tree__actions re-reveal">
+                  <button type="button" class="re-btn re-btn--xs re-btn--danger-outline">Limpiar</button>
+                </div>
+              </div>
+              <div class="re-tree__items">
+                <div class="re-tree__row re-tree__row--dense">
+                  <span class="re-tree__lead">
+                    <input type="checkbox" class="re-checkbox" aria-label="Seleccionar IDE" />
+                    <button type="button" class="re-icon-btn re-icon-btn--sm" title="Proteger con candado" aria-label="Proteger con candado" aria-pressed="false"><i data-lucide="lock-open" width="12" height="12"></i></button>
+                  </span>
+                  <span class="re-tree__key">IDE</span>
+                  <span class="re-tree__value">.doubleclick.net</span>
+                  <span class="re-tree__trail">
+                    <span class="re-pill re-pill--sm">Google Ads</span>
+                    <span class="re-tree__time re-tree__end">390 d</span>
+                  </span>
+                  <span class="re-tree__actions">
+                    <button type="button" class="re-icon-btn re-icon-btn--sm re-icon-btn--danger" title="Eliminar" aria-label="Eliminar"><i data-lucide="trash-2" width="12" height="12"></i></button>
+                  </span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">ReList · lista de navegación, medidor y migas · ReSummary en modo selección</h2>
+        <div class="g-row" style="align-items: stretch">
+          <div class="g-frame g-flex1" style="min-width: 320px">
+            <nav class="re-nav-list">
+              <button type="button" class="re-nav-list__row" aria-label="Abrir github.com">
+                <span class="re-favicon">g</span>
+                <span class="re-nav-list__main">
+                  <span class="re-nav-list__title">github.com <span class="re-pill re-pill--sm">Pestaña actual</span></span>
+                  <span class="re-nav-list__sub">2 dominios · 7 con candado</span>
+                </span>
+                <span class="re-nav-list__end">
+                  <span class="re-meter re-meter--success" style="--re-meter-value: 0.54"></span>
+                  <span style="width: 1.5rem; text-align: right">13</span>
+                  <i data-lucide="chevron-right" width="13" height="13"></i>
+                </span>
+              </button>
+              <button type="button" class="re-nav-list__row" aria-label="Abrir stackoverflow.com">
+                <span class="re-favicon">s</span>
+                <span class="re-nav-list__main">
+                  <span class="re-nav-list__title">stackoverflow.com</span>
+                  <span class="re-nav-list__sub">1 dominio · Lista blanca</span>
+                </span>
+                <span class="re-nav-list__end">
+                  <span class="re-meter re-meter--success" style="--re-meter-value: 1"></span>
+                  <span style="width: 1.5rem; text-align: right">5</span>
+                  <i data-lucide="chevron-right" width="13" height="13"></i>
+                </span>
+              </button>
+              <button type="button" class="re-nav-list__row" aria-label="Abrir los rastreadores">
+                <span class="re-favicon"><i data-lucide="shield-alert" width="12" height="12"></i></span>
+                <span class="re-nav-list__main">
+                  <span class="re-nav-list__title">Rastreadores de terceros</span>
+                  <span class="re-nav-list__sub">3 rastreadores conocidos</span>
+                </span>
+                <span class="re-nav-list__end">
+                  <span style="width: 1.5rem; text-align: right">6</span>
+                  <i data-lucide="chevron-right" width="13" height="13"></i>
+                </span>
+              </button>
+            </nav>
+          </div>
+          <div class="g-frame g-flex1" style="min-width: 320px">
+            <div class="re-breadcrumb">
+              <button type="button" class="re-breadcrumb__back"><i data-lucide="chevron-left" width="13" height="13"></i>Global</button>
+              <span>/</span>
+              <span class="re-breadcrumb__current re-mono">github.com</span>
+            </div>
+            <section class="re-summary re-summary--selection">
+              <input type="checkbox" class="re-checkbox" id="gSelAll" aria-label="Seleccionar o quitar todas" />
+              <div style="display: flex; min-width: 0; flex: 1; align-items: center; gap: 0.625rem">
+                <span class="re-summary__count">2 seleccionadas</span>
+                <button type="button" class="re-link">Seleccionar las 6</button>
+              </div>
+              <div class="re-summary__actions">
+                <button type="button" class="re-btn re-btn--sm re-btn--secondary"><i data-lucide="lock" width="12" height="12"></i>Proteger</button>
+                <button type="button" class="re-btn re-btn--sm re-btn--danger-soft">Limpiar (2)</button>
+                <button type="button" class="re-icon-btn" title="Quitar selección" aria-label="Quitar selección"><i data-lucide="x" width="13" height="13"></i></button>
+              </div>
+            </section>
+            <article class="re-card" style="margin: 0.75rem 1rem; --re-card-accent: var(--re-emerald-500)">
+              <div class="re-card__bar"></div>
+              <div class="re-card__header">
+                <div class="re-card__heading">
+                  <span class="re-dot re-dot--live"></span>
+                  <div style="min-width: 0">
+                    <h4 class="re-card__title" style="margin: 0">Limpieza automática</h4>
+                    <p class="re-card__subtitle" style="margin: 0">Último ciclo hace 3 min · 12 eliminadas · 4 protegidas</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">ReDialog · hoja con propiedades y sección plegada</h2>
+        <div class="g-frame" style="height: 580px; max-width: 540px">
+          <div class="re-dialog-overlay re-dialog-overlay--contained re-dialog-overlay--sheet">
+            <form class="re-dialog re-dialog--sheet" role="dialog" aria-modal="true" aria-labelledby="gSheet" onsubmit="return false">
+              <header class="re-dialog__header">
+                <button type="button" class="re-icon-btn" title="Cerrar" aria-label="Cerrar"><i data-lucide="x" width="14" height="14"></i></button>
+                <div class="re-dialog__heading">
+                  <h3 class="re-dialog__title re-mono" id="gSheet" style="margin: 0">auth_token</h3>
+                  <p class="re-dialog__subtitle" style="margin: 0">.github.com · /</p>
+                </div>
+                <span class="re-pill re-pill--success" title="github.com está en tu lista blanca"><i data-lucide="shield-check" width="11" height="11"></i>Lista blanca</span>
+                <button type="button" class="re-toggle-pill" aria-pressed="false" id="gToggle"><i data-lucide="lock-open" width="12" height="12"></i>Sin candado</button>
+              </header>
+              <div class="re-dialog__body">
+                <div class="re-field">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; min-height: 1.5rem">
+                    <label class="re-section-title" for="gSheetVal">Valor</label>
+                    <span style="flex: 1"></span>
+                    <div class="re-segmented re-segmented--sm">
+                      <button type="button" class="re-segmented__item" aria-pressed="true">Original</button>
+                      <button type="button" class="re-segmented__item" aria-pressed="false">JWT</button>
+                    </div>
+                  </div>
+                  <textarea id="gSheetVal" class="re-textarea re-mono" rows="3" spellcheck="false" style="box-sizing: border-box; width: 100%">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ODIxIn0.s7zH2L8X3xQ9vKp1mN4r</textarea>
+                  <div style="display: flex; justify-content: flex-end"><span class="re-hint re-mono">88 / 4096 B</span></div>
+                </div>
+                <div class="re-props">
+                  <div class="re-props__row">
+                    <span class="re-props__label">Caduca</span>
+                    <div class="re-props__control">
+                      <div class="re-dropdown" style="width: auto">
+                        <button type="button" class="re-dropdown__trigger" aria-haspopup="listbox" aria-expanded="false">
+                          <i data-lucide="clock" width="12" height="12"></i><span class="re-dropdown__label">En 20 min</span>
+                          <i class="re-dropdown__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                        </button>
+                      </div>
+                      <span class="re-hint re-hint--warning">21 oct 2026, 14:52</span>
+                    </div>
+                  </div>
+                  <div class="re-props__row">
+                    <span class="re-props__label">SameSite</span>
+                    <div class="re-props__control">
+                      <div class="re-segmented re-segmented--sm">
+                        <button type="button" class="re-segmented__item" aria-pressed="true">Lax</button>
+                        <button type="button" class="re-segmented__item" aria-pressed="false">Strict</button>
+                        <button type="button" class="re-segmented__item" aria-pressed="false">None</button>
+                      </div>
+                    </div>
+                    <span class="re-props__hint">Se envía al llegar al sitio desde un enlace, no en peticiones de otros sitios.</span>
+                  </div>
+                  <div class="re-props__row">
+                    <span class="re-props__label">Acceso</span>
+                    <div class="re-props__control">
+                      <label class="re-check-chip"><input type="checkbox" class="re-checkbox" checked />HttpOnly</label>
+                      <label class="re-check-chip"><input type="checkbox" class="re-checkbox" checked disabled />Secure</label>
+                    </div>
+                    <span class="re-props__hint">HttpOnly: los scripts de la página no la leen · Secure: solo viaja por HTTPS</span>
+                  </div>
+                </div>
+                <details class="re-disclosure">
+                  <summary class="re-disclosure__summary">
+                    <i data-lucide="chevron-right" width="13" height="13"></i>Nombre y ámbito
+                    <span class="re-disclosure__value">.github.com · /</span>
+                  </summary>
+                  <div class="re-disclosure__body">
+                    <div class="re-field">
+                      <label class="re-label" for="gSheetName">Nombre</label>
+                      <div class="re-input-group"><input id="gSheetName" class="re-mono" value="auth_token" /></div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+              <footer class="re-dialog__footer">
+                <button type="button" class="re-btn re-btn--sm re-btn--danger-ghost re-dialog__footer-start"><i data-lucide="trash-2" width="12" height="12"></i>Eliminar</button>
+                <button type="button" class="re-btn re-btn--sm re-btn--ghost">Cancelar</button>
+                <button type="submit" class="re-btn re-btn--sm re-btn--primary">Guardar</button>
+              </footer>
+            </form>
+          </div>
+        </div>
+      </section>
+
       <section class="g-panel">
         <h2 class="g-h">ReButton</h2>
         <div class="g-row">
@@ -560,6 +869,15 @@
 
       document.getElementById('indet').indeterminate = true;
       document.getElementById('indet2').indeterminate = true;
+      document.getElementById('gSelAll').indeterminate = true;
+      // The toggle pill says its state: pressing it flips the word and the icon.
+      document.getElementById('gToggle').addEventListener('click', (event) => {
+        const pill = event.currentTarget;
+        const isLocked = pill.getAttribute('aria-pressed') !== 'true';
+        pill.setAttribute('aria-pressed', String(isLocked));
+        pill.innerHTML = `<i data-lucide="${isLocked ? 'lock' : 'lock-open'}" width="12" height="12"></i>${isLocked ? 'Con candado' : 'Sin candado'}`;
+        lucide.createIcons();
+      });
       lucide.createIcons();
     </script>
   </body>

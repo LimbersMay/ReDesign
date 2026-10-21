@@ -86,4 +86,6 @@ ancho del contenedor.
 
 - No se crea un menú desplegable desde cero si este sirve.
 - Cada texto de opción lleva `min-w-0` + truncado (`re-dropdown__label`).
+- Si una opción necesita decir lo que da («En 30 días» → «20 nov 2026»), va a la derecha en
+  `re-dropdown__hint`, más pequeño y callado.
 - Los títulos «Editar» / «Eliminar» de las acciones se traducen (en ReRoute v1 están fijos en español).

@@ -7,11 +7,15 @@ usuario empieza a dudar de los botones que **no** la repiten.
 
 ## La regla
 
-1. **Una frase, un lugar fijo y siempre visible**: la zona izquierda de la status bar
-   (`re-statusbar__guarantee`), con el icono de escudo. Ejemplo:
-   > 🛡 **Lo protegido nunca se limpia**: cookies con candado y sitios en lista blanca.
-2. **Ampliada en la ayuda**, con la misma redacción y los casos límite. La status bar enlaza a esa
-   sección («Detalles»). Es el único sitio donde se explica entera.
+1. **Un lugar fijo y siempre visible**, de una de dos formas:
+   - **Junto a la acción** (recomendado si cada vista tiene un resumen): las cifras del
+     [resumen](../components/ReSummary.md) dicen lo protegido («8 protegidas», verde, con escudo) al lado de
+     «Limpiar (8)», cuya cifra ya lo descuenta. La garantía se lee donde se decide.
+   - **En la status bar** (`re-statusbar__guarantee`), con el icono de escudo, si el producto no tiene
+     resumen. Ejemplo:
+     > 🛡 **Lo protegido nunca se limpia**: cookies con candado y sitios en lista blanca.
+2. **Ampliada en la ayuda**, con la misma redacción y los casos límite. Es el único sitio donde se explica
+   entera; la status bar, si la hay, enlaza a esa sección («Detalles»).
 3. **Los botones solo dicen el verbo**: «Limpiar», «Limpiar (12)».
 4. **El resultado lo confirma con números** en el toast: «7 cookies eliminadas · 3 protegidas se
    conservan». Así se cumple la promesa a la vista, sin repetirla.

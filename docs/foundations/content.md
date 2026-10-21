@@ -10,9 +10,10 @@ exclamación ni emojis en la interfaz.
 - **Verbo en infinitivo, una o dos palabras**: «Guardar», «Limpiar», «Añadir sitio».
 - **Un verbo por acción en toda la suite**:
   - *Eliminar*: quitar **un** elemento concreto que el usuario señala.
-  - *Limpiar*: borrar en lote todo lo que se puede borrar, respetando las garantías del producto.
-  - *Vaciar*: borrar un contenedor entero que no tiene protección (por ejemplo, un sessionStorage).
-  - No se usan sinónimos («Purgar», «Borrar», «Quitar») para lo mismo.
+  - *Limpiar*: borrar en lote todo lo que se puede borrar, respetando las garantías del producto. También
+    un contenedor entero que no tiene protección (un `sessionStorage`): la diferencia, que se confirma, la
+    dice el diálogo, no el verbo. «Vaciar» se retiró en 2.3.0 (D19).
+  - No se usan sinónimos («Purgar», «Borrar», «Quitar», «Vaciar») para lo mismo.
 - **Conteos entre paréntesis** cuando cambian lo que hace el botón: «Eliminar (3)», «Proteger (2)».
 - **No se repiten garantías en los botones** («Limpiar libres», «Limpiar (excepto protegidas)»). La
   garantía se dice una vez, en su lugar fijo: [patterns/guarantee.md](../patterns/guarantee.md).

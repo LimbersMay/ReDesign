@@ -32,7 +32,8 @@ componente `<app-input-group>` (alias aceptado), que además mueve el foco con �
 
 - Un input nunca lleva borde, fondo ni anillo propios: siempre dentro de `re-input-group`.
 - 30px de alto. Sin `h-9` ni `h-10`.
-- Valores técnicos (dominios, rutas, claves, valores) en `re-mono`.
+- Valores técnicos (dominios, rutas, claves, valores) en `re-mono`. Su placeholder, en cambio, es prosa
+  («Buscar clave, valor o dominio») y sale en sans aunque el campo sea mono: no hay que hacer nada.
 - El label va encima, en `re-label`; nunca solo un placeholder como label.
 - Para elegir de una lista corta usa `re-select-inline` (nativo) o [ReDropdown](ReDropdown.md) cuando
   las opciones necesiten acciones o estilo propio.
