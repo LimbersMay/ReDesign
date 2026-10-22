@@ -5,7 +5,7 @@
 | Qué es | Ciclo de vida de las pestañas inactivas: las duerme en un grupo colapsado de la barra y, si siguen sin usarse, las guarda en un baúl ordenado por hilos |
 | Marca | `brands/retame.css` · 340 ciruela · oscuro `#f4b8e4` · provisional (D20) |
 | Ventana | 540×580 (R9). El mock de partida mide 420×600: es referencia de contenido, no de tamaño |
-| Stack | Angular 20 · WXT · Tailwind v4 · `@ng-icons/lucide` · Transloco (plantilla `re-template`) |
+| Stack | Angular 20 · WXT · Tailwind v4 · `@ng-icons/lucide` · Transloco (plantilla `ReTemplate`) |
 | Estado frente a ReDesign | Recién dado de alta: requisitos en descubrimiento, sin interfaz todavía |
 
 ## Garantía (propuesta)
