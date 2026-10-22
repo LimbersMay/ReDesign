@@ -6,7 +6,7 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
-## Sin publicar
+## 2.4.0 — 2026-10-22
 
 Productos afectados: ninguno. Se añade una marca; ninguna clase ni token existente cambia (R14).
 
