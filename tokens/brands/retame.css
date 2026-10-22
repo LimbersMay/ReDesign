@@ -1,0 +1,12 @@
+/*
+ * ReTame · Ciruela / Pink (provisional, D20).
+ * 340 es uno de los dos huecos que quedan a ≥ 30° de los roles y de las demás marcas (el otro es 115,
+ * oliva). Ocupa la opción «ReBooks a 330» de D9: si se queda, D9 se resuelve moviendo ReLink a 260.
+ * Con el primario a L 0.53 el texto blanco da 5.6:1. Pastel oscuro: Pink de Catppuccin Frappé.
+ */
+html:root {
+  --re-brand-hue: 340;
+  --re-brand-l-shift: 0;
+  --re-brand-c-scale: 1;
+  --re-brand-dark: #f4b8e4;
+}

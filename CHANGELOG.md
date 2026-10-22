@@ -6,6 +6,15 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## Sin publicar
+
+Productos afectados: ninguno. Se añade una marca; ninguna clase ni token existente cambia (R14).
+
+- Nuevo: ReTame entra en la suite. Marca `brands/retame.css` (340 ciruela, provisional: D20) y
+  `docs/products/retame.md`. D20 ocupa el hueco de «ReBooks a 330» de D9: si se queda, la salida de D9 es
+  ReLink a 260.
+- La galería añade ReTame al selector de marca.
+
 ## 2.3.0 — 2026-10-21
 
 Productos afectados: **ReSession** (probado en su maqueta: «El sitio primero», D19; ver

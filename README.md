@@ -1,8 +1,8 @@
 # ReDesign
 
-Sistema de diseño de la **Suite Re** (ReRoute, ReSession, ReTabs, ReLink, ReBooks).
+Sistema de diseño de la **Suite Re** (ReRoute, ReSession, ReTabs, ReLink, ReBooks, ReTame).
 
-Una familia, cinco identidades: los productos comparten tokens, componentes y forma de hablar, y se
+Una familia, seis identidades: los productos comparten tokens, componentes y forma de hablar, y se
 distinguen por su color de marca y sus componentes firma.
 
 - **Para agentes de IA**: empieza por [AGENTS.md](AGENTS.md). `CLAUDE.md` y `GEMINI.md` lo importan.
