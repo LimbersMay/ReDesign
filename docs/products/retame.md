@@ -21,7 +21,9 @@ Dónde se dice está por decidir en `ReTame/docs/ux.md` ([patterns/guarantee.md]
   las filas.
 - **Hilo del baúl**: cabecera con la etiqueta del hilo (lo buscado o el título de la página raíz) y su
   origen, y las pestañas debajo con «Restaurar». Candidato: `re-tree` con un grupo por hilo.
-- **Ahorro estimado**: cifra con su aviso de que es una estimación. Candidato: `re-summary__stats`.
+- **Ahorro del día**: pestañas pausadas y guardadas en el baúl hoy, contadas, no estimadas (Chrome no da
+  a una extensión la memoria de cada pestaña; decisión P-06 de ReTame). Va en el Baúl. Candidato:
+  `re-summary__stats`.
 
 ## Excepciones declaradas
 
