@@ -1,6 +1,6 @@
 /*
  * ReDesign · tokens.css
- * Framework-agnostic design tokens of the Re suite (ReRoute, ReSession, ReTabs, ReLink, ReBooks).
+ * Framework-agnostic design tokens of the Re suite (ReRoute, ReSession, ReTabs, ReLink, ReBooks, ReTame).
  * Plain CSS custom properties, namespace `--re-*`. Tailwind reads them through `tailwind/theme.css`;
  * `components.css` reads them directly. Load ONE brand file (`brands/<product>.css`) next to this one.
  *

@@ -73,6 +73,7 @@ se generaliza y sube a `components/`.
 - **ReLink (280) y ReBooks (300)** están a 20°; en claro se confunden. Opción: ReLink a 260 (índigo)
   o ReBooks a 330 (magenta).
 Se decide antes del rediseño; hasta entonces `brands/resession.css` es provisional.
+- **ReTame (340, D20)** ocupa el hueco de «ReBooks a 330». Si se queda, la salida de D9 es ReLink a 260.
 
 ## D10 · Un acento por pantalla
 
@@ -197,3 +198,19 @@ bar (patterns/guarantee.md). El verbo de borrar en lote es solo «Limpiar»; «V
 **Consecuencias.** MINOR (2.3.0): ninguna clase se renombra ni se elimina. Dos cambios se notan sin tocar
 nada: el toast baja a 14px del borde cuando no hay status bar, y el placeholder de un campo mono sale en
 sans. Un producto que diga «Vaciar» lo cambia por «Limpiar» al migrar.
+
+
+## D20 · Tono de ReTame (abierta)
+
+**Contexto.** ReTame entra en la suite. Con los roles (rose 25, amber 75, emerald 155) y las marcas (ReTabs
+190, ReRoute 225, ReLink 280, ReBooks 300) solo quedan dos huecos a ≥ 30° de todo: **105–125** (oliva) y
+**330–355** (ciruela / rosa). El mock de partida es monocromo y no sugiere tono.
+**Decisión (provisional).** 340 con el pastel Pink de Catppuccin Frappé (`#f4b8e4`), como las demás marcas.
+El primario (`oklch(0.53 0.12 340)`, `#984d81`) da 5.6:1 con texto blanco.
+**Alternativas.**
+- **115 · oliva** (`#6a7300`, 5.2:1): deja libre el hueco de D9, pero no tiene pastel en Frappé (habría que
+  definirlo) y en claro tira a caqui.
+- **Casi neutra** (`--re-brand-c-scale` bajo, como el mock): fiel al mock, pero el primario se confunde con un
+  botón secundario y rompe R13 (la marca señala la acción principal).
+**Consecuencias.** Si se queda 340, la opción «ReBooks a 330» de D9 desaparece y D9 se resuelve con ReLink a
+260. Se decide en la galería, en claro y en oscuro, antes de publicar la marca.

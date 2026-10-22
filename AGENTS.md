@@ -1,6 +1,6 @@
 # ReDesign — reglas para agentes (Claude, Gemini, GPT, Codex, Copilot…)
 
-Este repositorio es el **sistema de diseño de la Suite Re**: ReRoute, ReSession, ReTabs, ReLink y ReBooks.
+Este repositorio es el **sistema de diseño de la Suite Re**: ReRoute, ReSession, ReTabs, ReLink, ReBooks y ReTame.
 Si vas a crear o modificar interfaz en cualquiera de esos productos, estas reglas mandan.
 
 > **Familia + identidad.** Como Word y Excel: los productos comparten tokens, componentes y forma de

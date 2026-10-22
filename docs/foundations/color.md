@@ -102,6 +102,7 @@ Una marca son cuatro variables en `tokens/brands/<producto>.css`:
 | ReLink | 280 · lavanda | `#babbf1` | Pendiente (D9) |
 | ReBooks | 300 · malva | `#ca9ee6` | Pendiente (D9) |
 | ReSession | 75 · ámbar | `#e5c890` | Definitivo (D14): el aviso se distingue por icono y texto, no por tono |
+| ReTame | 340 · ciruela | `#f4b8e4` | Provisional (D20) |
 
 **Reglas para una marca nueva**
 
