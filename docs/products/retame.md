@@ -12,18 +12,14 @@
 
 > **Ninguna pestaña se pierde**: solo se cierra después de quedar guardada en el baúl.
 
-Dónde se dice está por decidir en `ReTame/docs/ux.md` ([patterns/guarantee.md](../patterns/guarantee.md)).
+Dónde se dice, y si está siempre a la vista, lo decide la estructura de ReTame (`ReTame/docs/ux.md`,
+R15). [patterns/guarantee.md](../patterns/guarantee.md) solo pide que se diga en un único lugar.
 
-## Componentes firma (propuestos, sin construir)
+## Componentes firma
 
-- **Grupo de pausa**: el reflejo en el popup del grupo nativo «Dormidas (n)», con sus pestañas y
-  «Despertar». Candidatos: `re-summary` para la cabecera y `re-tree--flat` con `re-tree__row--dense` para
-  las filas.
-- **Hilo del baúl**: cabecera con la etiqueta del hilo (lo buscado o el título de la página raíz) y su
-  origen, y las pestañas debajo con «Restaurar». Candidato: `re-tree` con un grupo por hilo.
-- **Ahorro del día**: pestañas pausadas y guardadas en el baúl hoy, contadas, no estimadas (Chrome no da
-  a una extensión la memoria de cada pestaña; decisión P-06 de ReTame). Va en el Baúl. Candidato:
-  `re-summary__stats`.
+Ninguno todavía. La estructura del popup (qué vistas hay, dónde viven las acciones, cómo se navega) se
+decide en `ReTame/docs/ux.md` con bocetos neutros, sin componentes de ReDesign (R15). Los componentes
+firma se declaran aquí cuando esa estructura esté elegida.
 
 ## Excepciones declaradas
 
@@ -32,5 +28,6 @@ Ninguna.
 ## Pendiente
 
 - El tono (D20).
-- El mock inicial (`ReTame/docs/inbox/ReTame.html`) es monocromo y usa `zinc` y hex: no sigue ReDesign.
-  Sirve para el contenido y la estructura de las tres vistas, no para el aspecto.
+- El mock inicial (`ReTame/docs/inbox/mock.html`) es monocromo y usa `zinc` y hex: no sigue ReDesign.
+  Es una referencia de contenido, no de estructura ni de aspecto. La estructura se decide en
+  `ReTame/docs/ux.md`, y el mock entra en esa exploración como una opción más (R15).

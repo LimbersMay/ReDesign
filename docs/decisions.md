@@ -214,3 +214,19 @@ El primario (`oklch(0.53 0.12 340)`, `#984d81`) da 5.6:1 con texto blanco.
   botón secundario y rompe R13 (la marca señala la acción principal).
 **Consecuencias.** Si se queda 340, la opción «ReBooks a 330» de D9 desaparece y D9 se resuelve con ReLink a
 260. Se decide en la galería, en claro y en oscuro, antes de publicar la marca.
+
+
+## D21 · La estructura es del producto (2.5.0)
+
+**Contexto.** En la primera exploración de la interfaz de ReTame, las variantes salieron casi iguales a
+ReSession aunque nadie miró ReSession. Entró por esta librería: el patrón de la garantía obligaba a un lugar
+fijo y siempre visible, R7 prohibía las acciones de fila fijas, la ficha de ReTame proponía qué componente
+usar en cada vista, y los ejemplos de `ReTree` y `ReSummary` son pantallas de ReSession. Copiar «la
+estructura» de un componente se leía como copiar la disposición de su ejemplo.
+**Decisión.** R15: ReDesign decide el aspecto y los componentes, no la estructura de un producto. La
+estructura se explora con bocetos neutros y ReDesign entra cuando está elegida. R7 pasa a ser un valor por
+defecto con excepción declarada (una acción de fila fija si es la tarea principal de la fila). La garantía
+pide un solo lugar, pero no dicta cuál. La ficha de ReTame deja de proponer componentes por vista.
+**Consecuencias.** MINOR (2.5.0): ninguna clase, token ni regla se renombra ni se elimina, y ningún producto
+publicado cambia. ReSession sigue cumpliendo R7 tal como está. ReTame declara sus componentes firma después
+de elegir su estructura.
