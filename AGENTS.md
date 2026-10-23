@@ -10,9 +10,13 @@ Si vas a crear o modificar interfaz en cualquiera de esos productos, estas regla
 
 ## Cómo trabajar (en este orden)
 
+0. **Si aún se está decidiendo la estructura del producto** (qué vistas tiene, dónde viven sus acciones,
+   cómo se navega), todavía no se usa esta guía: se decide con bocetos neutros y ReDesign entra al darle
+   aspecto a la estructura elegida (R15).
 1. Lee `docs/products/<producto>.md`: marca, tamaño de ventana, componentes firma y excepciones declaradas.
-2. Busca el componente en `docs/components/` y el flujo en `docs/patterns/`. Copia su estructura y sus
-   clases `re-*`; no la reinterpretes.
+2. Busca el componente en `docs/components/` y el flujo en `docs/patterns/`. Copia el marcado y las
+   clases `re-*` del componente; no lo reinterpretes. Se copia el componente, no la disposición de la
+   pantalla de su ejemplo.
 3. Si lo que necesitas no existe, constrúyelo con los fundamentos (`docs/foundations/`) y los `re-*`
    existentes, y anótalo como **Propuesta** en `docs/products/<producto>.md`. No crees variantes nuevas
    de un componente que ya existe.
@@ -58,12 +62,14 @@ Tamaños por contenedor en `docs/foundations/iconography.md`. Ningún otro set (
 Material).
 
 **R7 · Botones.** Siempre con `type`. Los botones de solo icono llevan `title` y `aria-label`. Una
-sola acción primaria por vista o diálogo. Las acciones de filas y tarjetas se revelan con hover o
-foco (`re-reveal`), nunca están fijas. Destructivo = `rose`.
+sola acción primaria por vista o diálogo. Por defecto, las acciones de filas y tarjetas se revelan con
+hover o foco (`re-reveal`). Un producto puede dejar fija una acción de fila cuando es la tarea principal
+de esa fila, declarándolo en `docs/products/<x>.md`. Destructivo = `rose`.
 
 **R8 · Texto.** Ningún texto fijo en componentes: todo va por i18n. Verbos cortos en infinitivo
-(«Limpiar», «Guardar»). **Una garantía del producto se dice una vez**, en su lugar fijo
-(`docs/patterns/guarantee.md`), no se repite en cada botón.
+(«Limpiar», «Guardar»). **Una garantía del producto se dice una vez**, en un solo lugar
+(`docs/patterns/guarantee.md`), no se repite en cada botón. Qué lugar es lo decide la estructura del
+producto (R15).
 
 **R9 · Ventana.** Popup de 540×580 (`re-app`); en el panel lateral, `html.fluid`. Otro tamaño
 solo si está declarado en `docs/products/<x>.md`.
@@ -93,6 +99,17 @@ color, su tipografía, su densidad, su ventana o sus componentes firma) no se pu
 solución o alternativa** (adoptarlo tal cual, sobrescribir un token en el producto, o una Propuesta de
 variante). El `CHANGELOG.md` nombra los productos afectados. Si no hay forma de cuantificar el efecto,
 se prueba con el producto real antes de publicar.
+
+**R15 · La estructura es del producto.** ReDesign decide el aspecto y los componentes. No decide qué
+vistas tiene un producto, dónde viven sus acciones ni cómo se navega: eso sale de sus tareas y se decide
+en el producto (`docs/ux.md`). Los ejemplos de componentes y patrones vienen de productos concretos, casi
+todos de ReSession: son vocabulario, no una disposición que copiar. Por eso:
+- Al explorar la estructura de un producto no se lee esta guía ni se usan sus componentes. Se trabaja con
+  bocetos neutros, y ReDesign entra cuando la estructura está elegida.
+- La ficha de un producto (`docs/products/<x>.md`) declara su marca, su ventana, sus componentes firma y
+  sus excepciones, pero no propone su estructura.
+- Si un componente o un patrón obliga a una estructura, es una Propuesta para este repo, no una razón
+  para cambiar la del producto.
 
 ## Archivos
 

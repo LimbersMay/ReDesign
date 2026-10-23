@@ -6,6 +6,21 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## Sin publicar
+
+Productos afectados: ninguno. Ninguna clase ni token cambia, y lo publicado sigue cumpliendo las reglas.
+ReTame aún no tiene interfaz (R14).
+
+- Nuevo: R15, la estructura es del producto. ReDesign decide el aspecto y los componentes; las vistas, el
+  sitio de las acciones y la navegación se deciden en el producto, con bocetos neutros, antes de usar
+  ReDesign (D21). «Cómo trabajar» añade ese paso 0 y aclara que se copia el componente, no la disposición
+  de su ejemplo.
+- R7: revelar las acciones de fila con hover o foco es el valor por defecto. Un producto puede dejar fija
+  una acción de fila que sea su tarea principal, declarándolo en su ficha.
+- R8 y `patterns/guarantee.md`: la garantía se dice en un solo lugar, pero el lugar lo decide el producto.
+  La barra de estado y el resumen quedan como ejemplos de ReSession.
+- `docs/products/retame.md`: deja de proponer componentes por vista y corrige la ruta del mock.
+
 ## 2.4.0 — 2026-10-22
 
 Productos afectados: ninguno. Se añade una marca; ninguna clase ni token existente cambia (R14).

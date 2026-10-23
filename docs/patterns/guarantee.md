@@ -7,7 +7,8 @@ usuario empieza a dudar de los botones que **no** la repiten.
 
 ## La regla
 
-1. **Un lugar fijo y siempre visible**, de una de dos formas:
+1. **Un solo lugar.** Cuál es, y si está siempre a la vista, lo decide la estructura del producto
+   (`AGENTS.md`, R15), no este patrón. ReSession usó estas dos formas; son ejemplos, no las únicas:
    - **Junto a la acción** (recomendado si cada vista tiene un resumen): las cifras del
      [resumen](../components/ReSummary.md) dicen lo protegido («8 protegidas», verde, con escudo) al lado de
      «Limpiar (8)», cuya cifra ya lo descuenta. La garantía se lee donde se decide.
