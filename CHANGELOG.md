@@ -6,7 +6,7 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
-## Sin publicar
+## 2.5.0 — 2026-10-22
 
 Productos afectados: ninguno. Ninguna clase ni token cambia, y lo publicado sigue cumpliendo las reglas.
 ReTame aún no tiene interfaz (R14).
