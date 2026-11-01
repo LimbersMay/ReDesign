@@ -6,6 +6,16 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.5.1 — 2026-11-01
+
+Productos afectados: ReLink (cambia de color) y ReTame (muestra su título en ventanas estrechas). Ninguna
+clase ni token se renombra (D22).
+
+- ReLink vuelve al azul: `brands/relink.css` pasa de 280 lavanda a 263 azul con saturación ×1,5 y pastel
+  oscuro `#8caaee`. Resuelve D9 para ReLink.
+- Ventana estrecha: `re-header__title` solo se oculta si el header tiene pestañas (`re-tabs--header`). Sin
+  pestañas el título cabe y se queda.
+
 ## 2.5.0 — 2026-10-22
 
 Productos afectados: ninguno. Ninguna clase ni token cambia, y lo publicado sigue cumpliendo las reglas.
