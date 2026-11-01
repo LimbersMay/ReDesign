@@ -2,10 +2,10 @@
 
 | | |
 |---|---|
-| Marca | `brands/relink.css` · 280 lavanda · oscuro `#babbf1` · pendiente (D9) |
+| Marca | `brands/relink.css` · 263 azul, saturación ×1,5 · oscuro `#8caaee` · definitivo (D22) |
 | Ventana | **350px de ancho** (excepción declarada: popup de acceso rápido) |
-| Stack | Angular 21 · Tailwind v4 (con `tailwind.config.js` heredado) |
-| Estado frente a ReDesign | Sin tema propio todavía: adopta ReDesign tal cual |
+| Stack | Angular 21 · Tailwind v4 (`@tailwindcss/postcss`) |
+| Estado frente a ReDesign | Adopta ReDesign tal cual (rediseño de noviembre de 2026) |
 
 ## Excepciones declaradas
 
