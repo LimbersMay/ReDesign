@@ -99,7 +99,7 @@ Una marca son cuatro variables en `tokens/brands/<producto>.css`:
 |---|---|---|---|
 | ReRoute | 225 · zafiro | `#85c1dc` | Definitivo |
 | ReTabs | 190 · teal | `#81c8be` | Definitivo |
-| ReLink | 280 · lavanda | `#babbf1` | Pendiente (D9) |
+| ReLink | 263 · azul (saturación ×1,5) | `#8caaee` | Definitivo (D22) |
 | ReBooks | 300 · malva | `#ca9ee6` | Pendiente (D9) |
 | ReSession | 75 · ámbar | `#e5c890` | Definitivo (D14): el aviso se distingue por icono y texto, no por tono |
 | ReTame | 340 · ciruela | `#f4b8e4` | Provisional (D20) |

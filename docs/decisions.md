@@ -67,13 +67,15 @@ tarjeta de regla con barra por tipo en ReRoute) se documenta en `docs/products/<
 `components/`. Un componente firma se construye con piezas compartidas; si otro producto lo necesita,
 se generaliza y sube a `components/`.
 
-## D9 · Tonos de marca pendientes (abierta)
+## D9 · Tonos de marca pendientes (ReLink resuelto en D22)
 
 - **ReSession = amber (75)** coincide con el rol de aviso. Resuelto en D14: se queda.
 - **ReLink (280) y ReBooks (300)** están a 20°; en claro se confunden. Opción: ReLink a 260 (índigo)
   o ReBooks a 330 (magenta).
 Se decide antes del rediseño; hasta entonces `brands/resession.css` es provisional.
 - **ReTame (340, D20)** ocupa el hueco de «ReBooks a 330». Si se queda, la salida de D9 es ReLink a 260.
+- **ReLink pasa a 263 (azul)** en D22. ReBooks (300) queda a 37°: D9 sigue abierta solo para ReBooks si
+  hiciera falta.
 
 ## D10 · Un acento por pantalla
 
@@ -230,3 +232,19 @@ pide un solo lugar, pero no dicta cuál. La ficha de ReTame deja de proponer com
 **Consecuencias.** MINOR (2.5.0): ninguna clase, token ni regla se renombra ni se elimina, y ningún producto
 publicado cambia. ReSession sigue cumpliendo R7 tal como está. ReTame declara sus componentes firma después
 de elegir su estructura.
+
+## D22 · ReLink vuelve al azul; el título solo se oculta con pestañas (2.5.1)
+
+**Contexto.** En el rediseño de ReLink, su autor pidió volver al azul que la extensión tenía antes de
+ReDesign (`#2563eb`): es el color que sus usuarios reconocen. La lavanda 280 era provisional (D9). Además,
+en el popup de 350px el título «ReLink» desaparecía: la regla de ventana estrecha lo ocultaba siempre,
+pensando en cabeceras con pestañas, y ReLink no las tiene.
+**Alternativas.** Se compararon con capturas del popup real (`ReLink/docs/design-explorations/2026-11-popup/tanda-3.html`)
+tres azules en el mismo tono 263: A, el original (saturación ×2); B, ×1,5; C, la saturación común (×1), que
+se veía apagado. Para el título: una excepción solo para ReLink o limitar la regla a cabeceras con pestañas.
+**Decisión.** ReLink = 263 con saturación ×1,5 y pastel oscuro `#8caaee` (B, elegida por el autor). Cumple
+los ≥ 30° (38° de ReRoute, 37° de ReBooks) y el primario sigue en L 0.53. La regla de ventana estrecha oculta
+el título solo si el header tiene `re-tabs--header`.
+**Consecuencias.** PATCH (2.5.1): cambian valores y una condición, ningún nombre. ReSession (con pestañas)
+no cambia; ReTame (sin pestañas) muestra su título en ventanas estrechas.
+

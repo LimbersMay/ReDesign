@@ -1,10 +1,10 @@
 /*
- * ReLink · Violet / Lavender.
- * PENDIENTE (D9): 280 está a 20° de ReBooks (300); en claro se confunden. Ver docs/foundations/color.md §4.
+ * ReLink · Azul (D22). El azul que ReLink tenía antes de ReDesign, algo más contenido: 263 queda a 38° de
+ * ReRoute (225) y a 37° de ReBooks (300). Saturación ×1,5: el azul a la saturación común se veía apagado.
  */
 html:root {
-  --re-brand-hue: 280;
+  --re-brand-hue: 263;
   --re-brand-l-shift: 0;
-  --re-brand-c-scale: 1;
-  --re-brand-dark: #babbf1;
+  --re-brand-c-scale: 1.5;
+  --re-brand-dark: #8caaee;
 }

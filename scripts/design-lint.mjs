@@ -120,15 +120,14 @@ function parseArgs(argv) {
   return args;
 }
 
+const GLOB_TOKENS = { '**/': '(?:.*/)?', '**': '.*', '*': '[^/]*', '?': '[^/]' };
+
+// One pass: chained replaces read back what the earlier ones wrote (the `*` of `.*`, the `?` of `(?:`).
 function globToRegex(glob) {
-  const escaped = glob
+  const source = glob
     .replace(/\\/g, '/')
-    .replace(/[.+^${}()|[\]]/g, '\\$&')
-    .replace(/\*\*\//g, '(?:.*/)?')
-    .replace(/\*\*/g, '.*')
-    .replace(/\*/g, '[^/]*')
-    .replace(/\?/g, '[^/]');
-  return new RegExp(`^${escaped}$`);
+    .replace(/\*\*\/|\*\*|\*|\?|[.+^${}()|[\]]/g, (token) => GLOB_TOKENS[token] ?? `\\${token}`);
+  return new RegExp(`^${source}$`);
 }
 
 function loadConfig(path) {

@@ -59,8 +59,8 @@ Una pestaña puede llevar un conteo (`re-tabs__count`, más callado que la etiqu
 Con las vistas en pestañas, la acción de crear deja el header y va a la vista donde tiene sentido (ReSession:
 el `+` de «Esta pestaña», con `re-icon-btn--outline` junto a la búsqueda).
 
-**Ventana estrecha** (menos de 400px): el header oculta `re-header__title` (queda el logo) y las pestañas
-pierden sus iconos.
+**Ventana estrecha** (menos de 400px): si el header tiene pestañas, oculta `re-header__title` (queda el
+logo) y las pestañas pierden sus iconos. Sin pestañas el título cabe y se queda (D22).
 
 ## Status bar
 

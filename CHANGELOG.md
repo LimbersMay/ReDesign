@@ -6,6 +6,38 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.5.4 — 2026-11-01
+
+Productos afectados: ninguno. Solo documentación.
+
+- Ficha de ReLink: el popup declara un alto mínimo de 470px, lo que ocupa su menú de ajustes abierto, para que
+  abrirlo no lo haga crecer.
+
+## 2.5.3 — 2026-11-01
+
+Productos afectados: los que usan `**` en `exclude` o `pages` de `.redesignrc.json` (ReLink). Ninguna clase ni
+token cambia.
+
+- `re-design-lint`: en los globs, `**` solo alcanzaba un nivel de carpeta y `**/` no coincidía con nada. Cada
+  reemplazo releía lo que había escrito el anterior (el `*` de `.*`, el `?` de `(?:`); ahora es una sola pasada.
+
+## 2.5.2 — 2026-11-01
+
+Productos afectados: ninguno. Solo documentación.
+
+- Ficha de ReLink: el ancho declarado pasa de 350px a 400px, y se declara la barra de marca en la tarjeta de
+  su guía (un solo acento: la tarjeta solo existe cuando no hay botón primario).
+
+## 2.5.1 — 2026-11-01
+
+Productos afectados: ReLink (cambia de color) y ReTame (muestra su título en ventanas estrechas). Ninguna
+clase ni token se renombra (D22).
+
+- ReLink vuelve al azul: `brands/relink.css` pasa de 280 lavanda a 263 azul con saturación ×1,5 y pastel
+  oscuro `#8caaee`. Resuelve D9 para ReLink.
+- Ventana estrecha: `re-header__title` solo se oculta si el header tiene pestañas (`re-tabs--header`). Sin
+  pestañas el título cabe y se queda.
+
 ## 2.5.0 — 2026-10-22
 
 Productos afectados: ninguno. Ninguna clase ni token cambia, y lo publicado sigue cumpliendo las reglas.

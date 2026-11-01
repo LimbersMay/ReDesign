@@ -2103,11 +2103,12 @@
   }
 
   /*
-   * Narrow window (a side panel from 320px): the header keeps the logo, the tabs lose their icons,
-   * and dense rows drop the value column. Views stack their own tools (layout, Tailwind).
+   * Narrow window (a side panel from 320px): a header with tabs keeps only the logo (without tabs the
+   * title fits), the tabs lose their icons, and dense rows drop the value column. Views stack their own
+   * tools (layout, Tailwind).
    */
   @media (max-width: 24.99rem) {
-    .re-header .re-header__title {
+    .re-header:has(.re-tabs--header) .re-header__title {
       display: none;
     }
 
