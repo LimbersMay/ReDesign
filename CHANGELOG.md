@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.5.4 — 2026-11-01
+
+Productos afectados: ninguno. Solo documentación.
+
+- Ficha de ReLink: el popup declara un alto mínimo de 470px, lo que ocupa su menú de ajustes abierto, para que
+  abrirlo no lo haga crecer.
+
 ## 2.5.3 — 2026-11-01
 
 Productos afectados: los que usan `**` en `exclude` o `pages` de `.redesignrc.json` (ReLink). Ninguna clase ni
