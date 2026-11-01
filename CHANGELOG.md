@@ -6,6 +6,14 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.5.3 — 2026-11-01
+
+Productos afectados: los que usan `**` en `exclude` o `pages` de `.redesignrc.json` (ReLink). Ninguna clase ni
+token cambia.
+
+- `re-design-lint`: en los globs, `**` solo alcanzaba un nivel de carpeta y `**/` no coincidía con nada. Cada
+  reemplazo releía lo que había escrito el anterior (el `*` de `.*`, el `?` de `(?:`); ahora es una sola pasada.
+
 ## 2.5.2 — 2026-11-01
 
 Productos afectados: ninguno. Solo documentación.
