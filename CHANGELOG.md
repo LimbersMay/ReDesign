@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.5.2 — 2026-11-01
+
+Productos afectados: ninguno. Solo documentación.
+
+- Ficha de ReLink: el ancho declarado pasa de 350px a 400px, y se declara la barra de marca en la tarjeta de
+  su guía (un solo acento: la tarjeta solo existe cuando no hay botón primario).
+
 ## 2.5.1 — 2026-11-01
 
 Productos afectados: ReLink (cambia de color) y ReTame (muestra su título en ventanas estrechas). Ninguna
