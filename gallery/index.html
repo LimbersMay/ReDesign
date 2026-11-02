@@ -253,6 +253,146 @@
       </section>
 
       <!-- Buttons -->
+      <!-- 2.6.0: compact summary, parent level of a flat tree, figures, dot in an icon button, disabled segment -->
+      <section class="g-panel g-panel--wide">
+        <h2 class="g-h">ReSummary compacta · nivel padre del árbol plano · cifras</h2>
+        <p class="g-p">La lista empieza arriba, bajo una franja de 36px. En el árbol plano, un sitio agrupa sus dominios: al hacer scroll su cabecera se queda arriba y la del dominio, debajo. En el header, lo limpiado hoy abre sus cifras y el rayo lleva el punto de Auto activo.</p>
+        <div class="g-frame" style="height: 400px; display: flex; flex-direction: column">
+          <header class="re-header">
+            <div class="re-header__brand">
+              <div class="re-header__logo"><i data-lucide="cookie" width="13" height="13"></i></div>
+              <span class="re-header__title" data-brand-name>ReSession</span>
+            </div>
+            <div class="re-header__actions">
+              <button type="button" class="re-btn re-btn--sm re-btn--ghost" aria-haspopup="dialog" aria-expanded="false" title="Cookies limpiadas"><i data-lucide="eraser" width="12" height="12"></i><b>124</b> hoy</button>
+              <button type="button" class="re-icon-btn" title="Limpieza automática: activa" aria-label="Limpieza automática: activa"><i data-lucide="zap" width="13" height="13"></i><span class="re-dot re-dot--live"></span></button>
+              <button type="button" class="re-icon-btn" title="Ajustes" aria-label="Ajustes"><i data-lucide="settings" width="13" height="13"></i></button>
+            </div>
+          </header>
+
+          <section class="re-summary re-summary--compact">
+            <div class="re-summary__main">
+              <div class="re-segmented re-segmented--sm">
+                <button type="button" class="re-segmented__item" aria-pressed="true">Cookies<span class="re-segmented__count">13</span></button>
+                <button type="button" class="re-segmented__item" aria-pressed="false">Storage<span class="re-segmented__count">8</span></button>
+              </div>
+            </div>
+            <div class="re-summary__actions">
+              <span class="re-summary__stat--success" title="Lo protegido nunca se limpia"><i data-lucide="shield-check" width="11" height="11"></i>4 protegidas</span>
+              <button type="button" class="re-btn re-btn--sm re-btn--danger-soft">Limpiar (9)</button>
+            </div>
+          </section>
+
+          <div class="re-tree re-tree--flat">
+            <section class="re-tree__group re-tree__group--parent">
+              <div class="re-tree__head re-reveal-host" role="button" tabindex="0" aria-expanded="true">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <span class="re-favicon">g</span>
+                  <span class="re-tree__title">github.com</span>
+                  <span class="re-pill re-pill--sm">Esta pestaña</span>
+                  <span class="re-tree__meta">13 cookies · 4 protegidas</span>
+                </div>
+                <div class="re-tree__actions re-reveal">
+                  <button type="button" class="re-btn re-btn--xs re-btn--danger-outline">Limpiar (9)</button>
+                </div>
+              </div>
+              <div class="re-tree__items">
+                <section class="re-tree__group">
+                  <div class="re-tree__head" role="button" tabindex="0" aria-expanded="true">
+                    <div class="re-tree__head-main">
+                      <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                      <span class="re-tree__title">gist.github.com</span>
+                      <span class="re-tree__meta">Subdominio · 2</span>
+                    </div>
+                  </div>
+                  <div class="re-tree__items">
+                    <div class="re-tree__row re-tree__row--dense">
+                      <span class="re-tree__lead"><input type="checkbox" class="re-checkbox" aria-label="Seleccionar gist_session" /></span>
+                      <span class="re-tree__key re-tree__key--strong">gist_session</span>
+                      <span class="re-tree__value">ghs_89A7sdFk982jKqP2xL0mQ71bBf</span>
+                      <span class="re-tree__trail"><span class="re-tree__time" title="Caduca dentro de 14 días">14 d</span></span>
+                    </div>
+                    <div class="re-tree__row re-tree__row--dense">
+                      <span class="re-tree__lead"><input type="checkbox" class="re-checkbox" aria-label="Seleccionar gist_ui_theme" /></span>
+                      <span class="re-tree__key">gist_ui_theme</span>
+                      <span class="re-tree__value">dark_high_contrast</span>
+                      <span class="re-tree__trail"><span class="re-tree__time" title="Caduca dentro de 30 días">30 d</span></span>
+                    </div>
+                  </div>
+                </section>
+                <section class="re-tree__group">
+                  <div class="re-tree__head" role="button" tabindex="0" aria-expanded="true">
+                    <div class="re-tree__head-main">
+                      <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                      <span class="re-tree__title">.github.com</span>
+                      <span class="re-tree__meta">Dominio raíz · 2</span>
+                    </div>
+                  </div>
+                  <div class="re-tree__items">
+                    <div class="re-tree__row re-tree__row--dense">
+                      <span class="re-tree__lead"><input type="checkbox" class="re-checkbox" aria-label="Seleccionar user_session" /></span>
+                      <span class="re-tree__key re-tree__key--strong">user_session</span>
+                      <span class="re-tree__value">PKC_99xKa81ZlaQ7nV3</span>
+                      <span class="re-tree__trail"><span class="re-tree__time" title="Caduca dentro de 2 horas">2 h</span></span>
+                    </div>
+                    <div class="re-tree__row re-tree__row--dense">
+                      <span class="re-tree__lead"><input type="checkbox" class="re-checkbox" aria-label="Seleccionar logged_in" /></span>
+                      <span class="re-tree__key">logged_in</span>
+                      <span class="re-tree__value">yes</span>
+                      <span class="re-tree__trail"><span class="re-tree__time" title="Caduca al cerrar el navegador">Sesión</span></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </section>
+            <section class="re-tree__group re-tree__group--parent">
+              <div class="re-tree__head" role="button" tabindex="0" aria-expanded="false">
+                <div class="re-tree__head-main">
+                  <i class="re-tree__chevron" data-lucide="chevron-down" width="11" height="11"></i>
+                  <span class="re-favicon">y</span>
+                  <span class="re-tree__title">youtube.com</span>
+                  <span class="re-tree__meta">21 cookies</span>
+                </div>
+              </div>
+              <div class="re-tree__items" hidden></div>
+            </section>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; margin-top: 1rem">
+          <div class="g-frame" style="flex: 1 1 18rem">
+            <section class="re-summary re-summary--compact re-summary--selection">
+              <input type="checkbox" class="re-checkbox" aria-label="Seleccionar todo" />
+              <div class="re-summary__main">
+                <span class="re-summary__count">3 seleccionadas</span>
+                <button type="button" class="re-link">Seleccionar las 13</button>
+              </div>
+              <div class="re-summary__actions">
+                <button type="button" class="re-btn re-btn--sm re-btn--danger-soft">Limpiar (3)</button>
+                <button type="button" class="re-icon-btn" title="Quitar selección" aria-label="Quitar selección"><i data-lucide="x" width="13" height="13"></i></button>
+              </div>
+            </section>
+          </div>
+          <div class="re-menu" role="dialog" aria-label="Cookies limpiadas" style="position: static; margin: 0; width: 17rem">
+            <div class="re-menu__section">
+              <span class="re-section-title">Cookies limpiadas</span>
+              <div class="re-figures">
+                <div class="re-figure"><b class="re-figure__value">124</b><span>Hoy</span><span>98 de rastreo</span></div>
+                <div class="re-figure"><b class="re-figure__value">3.210</b><span>En total</span><span>2.480 de rastreo</span></div>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.375rem">
+            <div class="re-segmented re-segmented--sm">
+              <button type="button" class="re-segmented__item" aria-pressed="true">Original</button>
+              <button type="button" class="re-segmented__item" aria-pressed="false" disabled aria-describedby="gJwtWhy">JWT</button>
+            </div>
+            <span class="g-p" id="gJwtWhy">JWT no disponible: el valor no es un JWT.</span>
+          </div>
+        </div>
+      </section>
+
       <!-- 2.3.0: summary, header tabs, flat tree, dense rows, nav list, sheet (D19) -->
       <section class="g-panel g-panel--wide">
         <h2 class="g-h">ReSummary · pestañas · árbol plano y fila densa</h2>

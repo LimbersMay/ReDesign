@@ -6,7 +6,7 @@
 | `re-badge--micro` | Bandera de una letra dentro de una fila densa | Mono, 600 |
 | `re-pill` | Estado en palabras: «Lista blanca», «Pausada», «Expirada» | Sans, 600, redondeada |
 | `re-kbd` / `re-kbd-combo` | Atajo de teclado | Mono, 600 |
-| `re-dot` (`--live`, `--pulse`) | Estado vivo/inactivo sin texto | — |
+| `re-dot` (`--live`, `--pulse`) | Estado vivo/inactivo sin texto. Dentro de un `re-icon-btn` va en su esquina (6px) | — |
 
 Tamaño de `re-pill`: 22px por defecto; `re-pill--sm` (18px) para cabeceras y zonas densas.
 

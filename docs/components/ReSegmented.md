@@ -53,4 +53,6 @@ más callada que ella: «Cookies 16 · Storage 20». Cambia con la búsqueda si 
   tema de ReRoute.
 - `--success` / `--danger` solo cuando las opciones son roles (Lista blanca · Lista negra).
 - Las píldoras inactivas mantienen su borde transparente (evita saltos de 1px).
+- Una opción que existe pero ahora no aplica va `disabled` (atenuada, sin hover) y el motivo se dice junto
+  al control, enlazado con `aria-describedby` («JWT no disponible: el valor no es un JWT»). No se oculta.
 - Dos a cuatro opciones. Con más, usa un dropdown.

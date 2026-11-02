@@ -6,6 +6,46 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.7.0 — 2026-11-02
+
+Productos afectados: todos los que usan el tema claro (ReSession; ReTame al subir de 2.5.0; ReRoute, ReLink,
+ReTabs y ReBooks al migrar). Ver sus fichas (R14) y D23. Ninguna clase ni token se renombra ni se quita. El
+oscuro no cambia.
+
+- Tema claro: los neutros pasan a Catppuccin Latte (lavanda), lienzo `#e4e7ee` y tarjeta `#f5f6f9`. Texto
+  `#4c4f69`, más suave que el negro, como el de Frappé.
+- `--re-line` y `--re-line-sunken` en claro: las cabeceras del árbol suben a la tarjeta y las anidadas
+  quedan a medio camino, como en oscuro (antes, transparentes).
+- Curva de acentos en claro: 400–800 con menos croma a la misma luminosidad. El primario no cambia.
+- `re-tree--flat`: el primer nivel sin padre mide 36px con el título en `text-xs`, como
+  `re-tree__group--parent`; en claro va sobre la tarjeta con su divisor. Cerradas, entre dos cabeceras de
+  primer nivel queda una sola línea.
+
+## 2.6.1 — 2026-11-01
+
+Productos afectados: ReSession (ver su ficha, R14). Ningún otro producto usa `re-tree--flat`. Ninguna clase
+ni token se renombra ni se quita.
+
+- `re-tree--flat`: las filas densas entran un paso (`--re-tree-indent`) respecto a su cabecera, y
+  `re-tree__group--parent` pone `--re-tree-depth: 1` a sus secciones. El nivel se lee en el borde izquierdo:
+  sitio → dominio → filas.
+- ReTree: el árbol plano admite un icono de sección (`re-tree__icon`, gris) entre el chevron y el título.
+
+## 2.6.0 — 2026-11-01
+
+Productos afectados: ReSession (navegación nueva; ver su ficha, R14). En los demás, solo el hover de un
+`re-segmented__item` desactivado. Ninguna clase ni token se renombra ni se quita.
+
+- `re-summary--compact`: el resumen en una línea de 36px para una lista que empieza arriba; con
+  `--selection` mantiene el alto. Por debajo de 400px se estrecha.
+- `re-tree__group--parent`: un nivel padre en `re-tree--flat` (un sitio y sus dominios). Cabecera de 36px
+  sobre la tarjeta, fija arriba; las de sus secciones se fijan debajo.
+- `re-figures` > `re-figure` (`__value`): cifras con su etiqueta, en dos columnas.
+- `re-dot` dentro de `re-icon-btn` se coloca en su esquina (6px): el estado vivo de una acción.
+- `re-segmented__item:disabled`: atenuado y sin hover. La opción sigue visible y su motivo va al lado.
+- `re-btn--ghost[aria-expanded='true']`: se queda como al pasar el ratón mientras su menú está abierto,
+  igual que `re-icon-btn`.
+
 ## 2.5.4 — 2026-11-01
 
 Productos afectados: ninguno. Solo documentación.
