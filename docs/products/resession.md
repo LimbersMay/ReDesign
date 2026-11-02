@@ -6,8 +6,8 @@
 | Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · definitiva (D14) |
 | Ventana | 540×580 + panel lateral |
 | Stack | Angular 20 (subir a 21 como ReRoute) · Tailwind v4 · `@ng-icons/lucide` · Transloco (propuesto: ver `ReSession/docs/architecture.md`) |
-| Estado frente a ReDesign | Maqueta Angular completa con ReDesign 2.3.0; la guía de implementación va por el paso 05 |
-| Layout | «El sitio primero» (D19): resumen del sitio, pestañas en el header, árbol plano con filas densas, Global como lista de sitios, editor en hoja |
+| Estado frente a ReDesign | Implementación en curso; pasa de 2.3.0 a 2.6.0 con la navegación nueva (la decide el producto, R15) |
+| Layout | Lo decide ReSession (`docs/visual.md`). Piezas que usa: header con Auto y lo limpiado, franja compacta, árbol plano con nivel padre y filas densas, editor en hoja |
 
 ## Garantía
 
@@ -31,8 +31,12 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   «Lista blanca» (`shield-check`), que sustituye a su «Limpiar». Las filas no cambian: el candado sigue
   siendo de la cookie y se puede poner o quitar; al quitarlo, el toast recuerda que sigue protegida.
 - **Fila de storage** (`re-tree__row--dense`): clave · valor (`re-tree__value--strong`) · formato
-  (`re-badge` neutro, `JWT`, `JSON`) · tamaño o caducidad en `re-tree__time`. Sin candado: «Limpiar» un área
-  siempre se confirma.
+  (`re-badge` neutro, `JWT`, `JSON`) · tamaño, o la caducidad de un JWT con reloj y texto, en
+  `re-tree__time`. Editar, copiar el valor y eliminar flotan al pasar el ratón. Sin candado: limpiar un área
+  no confirma y el toast permite deshacer durante 5 s.
+- **Editor de una clave** en hoja, con las partes del de cookie: «Original | JWT» en `re-segmented--sm`. «JWT»
+  está siempre y va `disabled`, con su motivo enlazado, si el valor no lo es. Lo decodificado es de solo
+  lectura (`re-textarea[readonly]`); un JSON se edita como texto.
 - **Grupo de rastreadores**: un grupo más, porque siempre son cookies. Icono (`shield-alert`), conteo y
   filas neutros, con el hover de siempre, y su «Limpiar» se revela como el de cualquier grupo (D16).
 - **Acciones de limpiar**: un solo «Limpiar» fijo por pantalla (D16). El peso lo da el alcance:
@@ -49,9 +53,10 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
 - **Modo selección** (`re-summary--selection`, sustituye al resumen): checkbox maestro, «n seleccionadas»,
   «Seleccionar las n», «Proteger» neutro (`re-btn--secondary` con `lock`: el emerald es un estado, «Lista
   blanca», no una acción), «Limpiar (n)» y ✕. Sin contraer/expandir todo.
-- **Global**: lista de sitios (`re-nav-list`) con favicon, «Pestaña actual», dominios y candados, un
-  `re-meter--success` con la parte protegida y el total; la última fila, «Rastreadores de terceros». Cada
-  sitio abre una página con migas (`re-breadcrumb`), su resumen y su árbol plano.
+- **Todo el navegador**: el mismo árbol plano, con cada sitio como `re-tree__group--parent` (favicon,
+  «Esta pestaña», cifras y su «Limpiar») y sus dominios debajo; los rastreadores, primero.
+- **Header**: el logo, lo limpiado hoy (`re-btn--sm re-btn--ghost` con `aria-expanded`, que abre
+  `re-figures` en un `re-menu`), Auto (`re-icon-btn` con `re-dot--live` si está activo) y ajustes.
 - **Tarjeta de limpieza automática** (`re-card` con switch, intervalo y tareas), con el último ciclo en
   `re-card__subtitle`.
 - **Editor de cookie** en hoja ([patterns/editor-dialog.md](../patterns/editor-dialog.md#variante-hoja)):
@@ -72,11 +77,20 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
 - **Sin status bar** (2.3.0). Se nota: la garantía ya no está en todas las pantallas, solo donde se limpia
   (el resumen) y en la ayuda; Auto no la repite. Alternativa: volver a pintar `re-statusbar` (el toast sube
   solo a su sitio).
-- **Pestañas en el header** (`re-tabs--header`, 2.3.0). Se nota: las vistas ya no son un segmented y «Añadir»
+- **Pestañas en el header** (`re-tabs--header`, 2.3.0; **retiradas en 2.6.0**, ver abajo). Se nota: las vistas ya no son un segmented y «Añadir»
   sale del header (pasa a ser el `+` de «Esta pestaña»). Alternativa: el segmented sigue siendo válido en
   `re-header` si las pestañas no caben (con cuatro vistas o un nombre largo).
 - **«Limpiar» también en storage** (2.3.0). Se nota: el botón de un área dice «Limpiar» en lugar de
   «Vaciar». Alternativa: ninguna dentro de la suite; si hiciera falta distinguirlo, lo dice la confirmación.
+
+- **Navegación de 2.6.0** (`re-summary--compact`, `re-tree__group--parent`, `re-figures`, `re-dot` en
+  `re-icon-btn`, `re-segmented__item:disabled`, `re-btn--ghost[aria-expanded]`). No toca la marca: todo va
+  en neutros y roles. Se nota: la lista empieza arriba bajo una franja de 36px (antes, un resumen de 64px)
+  y, sin `re-tabs--header`, **a 320px vuelve el título «ReSession»** en el header (regla de 2.5.1).
+  Alternativas: `re-summary` normal si se quiere el nombre del sitio como título (28px más); para ocultar
+  el título en estrecho, `max-[399px]:hidden` en el producto.
+- **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
+  `re-breadcrumb`.
 
 ## Excepciones declaradas
 

@@ -20,6 +20,7 @@ banderas) son componentes firma construidos con estas piezas.
 | Cabeceras fijas al hacer scroll (opcional) | `re-tree--sticky` en `re-tree` | — |
 | Árbol plano: secciones sobre una lista continua | `re-tree--flat` en `re-tree` | — |
 | Nombre de la sección en un árbol plano (mono) | `re-tree__title` | — |
+| Nivel padre de un árbol plano (un sitio y sus dominios) | `re-tree__group--parent` | 36px |
 | Fila densa: una línea en cuatro celdas | `re-tree__row--dense` | 32px |
 | Celdas de la fila densa | `re-tree__lead` · `re-tree__key` · `re-tree__value` · `re-tree__trail` | — |
 | Tiempo o tamaño, en columna fija (`--warning` si avisa) | `re-tree__time` | — |
@@ -76,6 +77,10 @@ de un sitio) y no una jerarquía que se recorre: un solo nivel, sin sangría ni 
 - El nombre de la sección es un dato: `re-tree__title`, en mono y sin encoger. Lo que la describe
   («Subdominio · 8») va después en `re-tree__meta`, en sans, y es lo que se trunca.
 - Úsalo con filas densas. Sin `--re-tree-depth`: un árbol plano no anida.
+- **Nivel padre:** cuando las secciones se agrupan (los dominios de cada sitio), el grupo que las contiene
+  lleva `re-tree__group--parent`. Su cabecera mide 36px, va sobre `--re-card` con el título en `text-xs` y
+  se fija arriba; las cabeceras de sus secciones se fijan justo debajo. Es el único nivel extra: las
+  secciones siguen planas, sin sangría ni fondo hundido.
 
 ```html
 <div class="re-tree re-tree--flat">
@@ -91,6 +96,23 @@ de un sitio) y no una jerarquía que se recorre: un solo nivel, sin sangría ni 
       </div>
     </div>
     <div class="re-tree__items" [hidden]="!open()">…filas densas…</div>
+  </section>
+</div>
+
+<!-- Nivel padre: un sitio con sus dominios -->
+<div class="re-tree re-tree--flat">
+  <section class="re-tree__group re-tree__group--parent">
+    <div class="re-tree__head" role="button" tabindex="0" aria-expanded="true">
+      <div class="re-tree__head-main">
+        <ng-icon class="re-tree__chevron" name="lucideChevronDown" size="11" />
+        <span class="re-favicon">g</span>
+        <span class="re-tree__title">github.com</span>
+        <span class="re-tree__meta">13 cookies</span>
+      </div>
+    </div>
+    <div class="re-tree__items">
+      <section class="re-tree__group">…cabecera de dominio + filas densas…</section>
+    </div>
   </section>
 </div>
 ```

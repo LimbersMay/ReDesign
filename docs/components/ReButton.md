@@ -47,3 +47,7 @@
 - Sin anchos fijos: el ancho sale del padding (o `re-btn--block` en una rejilla).
 - `disabled` en vez de ocultar cuando la acción existe pero ahora no aplica; ocultar cuando no existe
   en ese contexto.
+- Un botón que abre un menú o un panel lleva `aria-expanded`: `re-icon-btn` y `re-btn--ghost` se quedan
+  como al pasar el ratón mientras está abierto.
+- Un `re-dot` dentro de un `re-icon-btn` se coloca en su esquina: el icono dice qué es y el punto que está
+  activo («Limpieza automática», con `re-dot--live`). El `title` dice el estado en palabras.

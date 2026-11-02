@@ -291,7 +291,9 @@
     color: var(--re-slate-600);
   }
 
-  .re-btn--ghost:hover:not(:disabled) {
+  /* Expanded = its menu or panel is open: it stays as on hover. */
+  .re-btn--ghost:hover:not(:disabled),
+  .re-btn--ghost[aria-expanded='true'] {
     background: var(--re-slate-100);
     color: var(--re-slate-800);
   }
@@ -397,6 +399,19 @@
   .re-icon-btn--sm {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  /* A state dot in the corner (Auto is on): the icon says what, the dot says it is live. */
+  .re-icon-btn:has(> .re-dot) {
+    position: relative;
+  }
+
+  .re-icon-btn > .re-dot {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 0.375rem;
+    height: 0.375rem;
   }
 
   /* Bordered icon button, the height of an input: an action that sits next to a search field. */
@@ -1043,8 +1058,14 @@
       color var(--re-duration);
   }
 
-  .re-segmented__item:hover {
+  .re-segmented__item:hover:not(:disabled) {
     color: var(--re-slate-700);
+  }
+
+  /* An option that does not apply right now stays visible; its reason goes next to the control. */
+  .re-segmented__item:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
 
   /* Active = elevation, never the brand colour (color.md §2). Same recipe as ReRoute's settings menu. */
@@ -1582,6 +1603,57 @@
     white-space: nowrap;
   }
 
+  /*
+   * Compact (`re-summary--compact`): one 36px line over a list that starts at the top of the view.
+   * `__main` holds what the list shows (a switch, a count) and takes the free space; `__actions`
+   * the guarantee and the action. With `--selection` it keeps the height.
+   */
+  .re-summary--compact {
+    gap: 0.5rem;
+    min-height: 2.25rem;
+    height: 2.25rem;
+    padding: 0 0.75rem 0 1rem;
+    border-top: 1px solid var(--re-slate-100);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-500);
+    white-space: nowrap;
+  }
+
+  .re-summary--compact .re-summary__main {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .re-summary--compact .re-summary__stat--success {
+    font-weight: 550;
+  }
+
+  /* Figures with their labels, side by side (what has been cleaned: today · in total). */
+  .re-figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .re-figure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    color: var(--re-slate-500);
+  }
+
+  .re-figure__value {
+    font-size: var(--re-text-sm);
+    line-height: var(--re-text-sm-lh);
+    font-weight: 650;
+    color: var(--re-slate-900);
+    font-variant-numeric: tabular-nums;
+  }
+
   /* Favicon tile: the site's own icon, or its initial on a neutral tile. */
   .re-favicon {
     display: grid;
@@ -1908,6 +1980,38 @@
   }
 
   /*
+   * Parent level of a flat tree (`re-tree__group--parent`): a group whose items are sections (a site
+   * and its domains). Its head is 36px on the card and sticks at the top; the section heads stick
+   * right under it. Sections stay flat: no indent, no sunken fill.
+   */
+  .re-tree--flat .re-tree__group--parent > .re-tree__head {
+    z-index: 3;
+    height: 2.25rem;
+    border-top-color: var(--re-slate-200);
+    background: var(--re-card);
+  }
+
+  .re-tree--flat .re-tree__group--parent > .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-card);
+  }
+
+  .re-tree--flat .re-tree__group--parent > .re-tree__head .re-tree__title {
+    font-size: var(--re-text-xs);
+  }
+
+  .re-tree--flat .re-tree__group--parent > .re-tree__items {
+    background: transparent;
+  }
+
+  .re-tree--flat .re-tree__group--parent > .re-tree__items .re-tree__head {
+    top: 2.25rem;
+  }
+
+  .re-tree--flat .re-tree__group--parent > .re-tree__items > * + * {
+    border-top: 0;
+  }
+
+  /*
    * Dense row (`re-tree__row--dense`): one 32px line per item, in four cells that line up across
    * rows: lead (checkbox, lock) · key · value · trail (flags, time). The key column is fixed
    * (`--re-tree-key`), the value takes the rest. Row actions float over the end of the trail on
@@ -2127,6 +2231,16 @@
 
     .re-tree__row--dense > .re-tree__value {
       display: none;
+    }
+
+    .re-summary--compact {
+      gap: 0.375rem;
+      padding: 0 0.5rem 0 0.75rem;
+    }
+
+    .re-summary--compact .re-segmented__item {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
   }
 

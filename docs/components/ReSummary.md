@@ -16,6 +16,7 @@ caja hace de barra de lote, con el mismo alto, así que nada de debajo se mueve.
 | Acciones | `re-summary__actions` | La acción principal de la vista; **una** |
 | Modo selección | `re-summary--selection` | Fondo de marca al 6 % |
 | Cuántas hay seleccionadas | `re-summary__count` | |
+| Franja de una línea | `re-summary--compact` | 36px. También con `--selection` |
 
 ## HTML
 
@@ -51,6 +52,37 @@ caja hace de barra de lote, con el mismo alto, así que nada de debajo se mueve.
     </button>
   </div>
 </section>
+```
+
+### Franja compacta
+
+`re-summary--compact` es el resumen de una vista cuya lista empieza arriba y no necesita título: una línea de
+36px con un borde superior. `re-summary__main` lleva lo que muestra la lista (un `re-segmented--sm`, una
+cifra) y ocupa el espacio libre; `re-summary__actions`, la garantía y la acción. Con `--selection` mantiene el
+alto. Por debajo de 400px se estrecha y sus segmentos pierden relleno.
+
+```html
+<section class="re-summary re-summary--compact">
+  <div class="re-summary__main">
+    <div class="re-segmented re-segmented--sm">…Cookies 16 · Storage 20…</div>
+  </div>
+  <div class="re-summary__actions">
+    <span class="re-summary__stat--success" title="Lo protegido nunca se limpia"><ng-icon name="lucideShieldCheck" size="11" />8 protegidas</span>
+    <button type="button" class="re-btn re-btn--sm re-btn--danger-soft">Limpiar (8)</button>
+  </div>
+</section>
+```
+
+### Cifras con etiqueta
+
+`re-figures` > `re-figure`: cifras que se comparan una al lado de otra (lo limpiado hoy y en total), en dos
+columnas. La cifra va en `re-figure__value`; debajo, una o más líneas de etiqueta.
+
+```html
+<div class="re-figures">
+  <div class="re-figure"><b class="re-figure__value">124</b><span>Hoy</span><span>98 de rastreo</span></div>
+  <div class="re-figure"><b class="re-figure__value">3.210</b><span>En total</span><span>2.480 de rastreo</span></div>
+</div>
 ```
 
 ## Reglas
