@@ -6,6 +6,21 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.6.0 — 2026-11-01
+
+Productos afectados: ReSession (navegación nueva; ver su ficha, R14). En los demás, solo el hover de un
+`re-segmented__item` desactivado. Ninguna clase ni token se renombra ni se quita.
+
+- `re-summary--compact`: el resumen en una línea de 36px para una lista que empieza arriba; con
+  `--selection` mantiene el alto. Por debajo de 400px se estrecha.
+- `re-tree__group--parent`: un nivel padre en `re-tree--flat` (un sitio y sus dominios). Cabecera de 36px
+  sobre la tarjeta, fija arriba; las de sus secciones se fijan debajo.
+- `re-figures` > `re-figure` (`__value`): cifras con su etiqueta, en dos columnas.
+- `re-dot` dentro de `re-icon-btn` se coloca en su esquina (6px): el estado vivo de una acción.
+- `re-segmented__item:disabled`: atenuado y sin hover. La opción sigue visible y su motivo va al lado.
+- `re-btn--ghost[aria-expanded='true']`: se queda como al pasar el ratón mientras su menú está abierto,
+  igual que `re-icon-btn`.
+
 ## 2.5.4 — 2026-11-01
 
 Productos afectados: ninguno. Solo documentación.
