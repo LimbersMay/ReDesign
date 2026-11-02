@@ -2013,6 +2013,45 @@
   }
 
   /*
+   * First level of a flat tree without a parent (the domains of one site): 36px with the title in
+   * `text-xs`, like the parent level, so a view of sections and a view of sites read alike side by side.
+   * In light it rises to the card with the parent's divider, as every head does; in dark it stays on the
+   * canvas, where its divider already shows. Sections inside a parent keep 32px.
+   */
+  .re-tree--flat > .re-tree__group:not(.re-tree__group--parent) > .re-tree__head {
+    height: 2.25rem;
+    border-top-color: var(--re-slate-200);
+    background: var(--re-card);
+  }
+
+  .re-tree--flat > .re-tree__group:not(.re-tree__group--parent) > .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-card);
+  }
+
+  .re-tree--flat > .re-tree__group:not(.re-tree__group--parent) > .re-tree__head .re-tree__title {
+    font-size: var(--re-text-xs);
+  }
+
+  :root.dark .re-tree--flat > .re-tree__group:not(.re-tree__group--parent) > .re-tree__head {
+    border-top-color: var(--re-slate-100);
+    background: var(--re-background);
+  }
+
+  :root.dark .re-tree--flat > .re-tree__group:not(.re-tree__group--parent) > .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-background);
+  }
+
+  /* Closed, the next head's divider is the only line between two first-level groups, never a double one.
+     In dark the head sits on the canvas and keeps its own line below. */
+  .re-tree--flat > .re-tree__group > .re-tree__head[aria-expanded='false'] {
+    border-bottom-color: transparent;
+  }
+
+  :root.dark .re-tree--flat > .re-tree__group > .re-tree__head[aria-expanded='false'] {
+    border-bottom-color: var(--re-slate-100);
+  }
+
+  /*
    * Dense row (`re-tree__row--dense`): one 32px line per item, in four cells that line up across
    * rows: lead (checkbox, lock) · key · value · trail (flags, time). The key column is fixed
    * (`--re-tree-key`), the value takes the rest. Row actions float over the end of the trail on

@@ -20,6 +20,7 @@ banderas) son componentes firma construidos con estas piezas.
 | Cabeceras fijas al hacer scroll (opcional) | `re-tree--sticky` en `re-tree` | — |
 | Árbol plano: secciones sobre una lista continua | `re-tree--flat` en `re-tree` | — |
 | Nombre de la sección en un árbol plano (mono) | `re-tree__title` | — |
+| Primer nivel de un árbol plano sin nivel padre | `re-tree__group` hijo directo de `re-tree--flat` | 36px |
 | Nivel padre de un árbol plano (un sitio y sus dominios) | `re-tree__group--parent` | 36px |
 | Fila densa: una línea en cuatro celdas | `re-tree__row--dense` | 32px |
 | Celdas de la fila densa | `re-tree__lead` · `re-tree__key` · `re-tree__value` · `re-tree__trail` | — |
@@ -72,8 +73,13 @@ resto.
 `re-tree--flat` es para vistas donde las secciones son **los sitios donde viven los datos** (los dominios
 de un sitio): una lista continua de secciones, donde el nivel se lee en el borde izquierdo.
 
-- La cabecera es un separador sobre el fondo de la página, fija al hacer scroll (no hace falta
-  `re-tree--sticky`), con borde arriba y abajo. Sus filas van sobre `--re-card`.
+- La cabecera es un separador fijo al hacer scroll (no hace falta `re-tree--sticky`), con borde arriba y
+  abajo. Sus filas van sobre `--re-card`.
+- **Primer nivel** (secciones sin nivel padre, hijas directas de `re-tree--flat`): miden y se leen como el
+  nivel padre, 36px y título en `text-xs`, para que una vista de secciones y una de sitios se vean iguales
+  una junto a otra. En claro suben a la tarjeta con el divisor del nivel padre; en oscuro siguen sobre el
+  fondo. Cerradas, entre dos cabeceras queda una sola línea. Las secciones **dentro de un nivel padre**
+  miden 32px y van sobre el fondo.
 - El nombre de la sección es un dato: `re-tree__title`, en mono y sin encoger. Lo que la describe
   («Subdominio · 8») va después en `re-tree__meta`, en sans, y es lo que se trunca.
 - Úsalo con filas densas. Las filas entran un paso (16px) respecto a su cabecera; no se ajusta a mano.

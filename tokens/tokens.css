@@ -5,7 +5,8 @@
  * `components.css` reads them directly. Load ONE brand file (`brands/<product>.css`) next to this one.
  *
  * Do not edit values here for a single product: a product only changes its brand file.
- * Light: OKLCH, one lightness/chroma curve shared by every accent (only the hue changes).
+ * Light: Catppuccin Latte neutrals; accents in OKLCH, one lightness/chroma curve shared by every accent
+ * (only the hue changes).
  * Dark: `.dark` on <html>. Catppuccin Frappé surfaces; every accent is derived from ONE pastel base.
  * Neutrals (slate) are inverted in dark, so the same class keeps its role in both themes.
  */
@@ -27,43 +28,46 @@
   --re-l-100: 0.95; --re-c-100: 0.03;
   --re-l-200: 0.91; --re-c-200: 0.05;
   --re-l-300: 0.83; --re-c-300: 0.085;
-  --re-l-400: 0.72; --re-c-400: 0.12;
-  --re-l-500: 0.6; --re-c-500: 0.145;
-  --re-l-600: 0.53; --re-c-600: 0.14;
-  --re-l-700: 0.45; --re-c-700: 0.12;
-  --re-l-800: 0.38; --re-c-800: 0.1;
+  /* 400–800 are quieter than a highlighter (same lightness, less chroma), so they sit on the canvas
+     instead of shouting over it. The primary keeps its own fixed value. */
+  --re-l-400: 0.72; --re-c-400: 0.1;
+  --re-l-500: 0.6; --re-c-500: 0.12;
+  --re-l-600: 0.53; --re-c-600: 0.12;
+  --re-l-700: 0.45; --re-c-700: 0.105;
+  --re-l-800: 0.38; --re-c-800: 0.09;
 
   /* ---------- Neutrals (light) ---------- */
   /* 50 inputs · 100 chips, raised rows · 200 lines · 300 switch off · 400 icons · 500 muted text · 800 text */
-  --re-slate-50: oklch(0.975 0.003 255);
-  --re-slate-100: oklch(0.955 0.005 255);
-  --re-slate-200: oklch(0.9 0.006 255);
-  --re-slate-300: oklch(0.86 0.008 255);
-  --re-slate-400: oklch(0.68 0.01 260);
-  --re-slate-500: oklch(0.52 0.012 260);
-  --re-slate-600: oklch(0.44 0.013 260);
-  --re-slate-700: oklch(0.36 0.014 260);
-  --re-slate-800: oklch(0.3 0.015 260);
-  --re-slate-900: oklch(0.25 0.015 260);
-  --re-slate-950: oklch(0.2 0.015 260);
+  /* Catppuccin Latte greys (lavender, hue ~270): the daytime twin of Frappé, so the two themes are one family. */
+  --re-slate-50: #eceef3;
+  --re-slate-100: #e1e4eb;
+  --re-slate-200: #ccd0da; /* Latte surface0 */
+  --re-slate-300: #bcc0cc; /* surface1 */
+  --re-slate-400: #8c8fa1; /* overlay1 */
+  --re-slate-500: #65687e; /* muted text: 5.1:1 on the card, 4.4:1 on the canvas */
+  --re-slate-600: #5c5f77; /* subtext1 */
+  --re-slate-700: #535670;
+  --re-slate-800: #4c4f69; /* Latte text: softer than black, as Frappé's text is softer than white (7.4:1) */
+  --re-slate-900: #3c3f55;
+  --re-slate-950: #2e3043;
 
   /* ---------- Surfaces and semantic roles ---------- */
   /* Light = the Latte family of the dark Frappé: a cool blue-grey canvas where the content lives, and an
      off-white (never pure white) that only what rises uses: chrome, menus, dialogs. */
-  --re-background: #eceef3;
+  --re-background: #e4e7ee;
   --re-foreground: var(--re-slate-800);
-  --re-card: #f8f9fb;
+  --re-card: #f5f6f9;
   /* Neutral sheen on the chrome: off-white at the window edge, fading towards the canvas. Depth without a
      tint. The header fades down, the footer fades up. */
   --re-chrome-sheen: linear-gradient(to bottom, var(--re-card), color-mix(in oklab, var(--re-card) 45%, var(--re-background)));
   --re-chrome-sheen-up: linear-gradient(to top, var(--re-card), color-mix(in oklab, var(--re-card) 45%, var(--re-background)));
-  /* Lines of content (tree heads, batch bar). In light they sit on the canvas, with no fill of their own:
-     the level shows in the indent and the dividers. In dark they are raised, the canvas is the deepest. */
-  --re-line: transparent;
-  --re-line-sunken: transparent;
+  /* Lines of content (tree heads, batch bar). Layered as in dark: heads rise to the card, nested heads sit
+     halfway, the canvas is the deepest. */
+  --re-line: var(--re-card);
+  --re-line-sunken: color-mix(in oklab, var(--re-card) 50%, var(--re-background));
   /* Hover darkens with a translucent ink: it reads the same on the canvas and on a card. */
   --re-line-hover: color-mix(in srgb, var(--re-slate-900) 5%, transparent);
-  --re-overlay: oklch(0.2 0.015 260 / 0.55);
+  --re-overlay: rgb(76 79 105 / 0.45);
   --re-primary: oklch(0.53 calc(0.12 * var(--re-brand-c-scale)) var(--re-brand-hue));
   --re-primary-foreground: var(--re-brand-on-primary);
   --re-destructive: var(--re-rose-600);
@@ -71,8 +75,8 @@
   --re-border: var(--re-slate-200);
   --re-ring: var(--re-brand-500);
   /* Inverse surface (toasts): dark in light, raised dark in dark */
-  --re-inverse: oklch(0.3 0.015 260);
-  --re-inverse-foreground: oklch(0.975 0.003 255);
+  --re-inverse: #4c4f69;
+  --re-inverse-foreground: #eff1f5;
   --re-inverse-action: var(--re-brand-200);
 
   /* ---------- Accents (light, generated) ---------- */

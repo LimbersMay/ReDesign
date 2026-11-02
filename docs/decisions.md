@@ -248,3 +248,24 @@ el título solo si el header tiene `re-tabs--header`.
 **Consecuencias.** PATCH (2.5.1): cambian valores y una condición, ningún nombre. ReSession (con pestañas)
 no cambia; ReTame (sin pestañas) muestra su título en ventanas estrechas.
 
+## D23 · El claro es Catppuccin Latte (2.7.0)
+
+**Contexto.** El claro de 2.3.0 se llamaba Latte, pero sus neutros eran casi grises (croma 0.003–0.015),
+las cabeceras del árbol no tenían relleno y la lista flotaba sobre el lienzo, y los acentos usaban una curva
+saturada que gritaba sobre él. El oscuro (Frappé) no tenía ninguno de los tres problemas. En ReSession, que
+lo vive en una lista larga, el claro nunca convenció a su autor.
+**Alternativas.** Se compararon en la extensión real de ReSession cinco rondas
+(`ReSession/docs/design-explorations/2026-11-tema-suave`): el claro de hoy; A · Latte, los grises de
+Catppuccin Latte; B · Papel, marfil con el tono de cada marca; C · Suave, papel con tinta y rellenos
+mezclados con la tarjeta; y D, A con el header pintado de la marca. Las seis marcas se capturaron sobre A
+(con el header de D) y sobre C.
+**Decisión.** A · Latte. Neutros de Catppuccin Latte (lavanda, tono ~270), lienzo `#e4e7ee` y tarjeta
+`#f5f6f9`; las cabeceras suben a la tarjeta y las anidadas quedan a medio camino, como en oscuro
+(`--re-line`, `--re-line-sunken`); los acentos 400–800 bajan de croma a la misma luminosidad y el primario no
+cambia. Un solo claro para la suite, sin papel por producto. D se descartó: con el header pintado, header y
+lista parecían dos mundos. En el árbol plano, el primer nivel mide como el nivel padre (36px, `text-xs`) y,
+en claro, va sobre la tarjeta con su divisor.
+**Consecuencias.** MINOR (2.7.0): ningún nombre cambia, pero cambia el aspecto en claro de toda la suite. El
+texto queda a 7,4:1 sobre la tarjeta (antes 13:1, más suave a propósito, como el de Frappé); el apagado, a
+5,1:1 sobre la tarjeta y 4,4:1 sobre el lienzo (antes 4,1:1). El oscuro no cambia. Cada producto puede volver
+al claro anterior sobrescribiendo los tokens en su CSS (R14).

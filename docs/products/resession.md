@@ -99,6 +99,11 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   bajo un sitio, sus dominios entran otro; con todo abierto se ve dónde acaba un sitio. Las filas pierden
   16px de ancho (32px bajo un sitio), que salen del valor. Alternativa: sobrescribir `--re-tree-indent` en
   el producto para un paso más corto.
+- **Tema claro Latte** (2.7.0, D23; su D48). Lo eligió ReSession entre cinco rondas probadas en su popup.
+  Se nota: en claro, grises lavanda, cabeceras del árbol sobre la tarjeta y acentos más tranquilos; las
+  secciones de «Este sitio» miden 36px con el título en `text-xs`, como los sitios de «Navegador», y en claro
+  van sobre la tarjeta con su divisor. Alternativa: sobrescribir los tokens del claro en el producto para
+  volver al anterior.
 - **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
   `re-breadcrumb`.
 
