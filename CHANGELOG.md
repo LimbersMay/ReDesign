@@ -6,6 +6,16 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.6.1 — 2026-11-01
+
+Productos afectados: ReSession (ver su ficha, R14). Ningún otro producto usa `re-tree--flat`. Ninguna clase
+ni token se renombra ni se quita.
+
+- `re-tree--flat`: las filas densas entran un paso (`--re-tree-indent`) respecto a su cabecera, y
+  `re-tree__group--parent` pone `--re-tree-depth: 1` a sus secciones. El nivel se lee en el borde izquierdo:
+  sitio → dominio → filas.
+- ReTree: el árbol plano admite un icono de sección (`re-tree__icon`, gris) entre el chevron y el título.
+
 ## 2.6.0 — 2026-11-01
 
 Productos afectados: ReSession (navegación nueva; ver su ficha, R14). En los demás, solo el hover de un
