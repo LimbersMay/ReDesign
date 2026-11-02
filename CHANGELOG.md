@@ -6,6 +6,21 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.7.0 — 2026-11-02
+
+Productos afectados: todos los que usan el tema claro (ReSession; ReTame al subir de 2.5.0; ReRoute, ReLink,
+ReTabs y ReBooks al migrar). Ver sus fichas (R14) y D23. Ninguna clase ni token se renombra ni se quita. El
+oscuro no cambia.
+
+- Tema claro: los neutros pasan a Catppuccin Latte (lavanda), lienzo `#e4e7ee` y tarjeta `#f5f6f9`. Texto
+  `#4c4f69`, más suave que el negro, como el de Frappé.
+- `--re-line` y `--re-line-sunken` en claro: las cabeceras del árbol suben a la tarjeta y las anidadas
+  quedan a medio camino, como en oscuro (antes, transparentes).
+- Curva de acentos en claro: 400–800 con menos croma a la misma luminosidad. El primario no cambia.
+- `re-tree--flat`: el primer nivel sin padre mide 36px con el título en `text-xs`, como
+  `re-tree__group--parent`; en claro va sobre la tarjeta con su divisor. Cerradas, entre dos cabeceras de
+  primer nivel queda una sola línea.
+
 ## 2.6.1 — 2026-11-01
 
 Productos afectados: ReSession (ver su ficha, R14). Ningún otro producto usa `re-tree--flat`. Ninguna clase
