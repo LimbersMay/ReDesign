@@ -70,17 +70,21 @@ resto.
 ## Árbol plano
 
 `re-tree--flat` es para vistas donde las secciones son **los sitios donde viven los datos** (los dominios
-de un sitio) y no una jerarquía que se recorre: un solo nivel, sin sangría ni icono de grupo.
+de un sitio): una lista continua de secciones, donde el nivel se lee en el borde izquierdo.
 
 - La cabecera es un separador sobre el fondo de la página, fija al hacer scroll (no hace falta
   `re-tree--sticky`), con borde arriba y abajo. Sus filas van sobre `--re-card`.
 - El nombre de la sección es un dato: `re-tree__title`, en mono y sin encoger. Lo que la describe
   («Subdominio · 8») va después en `re-tree__meta`, en sans, y es lo que se trunca.
-- Úsalo con filas densas. Sin `--re-tree-depth`: un árbol plano no anida.
+- Úsalo con filas densas. Las filas entran un paso (16px) respecto a su cabecera; no se ajusta a mano.
+- **Icono de sección** opcional, entre el chevron y el título: `<ng-icon class="re-tree__icon">` a 12px,
+  en gris (`re-tree__icon` sin rol). Dice qué es la sección (en ReSession: globo, carpeta, escudo, base
+  de datos); no se colorea por rol, ni siquiera la de rastreadores.
 - **Nivel padre:** cuando las secciones se agrupan (los dominios de cada sitio), el grupo que las contiene
   lleva `re-tree__group--parent`. Su cabecera mide 36px, va sobre `--re-card` con el título en `text-xs` y
-  se fija arriba; las cabeceras de sus secciones se fijan justo debajo. Es el único nivel extra: las
-  secciones siguen planas, sin sangría ni fondo hundido.
+  se fija arriba; las cabeceras de sus secciones se fijan justo debajo. Es el único nivel extra: sus
+  secciones entran un paso (`--re-tree-depth: 1`, lo pone el propio nivel padre) y sus filas otro más,
+  sin fondo hundido. Así, con todo abierto, se ve dónde acaba un sitio y empieza el siguiente.
 
 ```html
 <div class="re-tree re-tree--flat">
@@ -88,6 +92,7 @@ de un sitio) y no una jerarquía que se recorre: un solo nivel, sin sangría ni 
     <div class="re-tree__head re-reveal-host" role="button" tabindex="0" [attr.aria-expanded]="open()">
       <div class="re-tree__head-main">
         <ng-icon class="re-tree__chevron" name="lucideChevronDown" size="11" />
+        <ng-icon class="re-tree__icon" name="lucideFolder" size="12" />
         <span class="re-tree__title">gist.github.com</span>
         <span class="re-tree__meta">Subdominio · 8</span>
       </div>
@@ -105,7 +110,7 @@ de un sitio) y no una jerarquía que se recorre: un solo nivel, sin sangría ni 
     <div class="re-tree__head" role="button" tabindex="0" aria-expanded="true">
       <div class="re-tree__head-main">
         <ng-icon class="re-tree__chevron" name="lucideChevronDown" size="11" />
-        <span class="re-favicon">g</span>
+        <ng-icon class="re-tree__icon" name="lucideGlobe" size="12" />
         <span class="re-tree__title">github.com</span>
         <span class="re-tree__meta">13 cookies</span>
       </div>

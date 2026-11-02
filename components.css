@@ -1936,9 +1936,9 @@
   }
 
   /*
-   * Flat tree (`re-tree--flat`): one level of sections over a continuous list, for views where the
-   * groups are the places the data lives (the domains of a site). Heads are sticky dividers on the
-   * page background; rows sit on the card. Use it with dense rows.
+   * Flat tree (`re-tree--flat`): sections over a continuous list, for views where the groups are the
+   * places the data lives (the domains of a site). Heads are sticky dividers on the page background;
+   * rows sit on the card, one indent step inside their head. Use it with dense rows.
    */
   .re-tree--flat .re-tree__head {
     position: sticky;
@@ -1982,7 +1982,7 @@
   /*
    * Parent level of a flat tree (`re-tree__group--parent`): a group whose items are sections (a site
    * and its domains). Its head is 36px on the card and sticks at the top; the section heads stick
-   * right under it. Sections stay flat: no indent, no sunken fill.
+   * right under it, one indent step in, and their rows one more. No sunken fill.
    */
   .re-tree--flat .re-tree__group--parent > .re-tree__head {
     z-index: 3;
@@ -2000,6 +2000,7 @@
   }
 
   .re-tree--flat .re-tree__group--parent > .re-tree__items {
+    --re-tree-depth: 1;
     background: transparent;
   }
 
@@ -2028,6 +2029,11 @@
 
   .re-tree__items .re-tree__items .re-tree__row--dense:not(.re-tree__row--2line) {
     height: 2rem;
+  }
+
+  /* In a flat tree the level reads in the left edge: a row sits one step inside its head. */
+  .re-tree--flat .re-tree__row--dense {
+    padding-left: calc(1rem + (var(--re-tree-depth, 0) + 1) * var(--re-tree-indent, 1rem));
   }
 
   .re-tree__row--dense:has(.re-tree__lead .re-checkbox:checked) {
