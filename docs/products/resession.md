@@ -6,7 +6,7 @@
 | Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · definitiva (D14) |
 | Ventana | 540×580 + panel lateral |
 | Stack | Angular 20 (subir a 21 como ReRoute) · Tailwind v4 · `@ng-icons/lucide` · Transloco (propuesto: ver `ReSession/docs/architecture.md`) |
-| Estado frente a ReDesign | Implementación en curso; pasa de 2.3.0 a 2.6.0 con la navegación nueva (la decide el producto, R15) |
+| Estado frente a ReDesign | En 2.7.1. La interfaz está hecha con datos de prueba (su fase 1); la fase 2 la conecta a Chrome. La navegación la decidió el producto (R15) |
 | Layout | Lo decide ReSession (`docs/visual.md`). Piezas que usa: header con Auto y lo limpiado, franja compacta, árbol plano con nivel padre y filas densas, editor en hoja, status bar con el estado de Auto |
 
 ## Garantía
@@ -114,3 +114,24 @@ Ninguna.
 ## Propuestas
 
 - Generalizar la «fila con candado» si ReTabs o ReLink necesitan fijar elementos.
+- **La identidad de ReSession** (su D46, noviembre de 2026; pendiente de decidir). Tras varias rondas en
+  su popup, el producto era limpio pero no se reconocía: el ámbar solo estaba en el logo, y ocho piezas
+  con el mismo borde competían por la vista. Eligió cuatro ajustes, que su maqueta tenía en
+  `src/app/mockup/identity.css` (en el historial de ReSession hasta `771e4a6`). La maqueta se retiró al
+  terminar su fase 1, y la app no los tiene: esperan aquí. Todos usan tokens `--re-*`, así que claro y
+  oscuro siguen solos.
+  1. **El `+` de la franja con la marca en el símbolo y el borde** (`re-icon-btn--outline` dentro de
+     `re-summary`: borde `brand-200`, icono `brand-600`, relleno neutro también en hover). **Choca con
+     R13**: la marca va solo en la acción principal, y el `+` no lo es (lo es «Limpiar», en `rose`).
+     Alternativas: (a) una variante `re-icon-btn--brand-outline` y una excepción declarada en esta ficha
+     («el alta lleva la marca en línea, nunca en bloque»); (b) el `+` neutro en reposo y con la marca solo
+     en hover y foco, que R13 ya permite; (c) dejarlo neutro, como hoy.
+  2. **Segmented más ligero**: el borde del contenedor, `slate-200` al 40 %; la opción activa sigue
+     elevándose. Cambiarlo en `re-segmented` afecta a todos los productos (R14). Alternativas: una variante
+     `re-segmented--quiet`, solo para quien la pida; o el valor global, anotado en cada ficha.
+  3. **Búsqueda sin borde**: `re-input-group` sin foco, con borde transparente y fondo `bg-card`
+     (`slate-100` en hover); con foco, el borde de siempre. En oscuro, `slate-50` es casi el fondo y el
+     campo con borde pesa. Alternativa: una variante `re-input-group--quiet`.
+  4. **«Lista blanca» sin borde en el árbol**: `re-pill--success` dentro de `re-tree`, con el borde
+     transparente y solo su relleno verde. Alternativa: una variante `re-pill--soft` para cualquier
+     píldora que repita su estado en muchas filas.
