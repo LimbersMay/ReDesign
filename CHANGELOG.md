@@ -6,6 +6,14 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.7.1 — 2026-11-02
+
+Productos afectados: ninguno en pantalla; solo cambia la ficha de ReSession. Ninguna clase ni token cambia.
+
+- Ficha de ReSession: Propuesta con los cuatro ajustes de identidad de su D46 (el `+` de la franja con la
+  marca, segmented y búsqueda más ligeros, «Lista blanca» sin borde en el árbol), con su choque con R13 y
+  alternativas para cada uno. El estado frente a ReDesign, al día.
+
 ## 2.7.0 — 2026-11-02
 
 Productos afectados: todos los que usan el tema claro (ReSession; ReTame al subir de 2.5.0; ReRoute, ReLink,
