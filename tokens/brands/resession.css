@@ -10,4 +10,20 @@ html:root {
   --re-brand-l-shift: 0.06;
   --re-brand-c-scale: 1;
   --re-brand-dark: #e5c890;
+
+  /*
+   * Calma (D24, color.md §5). Junto a otras extensiones, ReSession se sentía ajena: nombres en mono, un
+   * borde en cada control y tres colores en una línea. Nombres en sans (los valores siguen en mono),
+   * controles separados por relleno, el verde solo en el escudo y «Limpiar» como tinte rojo. Solo tokens:
+   * claro y oscuro siguen solos.
+   */
+  --re-tree-font: var(--re-font-sans);
+  --re-control-border: transparent;
+  --re-control-fill: var(--re-slate-100);
+  --re-control-fill-hover: var(--re-slate-200);
+  --re-soft-border: transparent;
+  --re-success-text: var(--re-slate-600);
+  --re-success-fill: var(--re-slate-100);
+  --re-danger-soft-fill: var(--re-rose-50);
+  --re-danger-soft-fill-hover: var(--re-rose-100);
 }

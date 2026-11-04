@@ -116,7 +116,7 @@ todos de ReSession: son vocabulario, no una disposición que copiar. Por eso:
 | Archivo | Para qué |
 |---|---|
 | `tokens/tokens.css` | Variables `--re-*`: neutros, roles, acentos, tipo, radios, sombras, capas. |
-| `tokens/brands/<x>.css` | Lo único que cambia por producto: tono de marca y pastel oscuro. |
+| `tokens/brands/<x>.css` | Lo único que cambia por producto: tono de marca y pastel oscuro, y la calma opcional (`docs/foundations/color.md` §5). |
 | `tailwind/theme.css` | Puente a Tailwind v4 (utilidades `bg-card`, `text-slate-700`, `brand-*`) y paleta cerrada. |
 | `tailwind/preset-v3.cjs` | Lo mismo para Tailwind v3 (solo ReTabs, mientras migra). |
 | `components.css` | El aspecto de todos los componentes compartidos. |

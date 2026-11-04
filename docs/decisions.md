@@ -269,3 +269,24 @@ en claro, va sobre la tarjeta con su divisor.
 texto queda a 7,4:1 sobre la tarjeta (antes 13:1, más suave a propósito, como el de Frappé); el apagado, a
 5,1:1 sobre la tarjeta y 4,4:1 sobre el lienzo (antes 4,1:1). El oscuro no cambia. Cada producto puede volver
 al claro anterior sobrescribiendo los tokens en su CSS (R14).
+
+## D24 · Calma por marca (2.8.0)
+
+**Contexto.** Al lado de otras extensiones (Cookie Editor, Requestly), ReSession se sentía ajena aunque
+organizara mejor. En su tanda 8 (`ReSession/docs/design-explorations/2026-11-familiar`) se aislaron cuatro
+causas: los grises lavanda de Catppuccin, los nombres en mono, un borde en cada control y tres colores en
+una línea. El redondeo no era una de ellas.
+**Alternativas.** Se probaron en la extensión real B · calmar (las tres últimas causas), C · los grises de
+Chrome (la primera) y B + C. Para llevar B a la librería: A · variables opcionales en el archivo de marca,
+con el valor de hoy como respaldo de cada `var()`; B · modificadores por componente (`re-tree--sans`,
+`re-input-group--filled`…) que el producto pone en sus plantillas; C · cambiar los valores por defecto para
+toda la suite.
+**Decisión.** B con la alternativa A: nueve variables de «calma» (`color.md` §5) que ReSession declara en
+`brands/resession.css`. Sin plantillas que tocar y con la identidad en un solo sitio (R12). C (toda la suite)
+se descartó: ReRoute y ReTabs, de tono frío, encajan con el gris lavanda. Los grises de Chrome quedaron
+aparcados en el backlog de ReSession como idea de tres temas (Claro, Oscuro neutro, Oscuro suave), con el
+oscuro de serie elegido por cada marca.
+**Consecuencias.** MINOR (2.8.0): variables nuevas, ningún nombre cambia ni se quita, y quien no las declara
+se ve igual. Solo cambia ReSession (su ficha, R14). Con la calma, el verde de «protegido» queda en el escudo
+y la línea tiene un solo color, el de la acción. Las Propuestas 3 y 4 de la identidad de ReSession (su D46)
+quedan resueltas.

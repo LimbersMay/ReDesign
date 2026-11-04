@@ -310,15 +310,16 @@
   }
 
   /* The one destructive action always visible on a screen (the batch bar "Clean (n)"). */
+  /* Calm knobs (color.md §5, Calma): --re-soft-border, --re-danger-soft-fill(-hover). */
   .re-btn--danger-soft {
-    border-color: var(--re-rose-200);
-    background: var(--re-rose-50);
+    border-color: var(--re-soft-border, var(--re-rose-200));
+    background: var(--re-danger-soft-fill, var(--re-rose-50));
     color: var(--re-rose-600);
     box-shadow: var(--re-shadow-2xs);
   }
 
   .re-btn--danger-soft:hover:not(:disabled) {
-    background: var(--re-rose-100);
+    background: var(--re-danger-soft-fill-hover, var(--re-rose-100));
   }
 
   /* A destructive action revealed on hover (a group head's "Clean"): neutral until pointed at. */
@@ -330,8 +331,8 @@
   }
 
   .re-btn--danger-outline:hover:not(:disabled) {
-    border-color: var(--re-rose-200);
-    background: var(--re-rose-50);
+    border-color: var(--re-soft-border, var(--re-rose-200));
+    background: var(--re-danger-soft-fill, var(--re-rose-50));
     color: var(--re-rose-600);
   }
 
@@ -340,13 +341,13 @@
    * destructive buttons keep a solid card fill and carry the colour in the text, icon and border (D16).
    */
   :root.dark :is(.re-btn--danger-soft, .re-btn--danger-outline:hover:not(:disabled)) {
-    border-color: color-mix(in srgb, var(--re-rose-500) 35%, var(--re-slate-200));
-    background: var(--re-card);
+    border-color: var(--re-soft-border, color-mix(in srgb, var(--re-rose-500) 35%, var(--re-slate-200)));
+    background: var(--re-danger-soft-fill, var(--re-card));
     color: var(--re-rose-500);
   }
 
   :root.dark .re-btn--danger-soft:hover:not(:disabled) {
-    background: var(--re-slate-100);
+    background: var(--re-danger-soft-fill-hover, var(--re-slate-100));
   }
 
   /* Destructive, quiet until hovered (the "Delete" at the start of a dialog footer). */
@@ -415,12 +416,17 @@
   }
 
   /* Bordered icon button, the height of an input: an action that sits next to a search field. */
+  /* Framed like an input: the same calm knobs (--re-control-*, color.md §5, Calma). */
   .re-icon-btn--outline {
     width: 30px;
     height: 30px;
-    border: 1px solid var(--re-slate-200);
-    background: var(--re-slate-50);
+    border: 1px solid var(--re-control-border, var(--re-slate-200));
+    background: var(--re-control-fill, var(--re-slate-50));
     color: var(--re-slate-500);
+  }
+
+  .re-icon-btn--outline:hover {
+    background: var(--re-control-fill-hover, var(--re-slate-100));
   }
 
   .re-icon-btn:disabled {
@@ -503,9 +509,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0 0.625rem;
-    border: 1px solid var(--re-slate-200);
+    border: 1px solid var(--re-control-border, var(--re-slate-200));
     border-radius: var(--re-radius);
-    background: var(--re-slate-50);
+    background: var(--re-control-fill, var(--re-slate-50));
     font-size: var(--re-text-xs);
     color: var(--re-slate-700);
     transition:
@@ -516,7 +522,7 @@
 
   .re-input-group:hover,
   app-input-group:hover {
-    background: var(--re-slate-100);
+    background: var(--re-control-fill-hover, var(--re-slate-100));
   }
 
   .re-input-group:focus-within,
@@ -931,8 +937,13 @@
   }
 
   /* Dark: solid card fill with the colour in the text and icon, as the soft buttons (D16). */
-  :root.dark :is(.re-badge--danger, .re-pill--danger, .re-badge--success, .re-pill--success) {
+  :root.dark :is(.re-badge--danger, .re-badge--success) {
     border-color: var(--re-slate-200);
+    background: var(--re-card);
+  }
+
+  :root.dark :is(.re-pill--danger, .re-pill--success) {
+    border-color: var(--re-soft-border, var(--re-slate-200));
     background: var(--re-card);
   }
 
@@ -940,7 +951,17 @@
     color: var(--re-rose-500);
   }
 
-  :root.dark :is(.re-badge--success, .re-pill--success) {
+  :root.dark .re-badge--success {
+    color: var(--re-emerald-500);
+  }
+
+  /* Calm knobs (color.md §5, Calma): neutral words and fill; the icon keeps the green. */
+  :root.dark .re-pill--success {
+    background: var(--re-success-fill, var(--re-card));
+    color: var(--re-success-text, var(--re-emerald-500));
+  }
+
+  :root.dark .re-pill--success > :is(svg, ng-icon, i) {
     color: var(--re-emerald-500);
   }
 
@@ -952,7 +973,7 @@
     gap: 0.25rem;
     padding: 0 0.75rem;
     height: 1.375rem;
-    border: 1px solid var(--re-slate-200);
+    border: 1px solid var(--re-soft-border, var(--re-slate-200));
     border-radius: 9999px;
     background: var(--re-slate-50);
     font-family: var(--re-font-sans);
@@ -970,19 +991,24 @@
   }
 
   .re-pill--brand {
-    border-color: var(--re-brand-200);
+    border-color: var(--re-soft-border, var(--re-brand-200));
     background: var(--re-brand-50);
     color: var(--re-brand-700);
   }
 
+  /* With the calm knobs the words can go neutral; the icon keeps the green (color.md §5, Calma). */
   .re-pill--success {
-    border-color: var(--re-emerald-200);
-    background: var(--re-emerald-50);
+    border-color: var(--re-soft-border, var(--re-emerald-200));
+    background: var(--re-success-fill, var(--re-emerald-50));
+    color: var(--re-success-text, var(--re-emerald-700));
+  }
+
+  .re-pill--success > :is(svg, ng-icon, i) {
     color: var(--re-emerald-700);
   }
 
   .re-pill--danger {
-    border-color: var(--re-rose-200);
+    border-color: var(--re-soft-border, var(--re-rose-200));
     background: var(--re-rose-50);
     color: var(--re-rose-600);
   }
@@ -1036,9 +1062,9 @@
     flex-shrink: 0;
     align-items: center;
     padding: 0.125rem;
-    border: 1px solid var(--re-slate-200);
+    border: 1px solid var(--re-control-border, var(--re-slate-200));
     border-radius: var(--re-radius);
-    background: var(--re-slate-50);
+    background: var(--re-control-fill, var(--re-slate-50));
     font-family: var(--re-font-sans);
     font-size: var(--re-text-2xs);
     line-height: var(--re-text-2xs-lh);
@@ -1076,7 +1102,7 @@
 
   /* Active = elevation, never the brand colour (color.md §2). Same recipe as ReRoute's settings menu. */
   .re-segmented__item:is([aria-pressed='true'], [aria-selected='true'], .is-active) {
-    border-color: color-mix(in srgb, var(--re-slate-200) 50%, transparent);
+    border-color: color-mix(in srgb, var(--re-control-border, var(--re-slate-200)) 50%, transparent);
     background: var(--re-card);
     color: var(--re-slate-800);
     box-shadow: var(--re-shadow-xs);
@@ -1582,6 +1608,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
+    color: var(--re-success-text, var(--re-emerald-600));
+  }
+
+  .re-summary__stat--success > :is(svg, ng-icon, i) {
     color: var(--re-emerald-600);
   }
 
@@ -1742,7 +1772,8 @@
     min-height: 0;
     overflow-y: auto;
     background: var(--re-background);
-    font-family: var(--re-font-mono);
+    /* Names and section titles inherit this; values are mono on their own. Calm knob: color.md §5, Calma. */
+    font-family: var(--re-tree-font, var(--re-font-mono));
     font-size: var(--re-text-2xs);
     line-height: var(--re-text-2xs-lh);
   }
@@ -1901,6 +1932,7 @@
   .re-tree__value {
     max-width: 40%;
     overflow: hidden;
+    font-family: var(--re-font-mono);
     color: var(--re-slate-400);
     text-overflow: ellipsis;
     white-space: nowrap;

@@ -86,7 +86,7 @@ misma clase funciona en los dos temas y no hace falta `dark:`.
 
 ## 5. Marcas
 
-Una marca son cuatro variables en `tokens/brands/<producto>.css`:
+Una marca son cuatro variables en `tokens/brands/<producto>.css` (más la calma, opcional, abajo):
 
 | Variable | Qué hace |
 |---|---|
@@ -111,6 +111,27 @@ Una marca son cuatro variables en `tokens/brands/<producto>.css`:
   todas las marcas. Con el primario a L 0.53 el blanco pasa AA en cualquier tono; si una marca no
   llegara, se cambia su tono o su saturación, no el color del texto.
 - Se prueba en la galería, en claro y en oscuro, antes de publicarla.
+
+### Calma (opcional, D24)
+
+Una marca puede declarar, además, unas variables que bajan el peso de la interfaz. Si no las declara,
+cada componente usa el valor de siempre (es el respaldo de su `var()`): nada cambia. Van en el mismo
+`html:root` de la marca y con tokens `--re-*`, así que claro y oscuro siguen solos.
+
+| Variable | Dónde actúa | Si la marca no la declara |
+|---|---|---|
+| `--re-tree-font` | Nombres y títulos de `re-tree`. Los valores (`re-tree__value`) y los badges siguen en mono | `--re-font-mono` |
+| `--re-control-border` | Borde de `re-input-group`, `re-segmented` (y su opción activa, a la mitad) y `re-icon-btn--outline`. Con foco, el campo recupera el borde de la marca | `slate-200` |
+| `--re-control-fill` | Relleno de esos mismos controles | `slate-50` |
+| `--re-control-fill-hover` | Su relleno al pasar el ratón | `slate-100` |
+| `--re-soft-border` | Borde de `re-pill` (todas sus variantes) y de `re-btn--danger-soft` (y `--danger-outline` en hover) | el de cada uno |
+| `--re-success-text` | Texto de `re-summary__stat--success` y `re-pill--success`; el icono sigue en verde | `emerald-600` / `-700` (`-500` en oscuro) |
+| `--re-success-fill` | Relleno de `re-pill--success` | `emerald-50` (tarjeta en oscuro) |
+| `--re-danger-soft-fill` | Relleno de `re-btn--danger-soft` (y `--danger-outline` en hover) | `rose-50` (tarjeta en oscuro) |
+| `--re-danger-soft-fill-hover` | Su relleno al pasar el ratón | `rose-100` (`slate-100` en oscuro) |
+
+Hoy solo la usa ReSession (su ficha tiene los valores). El verde de «protegido» queda en el escudo: el
+significado sigue a la vista, y en la línea manda un solo color, el de la acción (§2).
 
 ## 6. Recetas
 

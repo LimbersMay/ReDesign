@@ -80,7 +80,8 @@ de un sitio): una lista continua de secciones, donde el nivel se lee en el borde
   una junto a otra. En claro suben a la tarjeta con el divisor del nivel padre; en oscuro siguen sobre el
   fondo. Cerradas, entre dos cabeceras queda una sola línea. Las secciones **dentro de un nivel padre**
   miden 32px y van sobre el fondo.
-- El nombre de la sección es un dato: `re-tree__title`, en mono y sin encoger. Lo que la describe
+- El nombre de la sección es un dato: `re-tree__title`, en mono (en sans si la marca declara
+  `--re-tree-font`, `color.md` §5) y sin encoger. Lo que la describe
   («Subdominio · 8») va después en `re-tree__meta`, en sans, y es lo que se trunca.
 - Úsalo con filas densas. Las filas entran un paso (16px) respecto a su cabecera; no se ajusta a mano.
 - **Icono de sección** opcional, entre el chevron y el título: `<ng-icon class="re-tree__icon">` a 12px,
