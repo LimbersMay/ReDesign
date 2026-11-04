@@ -6,6 +6,23 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.8.0 — 2026-11-04
+
+Productos afectados: ReSession (ver su ficha, R14, y D24). Ninguna clase ni token se renombra ni se quita;
+quien no declara las variables nuevas se ve igual.
+
+- Calma por marca: nueve variables opcionales para el archivo de marca (`color.md` §5), cada una con el
+  valor de hoy como respaldo. `--re-tree-font` (nombres del árbol); `--re-control-border`,
+  `--re-control-fill` y `--re-control-fill-hover` (`re-input-group`, `re-segmented`,
+  `re-icon-btn--outline`); `--re-soft-border` (`re-pill`, `re-btn--danger-soft`); `--re-success-text` y
+  `--re-success-fill` (`re-summary__stat--success`, `re-pill--success`); `--re-danger-soft-fill` y
+  `--re-danger-soft-fill-hover`.
+- `re-tree__value` declara su mono (antes la heredaba del árbol), y el icono de `re-summary__stat--success`
+  y `re-pill--success` declara su verde (antes lo heredaba del texto). Sin cambio en pantalla.
+- `re-icon-btn--outline` tiene su propio hover (el mismo `slate-100` de antes).
+- ReSession declara la calma: nombres en sans, controles por relleno sin borde, el verde solo en el escudo
+  y «Limpiar» como tinte rojo.
+
 ## 2.7.2 — 2026-11-03
 
 Productos afectados: ReLink y ReSession (ver sus fichas, R14). Ninguna clase ni token cambia.
