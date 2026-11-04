@@ -104,6 +104,10 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   secciones de «Este sitio» miden 36px con el título en `text-xs`, como los sitios de «Navegador», y en claro
   van sobre la tarjeta con su divisor. Alternativa: sobrescribir los tokens del claro en el producto para
   volver al anterior.
+- **Placeholder de `re-textarea`** (2.7.2). El «Valor» de ejemplo en el campo vacío de una cookie o de una
+  clave pasa de mono a sans, como el placeholder de la búsqueda; el valor escrito sigue en mono.
+  Alternativa: `.re-textarea::placeholder { font-family: var(--re-font-mono); }` en el producto para
+  volver al anterior.
 - **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
   `re-breadcrumb`.
 

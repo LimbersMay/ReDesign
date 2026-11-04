@@ -31,4 +31,16 @@ Al subir a 2.7.0 (D23), el claro cambia: lienzo y tarjeta lavanda (`#e4e7ee`, `#
 (`#4c4f69`, 7,4:1 sobre la tarjeta), cabeceras de árbol sobre la tarjeta y colores de marca y categoría
 400–800 con menos croma. El botón primario y el oscuro no cambian. Alternativa: sobrescribir en el
 producto `--re-slate-*`, `--re-background`, `--re-card` y `--re-c-400…800` para quedarse con el claro
-anterior. Sin probar aún en ReLink.
+anterior. Adoptado tal cual en ReLink 2.0.0, también en el aviso «Enlace limpiado», que copia los valores
+de `re-toast` porque una página no carga este CSS.
+
+## Cabecera
+
+Nombre y lema («Clean URLs & Tracking Parameters», el de la tienda) en `re-header__subtitle`, como ReRoute.
+Sin versión: se probó en una pastilla gris y sobraba (`ReLink/docs/design-explorations/2026-11-popup/tanda-5.html`).
+
+## Placeholder de `re-textarea` (2.7.2)
+
+El texto de ejemplo del campo de enlace («Pega un enlace para ver qué rastreadores lleva») sale en sans,
+como el resto del popup; el enlace pegado sigue en mono. ReLink lo tenía como regla provisional en su
+`styles.css` y la quita al subir a 2.7.2. Alternativa: ninguna necesaria; es lo que el producto pidió.
