@@ -6,6 +6,23 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.7.2 — 2026-11-03
+
+Productos afectados: ReLink y ReSession (ver sus fichas, R14). Ninguna clase ni token cambia.
+
+- `re-textarea`: el placeholder sale en sans y `text-xs`, como en `re-input-group`; el valor sigue en mono.
+  Antes, una frase de ejemplo en un campo vacío salía en monoespaciada y desentonaba con el resto.
+- Ficha de ReLink: el claro Latte, adoptado tal cual en ReLink 2.0.0; la cabecera lleva el lema en
+  `re-header__subtitle`.
+
+## 2.7.1 — 2026-11-02
+
+Productos afectados: ninguno en pantalla; solo cambia la ficha de ReSession. Ninguna clase ni token cambia.
+
+- Ficha de ReSession: Propuesta con los cuatro ajustes de identidad de su D46 (el `+` de la franja con la
+  marca, segmented y búsqueda más ligeros, «Lista blanca» sin borde en el árbol), con su choque con R13 y
+  alternativas para cada uno. El estado frente a ReDesign, al día.
+
 ## 2.7.0 — 2026-11-02
 
 Productos afectados: todos los que usan el tema claro (ReSession; ReTame al subir de 2.5.0; ReRoute, ReLink,

@@ -628,6 +628,12 @@
     resize: none;
   }
 
+  /* The value is technical (mono); the placeholder is prose, as in re-input-group. */
+  .re-textarea::placeholder {
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+  }
+
   /* Bare <select> inside a frame: text and an arrow. Chrome 135+ styles its menu like re-dropdown. */
   .re-select-inline,
   .ui-inline-select {
