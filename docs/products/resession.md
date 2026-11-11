@@ -148,3 +148,15 @@ Ninguna.
      píldoras y con el texto neutro; el escudo sigue verde.
   - El 2 (segmented) queda cubierto en parte: la calma le quita el borde y le pone el relleno de los
     controles. El 1 (`+` con la marca) sigue abierto.
+- **Iconos del árbol sin SVG** (su D64, noviembre de 2026; ya en la app). En «Navegador», con todo abierto
+  y unas 2600 cookies, cada fila llevaba tres `<ng-icon>` (candado, lápiz y papelera): casi 8000 SVG en
+  línea, cada uno con varios elementos que estilar y maquetar, y el popup se congelaba. ReSession pinta los
+  iconos de las filas y cabeceras del árbol con su directiva `TreeIcon`: el mismo SVG de
+  `@ng-icons/lucide`, como máscara CSS sobre el color del texto (`mask-image` con el SVG en una URL
+  `data:` y `background-color: currentColor`). Es un elemento por icono y una regla compartida por icono.
+  Se ve igual (comparado píxel a píxel, en claro y en oscuro) y cumple R6, porque sigue siendo Lucide,
+  pero se sale de `iconography.md`, que para Angular solo nombra `<ng-icon>`. Alternativas:
+  (a) añadir a `iconography.md` que una lista que se repite por cientos puede pintar sus iconos como
+  máscara, con la directiva como ejemplo; (b) una clase `re-icon` en `components.css` que pinte la
+  máscara de una variable `--re-icon`, y el producto solo pone el SVG; (c) dejarlo como excepción
+  declarada de esta ficha.
