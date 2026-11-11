@@ -6,7 +6,7 @@
 | Marca | `brands/resession.css` · 75 ámbar · oscuro `#e5c890` · definitiva (D14) |
 | Ventana | 540×580 + panel lateral |
 | Stack | Angular 20 (subir a 21 como ReRoute) · Tailwind v4 · `@ng-icons/lucide` · Transloco (propuesto: ver `ReSession/docs/architecture.md`) |
-| Estado frente a ReDesign | En 2.7.1. La interfaz está hecha con datos de prueba (su fase 1); la fase 2 la conecta a Chrome. La navegación la decidió el producto (R15) |
+| Estado frente a ReDesign | En 2.8.0. La interfaz está hecha con datos de prueba (su fase 1); la fase 2 la conecta a Chrome. La navegación la decidió el producto (R15) |
 | Layout | Lo decide ReSession (`docs/visual.md`). Piezas que usa: header con Auto y lo limpiado, franja compacta, árbol plano con nivel padre y filas densas, editor en hoja, status bar con el estado de Auto |
 
 ## Garantía
@@ -108,12 +108,28 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   clave pasa de mono a sans, como el placeholder de la búsqueda; el valor escrito sigue en mono.
   Alternativa: `.re-textarea::placeholder { font-family: var(--re-font-mono); }` en el producto para
   volver al anterior.
+- **Calma** (2.8.0, D24; tanda 8 de ReSession, `2026-11-familiar`). Junto a otras extensiones, ReSession
+  se sentía ajena. Lo eligió el autor tras probar la variante en la extensión real. `brands/resession.css`
+  declara la calma (`color.md` §5): `--re-tree-font` sans, `--re-control-border` y `--re-soft-border`
+  transparentes, `--re-control-fill` `slate-100` (`slate-200` en hover), `--re-success-text` `slate-600` con
+  `--re-success-fill` `slate-100`, y `--re-danger-soft-fill` `rose-50` (`rose-100` en hover). Se nota: los
+  nombres de cookies y dominios en sans (los valores siguen en mono); búsqueda, segmented, `+` y píldoras
+  separados por relleno, sin borde; «n protegidas» y «Lista blanca» en gris con el escudo verde; «Limpiar»
+  como tinte rojo sin borde. Alternativa: quitar del archivo de marca la variable que no convenza; cada una
+  vuelve sola al valor de siempre.
 - **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
   `re-breadcrumb`.
 
 ## Excepciones declaradas
 
-Ninguna.
+- **Iconos del árbol sin SVG** (su D64, noviembre de 2026; desde 2.8.2). Las filas y cabeceras del árbol
+  (`cookie-item`, `cookie-container`, `site-group`) no usan `<ng-icon>`, como pide `iconography.md`, sino su
+  directiva `TreeIcon`: el mismo SVG de `@ng-icons/lucide` como máscara CSS sobre el color del texto
+  (`mask-image` con el SVG en una URL `data:` y `background-color: currentColor`). Es un elemento por icono
+  y una regla compartida por icono. Motivo: con todo abierto y unas 2600 cookies eran casi 8000 SVG en
+  línea, y el popup se congelaba. Se ve igual (comparado píxel a píxel, en claro y en oscuro) y cumple R6,
+  porque sigue siendo Lucide. El resto del producto usa `<ng-icon>`. Si otro producto llega a listas de
+  cientos de filas, la técnica pasa a `iconography.md` o a una clase `re-icon` de la librería.
 
 ## Propuestas
 
@@ -133,9 +149,9 @@ Ninguna.
   2. **Segmented más ligero**: el borde del contenedor, `slate-200` al 40 %; la opción activa sigue
      elevándose. Cambiarlo en `re-segmented` afecta a todos los productos (R14). Alternativas: una variante
      `re-segmented--quiet`, solo para quien la pida; o el valor global, anotado en cada ficha.
-  3. **Búsqueda sin borde**: `re-input-group` sin foco, con borde transparente y fondo `bg-card`
-     (`slate-100` en hover); con foco, el borde de siempre. En oscuro, `slate-50` es casi el fondo y el
-     campo con borde pesa. Alternativa: una variante `re-input-group--quiet`.
-  4. **«Lista blanca» sin borde en el árbol**: `re-pill--success` dentro de `re-tree`, con el borde
-     transparente y solo su relleno verde. Alternativa: una variante `re-pill--soft` para cualquier
-     píldora que repita su estado en muchas filas.
+  3. ~~**Búsqueda sin borde**~~: resuelta en 2.8.0 por la calma (D24), con relleno `slate-100` en lugar de
+     `bg-card`; con foco, el borde de siempre.
+  4. ~~**«Lista blanca» sin borde en el árbol**~~: resuelta en 2.8.0 por la calma (D24), en todas las
+     píldoras y con el texto neutro; el escudo sigue verde.
+  - El 2 (segmented) queda cubierto en parte: la calma le quita el borde y le pone el relleno de los
+    controles. El 1 (`+` con la marca) sigue abierto.

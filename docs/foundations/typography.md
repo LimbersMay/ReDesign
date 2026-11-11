@@ -11,6 +11,8 @@
 
 - Lo monoespaciado (URLs, claves, valores, patrones, código) usa `re-mono` o `font-mono`: siempre 12px
   regular, porque JetBrains Mono se ve más grande que Inter al mismo tamaño.
+- Excepción por marca: con `--re-tree-font` (calma, `color.md` §5, D24) los nombres y títulos de un
+  `re-tree` salen en sans; los valores siguen en mono.
 - Pesos: 400 cuerpo · 500 controles · 600 labels y botones · 700 títulos y badges.
 - Títulos de sección: `re-section-title` (2xs, 700, mayúsculas, `slate-400`), sin dos puntos al final.
 - Las **páginas completas** (ayuda, opciones; se abren en una pestaña) pueden usar `text-base`–`text-2xl`
