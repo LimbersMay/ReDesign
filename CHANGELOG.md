@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.8.1 — 2026-11-11
+
+Productos afectados: ninguno en pantalla; solo cambia la ficha de ReSession. Ninguna clase ni token cambia.
+
+- Ficha de ReSession: Propuesta con los iconos del árbol sin SVG de su D64 (máscara CSS en lugar de
+  `<ng-icon>` en las filas que se repiten por miles), con tres alternativas para adoptarlo.
+
 ## 2.8.0 — 2026-11-04
 
 Productos afectados: ReSession (ver su ficha, R14, y D24). Ninguna clase ni token se renombra ni se quita;
