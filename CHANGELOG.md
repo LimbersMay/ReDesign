@@ -6,6 +6,15 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.10.0 — 2026-11-12
+
+Productos afectados: ReSession, que la usa en su Ayuda. Ninguna clase ni token cambia ni se quita; quien no use
+la variante se ve igual.
+
+- `re-card.is-active`: la tarjeta a la que el usuario acaba de ir desde un índice o un enlace conserva el aspecto
+  de hover (borde `brand-200` y sombra media) hasta que otra ocupa su lugar. ReSession la pone en la tarjeta que
+  se elige en el índice de su Ayuda; ReRoute resalta hoy su problema con un anillo propio y podría pasar a ella.
+
 ## 2.9.1 — 2026-11-12
 
 Productos afectados: ReSession, solo como arreglo (ver abajo). Ninguna clase ni token cambia ni se quita.
