@@ -6,6 +6,15 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.11.0 — 2026-11-12
+
+Productos afectados: ReSession, que lo usa en su búsqueda. Ninguna clase ni token cambia ni se quita; un campo
+sin `disabled` se ve igual.
+
+- `re-input-group` con su input `disabled`: el marco se atenúa (`opacity: 0.45`), pierde el hover y lleva el
+  cursor de no permitido, igual que `re-segmented__item:disabled`. ReSession desactiva su búsqueda, junto a
+  «Cookies | Storage», en una página que el navegador no deja leer, en lugar de ocultarla.
+
 ## 2.10.0 — 2026-11-12
 
 Productos afectados: ReSession, que la usa en su Ayuda. Ninguna clase ni token cambia ni se quita; quien no use
