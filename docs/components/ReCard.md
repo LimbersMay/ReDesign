@@ -32,6 +32,9 @@ datos homogéneos usa [ReTree](ReTree.md); para filas ligeras, [ReList](ReList.m
 - Barra lateral siempre. Su color es el estado o la **categoría** (`--re-card-accent`): marca por
   defecto, una categoría (`--re-purple-500`…) para tipos; nunca un rol (`rose`) como categoría.
 - Pausada (`is-paused`): opacidad 60 %, fondo `slate-100`, barra y punto en `slate-300`.
+- Activa (`is-active`): la tarjeta a la que el usuario acaba de ir, desde un índice o un enlace. Se ve como en
+  hover (borde `brand-200` y sombra media) hasta que otra ocupa su lugar: tras el scroll, el ojo la encuentra
+  sin buscarla. Una sola por vista; no es una selección ni sustituye al foco.
 - Las acciones se revelan en hover o foco de teclado (`re-reveal`), salvo que la tarjeta sea única en su vista.
 - El contenido técnico va en `re-code-box` (mono, hundido).
 - `re-card__subtitle`, bajo `re-card__title` (los dos dentro de un `min-w-0`), dice en una línea el último

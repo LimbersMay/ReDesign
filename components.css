@@ -1259,7 +1259,10 @@
       opacity var(--re-duration-slow);
   }
 
-  .re-card:hover {
+  /* `is-active`: the card the user went to (from an index, a link). It keeps the hover look until
+     another card takes its place, so the eye finds it after the scroll. */
+  .re-card:hover,
+  .re-card.is-active {
     border-color: var(--re-brand-200);
     box-shadow: var(--re-shadow-md);
   }
