@@ -6,6 +6,15 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.9.1 — 2026-11-12
+
+Productos afectados: ReSession, solo como arreglo (ver abajo). Ninguna clase ni token cambia ni se quita.
+
+- `re-tree--flat`: la cabecera de una sección anidada (los dominios dentro de un sitio, `re-tree__group--parent`)
+  conserva el fondo opaco al pasar el ratón. Antes ganaba el hover genérico de las cabeceras anidadas, que es
+  translúcido, y con la cabecera fija las filas que pasaban por debajo se transparentaban. El color del hover
+  es el mismo de las demás cabeceras.
+
 ## 2.9.0 — 2026-11-11
 
 Productos afectados: ReSession (ver su ficha, R14). Ninguna clase ni token cambia ni se quita; quien no use
