@@ -1999,6 +1999,12 @@
     background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-background);
   }
 
+  /* A nested head (the domains of a site) sticks too: its hover keeps the opaque base, or the rows
+     scrolling under it show through. Without this, the generic nested hover above wins: translucent. */
+  .re-tree--flat .re-tree__items .re-tree__head:hover {
+    background: linear-gradient(var(--re-line-hover), var(--re-line-hover)), var(--re-background);
+  }
+
   /* The section's name is data (a domain): mono. What kind of section it is goes after, in sans. */
   /* The domain keeps its width; the kind after it is what gives way. */
   .re-tree--flat .re-tree__title {
