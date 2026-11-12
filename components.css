@@ -532,6 +532,22 @@
     background: var(--re-control-fill-hover, var(--re-slate-100));
   }
 
+  /* A field that exists but does not apply now: dimmed like a disabled segmented, without hover. */
+  .re-input-group:has(> input:disabled),
+  app-input-group:has(> input:disabled) {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .re-input-group:has(> input:disabled):hover,
+  app-input-group:has(> input:disabled):hover {
+    background: var(--re-control-fill, var(--re-slate-50));
+  }
+
+  :is(.re-input-group, app-input-group) > input:disabled {
+    cursor: not-allowed;
+  }
+
   .re-input-group:focus-within,
   app-input-group:focus-within {
     border-color: var(--re-brand-500);

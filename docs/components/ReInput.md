@@ -27,6 +27,7 @@ componente `<app-input-group>` (alias aceptado), que además mueve el foco con �
 | Fecha y hora | `<div class="re-input-group"><input type="datetime-local" class="re-mono" /></div>` |
 | Multilínea / valor largo | `<textarea class="re-textarea" rows="3"></textarea>` |
 | Inválido | `aria-invalid="true"` en el input (el marco se pone en `rose`) + `<span class="re-error">` |
+| Desactivado | `disabled` en el input: el marco se atenúa como un segmented desactivado y pierde el hover |
 
 ## Reglas
 
@@ -36,5 +37,7 @@ componente `<app-input-group>` (alias aceptado), que además mueve el foco con �
   placeholder, en cambio, es prosa («Buscar clave, valor o dominio», «Pega un enlace…») y sale en sans
   aunque el campo sea mono, también en `re-textarea`: no hay que hacer nada.
 - El label va encima, en `re-label`; nunca solo un placeholder como label.
+- Un campo que existe pero ahora no aplica va `disabled` y se queda en su sitio: ocultarlo mueve lo que
+  hay alrededor. El motivo se dice cerca, como en [ReSegmented](ReSegmented.md).
 - Para elegir de una lista corta usa `re-select-inline` (nativo) o [ReDropdown](ReDropdown.md) cuando
   las opciones necesiten acciones o estilo propio.
