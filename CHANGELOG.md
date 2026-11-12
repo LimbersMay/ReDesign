@@ -6,6 +6,20 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.9.0 — 2026-11-11
+
+Productos afectados: ReSession (ver su ficha, R14). Ninguna clase ni token cambia ni se quita; quien no use
+las piezas nuevas se ve igual.
+
+- `re-header__logo--bare`: el logo del header sin baldosa (sin borde, fondo ni sombra), para un logo en
+  imagen que ya se lee en claro y en oscuro. ReSession lo usa con su galleta (su D68).
+- `re-menu__item-text` > `re-menu__item-desc`: una segunda línea en `text-2xs` que dice qué hará el ítem
+  antes de pulsarlo; el icono se alinea con la primera línea.
+- `re-menu__item:disabled`: gris y sin hover; su descripción dice por qué.
+- `settings-menu.md`: un producto puede ofrecer un atajo que importa desde el menú si la primera vez enseña
+  la vista previa, después recuerda el modo y siempre termina en un toast con enlace a la página.
+- Ficha de ReSession: los atajos de exportar e importar (su D66) pasan de Propuesta a cambio adoptado.
+
 ## 2.8.2 — 2026-11-11
 
 Productos afectados: ninguno en pantalla; solo cambia la ficha de ReSession. Ninguna clase ni token cambia.
