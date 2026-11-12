@@ -13,7 +13,7 @@ solo cambian el logo, el nombre y lo que va en las zonas centrales.
 
 | Zona | Contenido | Reglas |
 |---|---|---|
-| Identidad | `re-header__logo` + `re-header__title` (+ `re-header__subtitle` opcional) | El logo es el icono del producto; el nombre, en `text-xs` 700 |
+| Identidad | `re-header__logo` + `re-header__title` (+ `re-header__subtitle` opcional) | El logo es el icono del producto; el nombre, en `text-xs` 700. Un logo en imagen que ya se lee en claro y en oscuro (con su propio borde) va sin baldosa: `re-header__logo--bare` |
 | Vista (opcional) | Las vistas principales: pestañas subrayadas (`re-tabs re-tabs--header`) o un `re-segmented` | Máximo 3 vistas; si hay más, la app necesita otra navegación |
 | Acciones | Icon buttons de la vista activa · **una** primaria `re-btn--sm` · **siempre al final** el engranaje de ajustes | El engranaje abre el [menú de ajustes](../patterns/settings-menu.md) |
 

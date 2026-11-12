@@ -34,7 +34,12 @@ encuentra los ajustes en el mismo sitio en todos.
 ## Reglas
 
 - El engranaje es un `re-icon-btn` con `aria-haspopup="menu"` y `aria-expanded`.
-- Importar abre la página de importación del producto (con vista previa), nunca importa directamente.
+- Importar abre la página de importación del producto (con vista previa). Un producto puede ofrecer
+  además un **atajo** que importa desde el menú si cumple tres cosas: la primera vez enseña la vista previa
+  en un diálogo, con los números del archivo y el modo; después recuerda ese modo; y cada importación
+  termina en un toast que dice qué entró, con un enlace a la página. Los atajos de exportar e importar
+  dicen en su descripción (`re-menu__item-desc`) qué harán, y la página completa queda a un ítem
+  («Más opciones…»).
 - Exportar descarga un archivo con el nombre del producto y la fecha (`resession-2026-10-17.json`).
 - Nada destructivo («Restablecer todo») en este menú; si existe, va en la página de opciones con
   confirmación.

@@ -115,6 +115,13 @@
     object-fit: contain;
   }
 
+  /* A logo that already reads on any background (its own outline) goes without the tile. */
+  .re-header__logo--bare {
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
   .re-header__title {
     font-size: var(--re-text-xs);
     line-height: 1;
@@ -2575,6 +2582,46 @@
 
   .re-menu__item-end {
     margin-left: auto;
+  }
+
+  /* Item with a description line: what the action will do, before pressing it. */
+  .re-menu__item:has(> .re-menu__item-text) {
+    align-items: flex-start;
+  }
+
+  .re-menu__item:has(> .re-menu__item-text) > :is(svg, ng-icon, i) {
+    margin-top: 0.125rem;
+  }
+
+  .re-menu__item:has(> .re-menu__item-text) > .re-menu__item-end {
+    align-self: center;
+  }
+
+  .re-menu__item-text {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  .re-menu__item-desc {
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 400;
+    color: var(--re-slate-500);
+  }
+
+  .re-menu__item:disabled {
+    color: var(--re-slate-400);
+    cursor: default;
+  }
+
+  .re-menu__item:disabled:hover {
+    background: transparent;
+  }
+
+  .re-menu__item:disabled > :is(svg, ng-icon, i),
+  .re-menu__item:disabled .re-menu__item-desc {
+    color: var(--re-slate-400);
   }
 
   /* Dialog. The overlay covers the popup; inside a wireframe container use --contained. */

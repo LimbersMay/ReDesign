@@ -61,7 +61,7 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   sus subdominios y al final los rastreadores.
 - **Status bar** (`re-statusbar`): el estado de Auto con `re-dot` (`--live` si está activo, gris si no) y
   «Auto · cada 15 min». Sin la garantía ni lo limpiado, que ya están en el resumen y el header.
-- **Header**: el logo, lo limpiado hoy (`re-btn--sm re-btn--ghost` con `aria-expanded`, que abre
+- **Header**: el logo sin baldosa (`re-header__logo--bare`), lo limpiado hoy (`re-btn--sm re-btn--ghost` con `aria-expanded`, que abre
   `re-figures` en un `re-menu`), Auto (`re-icon-btn` con `re-dot--live` si está activo) y ajustes.
 - **Tarjeta de limpieza automática** (`re-card` con switch, intervalo y tareas), con el último ciclo en
   `re-card__subtitle`.
@@ -117,6 +117,17 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   separados por relleno, sin borde; «n protegidas» y «Lista blanca» en gris con el escudo verde; «Limpiar»
   como tinte rojo sin borde. Alternativa: quitar del archivo de marca la variable que no convenza; cada una
   vuelve sola al valor de siempre.
+- **Atajos de exportar e importar en el menú de ajustes** (2.9.0; su D66). «Exportar este sitio» descarga
+  en un clic con las opciones de la última vez, e «Importar cookies» importa con el modo recordado; «Más
+  opciones…» abre la página completa. Usa `re-menu__item-desc` (con `re-menu__item-text`) para decir qué
+  hará cada atajo, `re-menu__item:disabled` cuando no hay nada que exportar, y la regla de los atajos de
+  importar de `settings-menu.md`. Se nota: el grupo de exportar e importar mide unos 16px más por ítem con
+  descripción. Alternativas: el detalle en el `title` del ítem, sin segunda línea; o que el atajo de
+  importar abra la página.
+- **Logo sin baldosa** (`re-header__logo--bare`, 2.9.0; su D68). La galleta ámbar ya trae su borde y se lee
+  en claro y en oscuro, así que el header la pinta sola, igual que el icono de la extensión y la cabecera de
+  la Ayuda. Se nota: el logo pierde el cuadrado gris con borde y sombra, y la galleta parece algo más
+  grande. Alternativa: quitar la clase para volver a la baldosa neutra de D46.
 - **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
   `re-breadcrumb`.
 

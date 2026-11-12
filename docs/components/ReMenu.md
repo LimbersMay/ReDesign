@@ -10,7 +10,9 @@ Menú anclado a un botón: secciones de ajustes, interruptores y acciones. Se us
 | Panel | `re-menu` | 240px, alineado a la derecha del botón |
 | Sección de ajuste | `re-menu__section` + `re-section-title` | Un control: `re-segmented re-segmented--block`, o un `re-option` con switch |
 | Grupo de acciones | `re-menu__group` | `re-menu__item` (icono 13 + texto); los grupos se separan solos |
-| Extremo derecho de un ítem | `re-menu__item-end` | `re-kbd-combo` o un chevron |
+| Extremo derecho de un ítem | `re-menu__item-end` | `re-kbd-combo`, un chevron o `external-link` si abre una pestaña |
+| Ítem con descripción | `re-menu__item-text` > texto + `re-menu__item-desc` | Una segunda línea en `text-2xs` que dice qué hará la acción antes de pulsarla («JSON · con valores · 29 cookies»). El icono se alinea con la primera línea |
+| Ítem no disponible | `re-menu__item:disabled` | Gris y sin hover; su descripción dice por qué |
 
 ```html
 <div class="re-header__actions">
