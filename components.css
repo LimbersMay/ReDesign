@@ -2145,6 +2145,17 @@
     padding-left: calc(1rem + (var(--re-tree-depth, 0) + 1) * var(--re-tree-indent, 1rem));
   }
 
+  /*
+   * Selection tree (`re-tree--select`): each head carries a checkbox right after its chevron, and its
+   * rows put theirs right under it, so a group reads as one column of checkboxes. The step is the
+   * chevron (11px) and the head's gap instead of one indent.
+   */
+  .re-tree--select .re-tree__row--dense {
+    padding-left: calc(
+      1rem + var(--re-tree-depth, 0) * var(--re-tree-indent, 1rem) + 11px + 0.5rem
+    );
+  }
+
   .re-tree__row--dense:has(.re-tree__lead .re-checkbox:checked) {
     background: color-mix(in srgb, var(--re-brand-500) 6%, transparent);
   }

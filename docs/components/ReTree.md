@@ -22,6 +22,7 @@ banderas) son componentes firma construidos con estas piezas.
 | Nombre de la sección en un árbol plano (mono) | `re-tree__title` | — |
 | Primer nivel de un árbol plano sin nivel padre | `re-tree__group` hijo directo de `re-tree--flat` | 36px |
 | Nivel padre de un árbol plano (un sitio y sus dominios) | `re-tree__group--parent` | 36px |
+| Árbol de selección: casilla en cada cabecera y en cada fila, en columna | `re-tree--select` en `re-tree` | — |
 | Fila densa: una línea en cuatro celdas | `re-tree__row--dense` | 32px |
 | Celdas de la fila densa | `re-tree__lead` · `re-tree__key` · `re-tree__value` · `re-tree__trail` | — |
 | Tiempo o tamaño, en columna fija (`--warning` si avisa) | `re-tree__time` | — |
@@ -125,6 +126,34 @@ de un sitio): una lista continua de secciones, donde el nivel se lee en el borde
     <div class="re-tree__items">
       <section class="re-tree__group">…cabecera de dominio + filas densas…</section>
     </div>
+  </section>
+</div>
+```
+
+## Árbol de selección
+
+`re-tree--select` es para árboles donde se elige qué entra (exportar, importar): cada cabecera lleva un
+checkbox justo después del chevron, y sus filas densas ponen el suyo justo debajo, en la misma columna.
+Así cada grupo se lee como una columna de casillas, y el chevron queda como único saliente.
+
+- Las filas no entran un paso de sangría (16px), sino lo que ocupan el chevron y su hueco (11px + 8px):
+  con el paso de siempre, su casilla quedaba 3px a la izquierda de la de la cabecera.
+- El checkbox de la cabecera va entre el chevron y el icono. Pulsarlo no debe plegar el grupo: el producto
+  ignora en el botón de plegar los clics y las teclas que vienen del checkbox.
+- Se combina con `re-tree--flat` y con el nivel padre; solo cambia el borde izquierdo de las filas densas.
+
+```html
+<div class="re-tree re-tree--flat re-tree--select">
+  <section class="re-tree__group">
+    <div class="re-tree__head" role="button" tabindex="0" aria-expanded="true">
+      <div class="re-tree__head-main">
+        <ng-icon class="re-tree__chevron" name="lucideChevronDown" size="11" />
+        <input type="checkbox" class="re-checkbox" aria-label="github.com" />
+        <ng-icon class="re-tree__icon" name="lucideFolder" size="12" />
+        <span class="re-tree__title">github.com</span>
+      </div>
+    </div>
+    <div class="re-tree__items">…filas densas con su checkbox en re-tree__lead…</div>
   </section>
 </div>
 ```
