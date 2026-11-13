@@ -6,6 +6,15 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.12.0 — 2026-11-12
+
+Productos afectados: ReSession, en el selector de cookies de exportar e importar. Ninguna clase ni token
+cambia ni se quita; un árbol sin la variante se ve igual.
+
+- `re-tree--select`: árbol de selección, con un checkbox en cada cabecera (tras el chevron) y en cada fila
+  densa. Las filas alinean su casilla bajo la de su cabecera (chevron + hueco, 19px) en lugar de entrar un
+  paso de sangría (16px), que las dejaba 3px a la izquierda.
+
 ## 2.11.0 — 2026-11-12
 
 Productos afectados: ReSession, que lo usa en su búsqueda. Ninguna clase ni token cambia ni se quita; un campo
