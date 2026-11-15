@@ -6,6 +6,17 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.13.0 — 2026-11-14
+
+Productos afectados: ninguno al publicar. Es un componente nuevo; ReRoute (de cuya Ayuda nace) y ReSession lo
+pueden adoptar en su Ayuda, anotado en sus fichas. Ninguna clase ni token cambia ni se quita.
+
+- `re-toc`: índice lateral de una página completa. Entradas (`re-toc__link`, la actual con `aria-current`),
+  tarjetas con sangría y línea bajo su sección (`re-toc__group`), código en mono antes del nombre
+  (`re-toc__code`) y secciones plegables con la flecha dentro de la entrada (`re-toc__chevron`, gira con
+  `aria-expanded`): un clic lleva y despliega, otro pliega, una abierta a la vez. Documentado en
+  [ReToc](docs/components/ReToc.md) y en la galería.
+
 ## 2.12.0 — 2026-11-12
 
 Productos afectados: ReSession, en el selector de cookies de exportar e importar. Ninguna clase ni token
