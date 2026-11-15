@@ -6,6 +6,13 @@ Versionado semántico. Cada producto fija una versión (`github:LimbersMay/ReDes
 - **MINOR**: componente, variante, token o patrón nuevo; regla de lint nueva en modo `warn`.
 - **PATCH**: ajuste de valores (un tono, un espaciado) sin cambiar nombres; documentación.
 
+## 2.13.1 — 2026-11-15
+
+Productos afectados: ninguno en pantalla; solo cambia la ficha de ReSession. Ninguna clase ni token cambia.
+
+- Ficha de ReSession: el índice de su Ayuda adopta `re-toc` con «Cómo se usa» plegable (su D74); deja de
+  ser una adopción opcional.
+
 ## 2.13.0 — 2026-11-14
 
 Productos afectados: ninguno al publicar. Es un componente nuevo; ReRoute (de cuya Ayuda nace) y ReSession lo
