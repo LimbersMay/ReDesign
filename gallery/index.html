@@ -881,6 +881,33 @@
         </div>
       </section>
 
+      <!-- Index of a full page -->
+      <section class="g-panel">
+        <h2 class="g-h">ReToc · índice de una página completa</h2>
+        <p class="g-p">Las secciones con tarjetas se pliegan con la flecha dentro de la entrada: un clic abre, otro cierra.</p>
+        <nav class="re-toc" id="gToc" aria-label="En esta página" style="max-height: 340px">
+          <p class="re-section-title">En esta página</p>
+          <button type="button" class="re-toc__link">Patrones</button>
+          <button type="button" class="re-toc__link" aria-expanded="false" aria-controls="gTocActions">
+            <span class="re-toc__label">Qué puede hacer una regla</span><i data-lucide="chevron-right" width="14" height="14" class="re-toc__chevron"></i>
+          </button>
+          <div class="re-toc__group" id="gTocActions" hidden>
+            <button type="button" class="re-toc__link">Redirigir</button>
+            <button type="button" class="re-toc__link">Headers</button>
+            <button type="button" class="re-toc__link">Simular respuesta</button>
+          </div>
+          <button type="button" class="re-toc__link" aria-expanded="true" aria-controls="gTocProblems">
+            <span class="re-toc__label">Solución de problemas</span><i data-lucide="chevron-right" width="14" height="14" class="re-toc__chevron"></i>
+          </button>
+          <div class="re-toc__group" id="gTocProblems">
+            <button type="button" class="re-toc__link"><span class="re-toc__code">E03</span> Error de CORS tras redirigir</button>
+            <button type="button" class="re-toc__link" aria-current="location"><span class="re-toc__code">E04</span> Conexión rechazada</button>
+            <button type="button" class="re-toc__link"><span class="re-toc__code">E05</span> Certificado no válido en https://localhost</button>
+          </div>
+          <button type="button" class="re-toc__link">Atajos de teclado</button>
+        </nav>
+      </section>
+
       <!-- Feedback -->
       <section class="g-panel">
         <h2 class="g-h">ReNotice · ReEmptyState</h2>
@@ -1018,6 +1045,17 @@
         pill.setAttribute('aria-pressed', String(isLocked));
         pill.innerHTML = `<i data-lucide="${isLocked ? 'lock' : 'lock-open'}" width="12" height="12"></i>${isLocked ? 'Con candado' : 'Sin candado'}`;
         lucide.createIcons();
+      });
+      // The index folds a section with the chevron inside its entry: one open at a time.
+      document.getElementById('gToc').addEventListener('click', (event) => {
+        const entry = event.target.closest('[aria-expanded]');
+        if (!entry) return;
+        const open = entry.getAttribute('aria-expanded') !== 'true';
+        document.querySelectorAll('#gToc [aria-expanded]').forEach((other) => {
+          const isThis = other === entry;
+          other.setAttribute('aria-expanded', String(isThis && open));
+          document.getElementById(other.getAttribute('aria-controls')).hidden = !(isThis && open);
+        });
       });
       lucide.createIcons();
     </script>

@@ -128,6 +128,11 @@ con confirmación. Si un sitio está en las dos listas, gana la blanca.
   en claro y en oscuro, así que el header la pinta sola, igual que el icono de la extensión y la cabecera de
   la Ayuda. Se nota: el logo pierde el cuadrado gris con borde y sombra, y la galleta parece algo más
   grande. Alternativa: quitar la clase para volver a la baldosa neutra de D46.
+- **Índice de la Ayuda** (`re-toc`, 2.13.0). Nace del índice anidado de la Ayuda de ReSession, que hoy lo
+  dibuja con utilidades sueltas, y de las secciones plegables que le añadió ReRoute. Adoptarlo es opcional.
+  Se nota, si se adopta: el mismo aspecto; los conceptos podrían plegarse bajo su sección con la flecha
+  dentro de la entrada. Alternativa: dejar el índice como está, sin plegar (`re-toc__link` y
+  `re-toc__group` sin `aria-expanded`).
 - **Ya sin uso en ReSession** (se mantienen en la librería): `re-tabs--header`, `re-nav-list`, `re-meter`,
   `re-breadcrumb`.
 

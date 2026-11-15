@@ -15,7 +15,9 @@ la status bar. Es una página completa: puede usar `text-base`–`text-2xl` en l
 5. **Alcance y límites**: qué no hace el producto.
 6. **Versión y enlaces**.
 
-Índice lateral con anclas (`#help-shortcuts`…) para enlazar desde el popup a una sección concreta.
+Índice lateral ([ReToc](../components/ReToc.md)) con anclas (`#help-shortcuts`…) para enlazar desde el popup
+a una sección concreta. Si lista tarjetas (casos de error, conceptos) y no cabe en la pantalla, sus
+secciones se pliegan.
 
 ## Atajos (convención de la suite)
 

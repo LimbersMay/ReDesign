@@ -1258,6 +1258,95 @@
     color: var(--re-slate-400);
   }
 
+  /*
+   * Index of a full page (help, options): «On this page», one entry per section and, indented under
+   * it, the cards it lists. The current entry carries aria-current; a section whose cards fold carries
+   * aria-expanded and its chevron inside the entry, so the same click unfolds and folds it. Sticky
+   * position and maximum height are the page's layout.
+   */
+  .re-toc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--re-slate-200) transparent;
+  }
+
+  .re-toc > .re-section-title {
+    margin-bottom: 0.5rem;
+    padding-inline: 0.625rem;
+  }
+
+  .re-toc__link {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    gap: 0.375rem;
+    padding: 0.375rem 0.625rem;
+    border: 0;
+    border-radius: var(--re-radius-md);
+    background: transparent;
+    font-family: var(--re-font-sans);
+    font-size: var(--re-text-xs);
+    line-height: var(--re-text-xs-lh);
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    color: var(--re-slate-500);
+    cursor: pointer;
+    transition:
+      background-color var(--re-duration),
+      color var(--re-duration);
+  }
+
+  .re-toc__link:hover,
+  .re-toc__link[aria-current]:not([aria-current='false']) {
+    background: color-mix(in srgb, var(--re-slate-200) 70%, transparent);
+    color: var(--re-slate-800);
+  }
+
+  .re-toc__label {
+    min-width: 0;
+    flex: 1;
+  }
+
+  /* Code before the label (E04): the label goes as a text node after it, so it is read «E04 Title». */
+  .re-toc__code {
+    flex-shrink: 0;
+    font-family: var(--re-font-mono);
+    font-size: var(--re-text-2xs);
+    line-height: var(--re-text-2xs-lh);
+    font-weight: 400;
+    color: var(--re-slate-400);
+  }
+
+  .re-toc__chevron {
+    flex-shrink: 0;
+    align-self: center;
+    color: var(--re-slate-400);
+    transition: transform var(--re-duration);
+  }
+
+  .re-toc__link[aria-expanded='true'] > .re-toc__chevron {
+    transform: rotate(90deg);
+  }
+
+  .re-toc__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin-left: 0.625rem;
+    padding-left: 0.375rem;
+    border-left: 1px solid var(--re-slate-200);
+  }
+
+  /* A folded group may stay in the page with `hidden` instead of leaving it. */
+  .re-toc__group[hidden] {
+    display: none;
+  }
+
   /* =============================== Cards and lists =============================== */
 
   /* Repeated item with identity: a rule, a book, an automation. Side bar = state/category. */

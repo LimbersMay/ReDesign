@@ -27,6 +27,7 @@
 | `rule-card` línea 88 | `py-0.2` (no genera nada) | `re-badge` |
 | Status bar | `bg-slate-100/80 px-5 py-2` | `re-statusbar` |
 | Página de ayuda | `text-[9px]`, `bg-[#…]` | escala y tokens; declarar como `pages` |
+| Índice de la ayuda | Clases sueltas (`link` en la plantilla), secciones plegables propias | `re-toc` (2.13.0), que nació de él: mismo aspecto y comportamiento |
 
 `npx re-design-lint src/app` hoy: 6 errores, 16 avisos (12 son de la página de ayuda, que se
 declara en `pages`).

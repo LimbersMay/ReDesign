@@ -31,6 +31,7 @@
 | [ReMenu](components/ReMenu.md) | `re-menu` | Menú anclado a un botón (ajustes) |
 | [ReCard](components/ReCard.md) | `re-card` | Elemento repetible con identidad (regla, libro, automatización) |
 | [ReList](components/ReList.md) | `re-list`, `re-nav-list`, `re-breadcrumb` | Lista corta de filas ligeras; lista que abre páginas |
+| [ReToc](components/ReToc.md) | `re-toc` | Índice lateral de una página completa, con secciones plegables |
 | [ReTree](components/ReTree.md) | `re-tree`, `re-batchbar`, `re-flags` | Datos jerárquicos densos (cientos de filas), árbol plano y fila densa |
 | [ReSummary](components/ReSummary.md) | `re-summary`, `re-favicon` | De qué trata la vista, su acción principal y la selección en lote |
 | [ReDialog](components/ReDialog.md) | `re-dialog`, `re-props`, `re-disclosure` | Editores (centrados o en hoja) y confirmaciones |
